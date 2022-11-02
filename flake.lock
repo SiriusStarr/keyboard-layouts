@@ -1,0 +1,59 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1667077288,
+        "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "6ee9ebb6b1ee695d2cacc4faa053a7b9baa76817",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "kaleidoscope": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667002430,
+        "narHash": "sha256-MvrsQ8UKe/OmG4xXC085RNTaLXdeVI1zVgTHhxyqB4A=",
+        "owner": "keyboardio",
+        "repo": "Kaleidoscope",
+        "rev": "5e29c05d0ad81d5347078960ba17de77449d5d8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "keyboardio",
+        "repo": "Kaleidoscope",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1667348372,
+        "narHash": "sha256-ZN7yk1H9FyfByCBnym3SLDuwedyXfJInPkVLs2nccbc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d3e16830b27fdae4cd469dd143f0a9ef857eb673",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "kaleidoscope": "kaleidoscope",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
