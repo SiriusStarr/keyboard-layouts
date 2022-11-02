@@ -29,9 +29,6 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
-// Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
-#include "Kaleidoscope-NumPad.h"
-
 // Support for the "Boot greeting" effect, which pulses the 'LED' button for 10s
 // when the keyboard is connected to a computer (or that computer is powered on)
 #include "Kaleidoscope-LEDEffect-BootGreeting.h"
@@ -537,10 +534,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The Colormap effect makes it possible to set up per-layer colormaps
   ColormapEffect,
 
-  // The numpad plugin is responsible for lighting up the 'numpad' mode
-  // with a custom LED effect
-  NumPad,
-
   // The macros plugin adds support for macros
   Macros,
 
@@ -614,10 +607,6 @@ void setup() {
   // Set the hue of the boot greeting effect to something that will result in a
   // nice green color.
   BootGreetingEffect.hue = 85;
-
-  // While we hope to improve this in the future, the NumPad plugin
-  // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = NUMPAD;
 
   // We configure the AlphaSquare effect to use RED letters
   AlphaSquare.color = CRGB(255, 0, 0);
