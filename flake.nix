@@ -34,6 +34,7 @@
             export ARDUINO_DIRECTORIES_DATA=/tmp/arduino/data
             export ARDUINO_DIRECTORIES_DOWNLOADS=/tmp/arduino/downloads
             make -f ${kaleidoscope}/Makefile setup
+            export PATH="${kaleidoscope}/bin:$PATH"
           '';
         };
       }
