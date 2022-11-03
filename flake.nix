@@ -26,6 +26,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             arduino-cli
+            clang-tools
           ];
 
           shellHook = ''
