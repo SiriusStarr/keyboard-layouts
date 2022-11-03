@@ -94,6 +94,8 @@
 // Support for editable layer names
 #include "Kaleidoscope-LayerNames.h"
 
+// Support changing shifted chars
+#include "Kaleidoscope-CharShift.h"
 
 /** This 'enum' is a list of all the macros used by the Model 100's firmware
   * The names aren't particularly important. What is important is that each
@@ -113,6 +115,13 @@ enum {
   MACRO_ANY,
 };
 
+/** This 'enum' is a list of all CharShifted keys.
+  */
+
+enum {
+  CS_QUOTE_EXCLAMATION,
+  CS_DOUBLEQUOTE_PIPE,
+};
 
 /** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
   * keymaps: The standard QWERTY keymap, the "Function layer" keymap and the "Numpad"
@@ -574,7 +583,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   DefaultLEDModeConfig,
 
   // Enables controlling (and saving) the brightness of the LEDs via Focus.
-  LEDBrightnessConfig);
+  LEDBrightnessConfig,
+
+  // Enable remapping shifted versions of chars
+  CharShift);
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
  * It's called when your keyboard first powers up. This is where you set up
@@ -638,6 +650,11 @@ void setup() {
   // firmware starts with LED effects off. This avoids over-taxing devices that
   // don't have a lot of power to share with USB devices
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
+
+  CS_KEYS(
+    [CS_QUOTE_EXCLAMATION] = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                  // `'`/`!`
+    [CS_DOUBLEQUOTE_PIPE]  = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Backslash)),  // `"`/`|`
+  );
 }
 
 /** loop is the second of the standard Arduino sketch functions.
