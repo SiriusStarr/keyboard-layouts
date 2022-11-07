@@ -584,7 +584,16 @@ void setup() {
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_Z),   // Left Pinkie Up/Z
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 14), Key_Q),  // Right Pinkie Down/Q
-  )
+
+    // Home row mods
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 1), Key_LeftGui),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 4), Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui))
   Qukeys.setHoldTimeout(200);
   Qukeys.setOverlapThreshold(90);
 }
