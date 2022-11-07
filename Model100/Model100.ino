@@ -121,6 +121,7 @@ enum {
 enum {
   CS_QUOTE_EXCLAMATION,
   CS_DOUBLEQUOTE_PIPE,
+  CS_BACKSPACE_DELETE,
 };
 
 /** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
@@ -189,7 +190,7 @@ KEYMAPS(
    ___, Key_R, Key_S, Key_N, Key_D, Key_B,
    ___, Key_X, Key_F, Key_L, Key_C, Key_W, ___,
 
-   Key_LeftControl, Key_T, Key_LeftGui, Key_LeftShift,
+   Key_Escape, Key_T, CS(CS_BACKSPACE_DELETE), LGUI(Key_R),
 
    ___,
 
@@ -198,7 +199,7 @@ KEYMAPS(
         Key_Comma,     Key_A,      Key_E,     Key_I,                   Key_H,                    ___,
    ___, Key_Minus,     Key_U,      Key_O,     Key_Y,                   Key_K,                    ___,
 
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
+   LGUI(Key_P), Key_Enter, Key_Space, Key_Tab,
 
    ___),
 
@@ -579,6 +580,7 @@ void setup() {
   CS_KEYS(
     [CS_QUOTE_EXCLAMATION] = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                  // `'`/`!`
     [CS_DOUBLEQUOTE_PIPE]  = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Backslash)),  // `"`/`|`
+    [CS_BACKSPACE_DELETE]  = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),                 // `⌫`/`⌦`
   );
 
   QUKEYS(
