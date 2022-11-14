@@ -125,6 +125,8 @@ enum {
   CS_BACKSPACE_DELETE,
   CS_PERIOD_PARENS,
   CS_COMMA_CLOSE_PARENS,
+  CS_ASTERISK_SLASH,
+  CS_PLUS_MINUS,
 };
 
 /** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
@@ -177,7 +179,7 @@ enum {
 
 enum {
   PRIMARY,
-  NUMPAD,
+  NUMBER,
   FUNCTION,
 };  // layers
 
@@ -188,7 +190,7 @@ enum {
 
 KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
-  (___,  ___,  ___,   ___,   ___,   ___,   ___,
+  (___, ___,   ___,   ___,   ___,   ___,   ___,
    ___, Key_J, Key_G, Key_M, Key_P, Key_V, ___,
    ___, Key_R, Key_S, Key_N, Key_D, Key_B,
    ___, Key_X, Key_F, Key_L, Key_C, Key_W, ___,
@@ -207,19 +209,23 @@ KEYMAPS(
    ___),
 
 
-  [NUMPAD] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
+  [NUMBER] =  KEYMAP_STACKED
+  (___, ___,           ___,   ___,   ___,   ___,                   ___,
+   ___, LSHIFT(Key_9), Key_7, Key_8, Key_9, LSHIFT(Key_0),         ___,
+   ___, Key_0,         Key_1, Key_2, Key_3, CS(CS_ASTERISK_SLASH),
+   ___, XXX,           Key_4, Key_5, Key_6, LSHIFT(Key_6),         ___,
+
+   CS(CS_PLUS_MINUS), Key_Period, Key_Equals, ___,
+
    ___,
 
-   M(MACRO_VERSION_INFO),  ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, ___,
-   ___,                    ___, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___,
-                           ___, Key_1, Key_2,      Key_3,              Key_Equals,         ___,
-   ___,                    ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
-   ___, ___, ___, ___,
+   ___, ___, ___,           ___,             ___,         ___,         ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+        XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui, ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+
+   ___, XXX, ___, XXX,
+
    ___),
 
 
@@ -587,6 +593,8 @@ void setup() {
     [CS_BACKSPACE_DELETE]     = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),             // `⌫`/`⌦`
     [CS_PERIOD_PARENS]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_9)),             // `.`/`(`
     [CS_COMMA_CLOSE_PARENS]   = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, LSHIFT(Key_0)),              // `,`/`)`
+    [CS_ASTERISK_SLASH]       = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_8), Key_Slash),              // `*`/`/`
+    [CS_PLUS_MINUS]           = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Equals), Key_Minus),         // `+`/`-`
   );
 
   QUKEYS(
@@ -601,6 +609,11 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_LeftControl),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui),
+
+    // Layer Shifts
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)))
+
   Qukeys.setMinimumPriorInterval(0);
   Qukeys.setHoldTimeout(200);
   Qukeys.setOverlapThreshold(90);
