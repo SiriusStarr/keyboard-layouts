@@ -120,8 +120,11 @@ enum {
 
 enum {
   CS_QUOTE_EXCLAMATION,
-  CS_DOUBLEQUOTE_PIPE,
+  CS_DOUBLEQUOTE_QUESTION,
+  CS_SLASH_BACKSLASH,
   CS_BACKSPACE_DELETE,
+  CS_PERIOD_PARENS,
+  CS_COMMA_CLOSE_PARENS,
 };
 
 /** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
@@ -194,10 +197,10 @@ KEYMAPS(
 
    ___,
 
-   ___, ___,           ___,        ___,       ___,                     ___,                      ___,
-   ___, Key_Semicolon, Key_Period, Key_Slash, CS(CS_DOUBLEQUOTE_PIPE), CS(CS_QUOTE_EXCLAMATION), ___,
-        Key_Comma,     Key_A,      Key_E,     Key_I,                   Key_H,                    ___,
-   ___, Key_Minus,     Key_U,      Key_O,     Key_Y,                   Key_K,                    ___,
+   ___, ___,                       ___,                  ___,                    ___,                         ___,                      ___,
+   ___, Key_Semicolon,             CS(CS_PERIOD_PARENS), CS(CS_SLASH_BACKSLASH), CS(CS_DOUBLEQUOTE_QUESTION), CS(CS_QUOTE_EXCLAMATION), ___,
+        CS(CS_COMMA_CLOSE_PARENS), Key_A,                Key_E,                  Key_I,                       Key_H,                    ___,
+   ___, Key_Minus,                 Key_U,                Key_O,                  Key_Y,                       Key_K,                    ___,
 
    LGUI(Key_P), Key_Enter, Key_Space, Key_Tab,
 
@@ -578,9 +581,12 @@ void setup() {
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
 
   CS_KEYS(
-    [CS_QUOTE_EXCLAMATION] = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                  // `'`/`!`
-    [CS_DOUBLEQUOTE_PIPE]  = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Backslash)),  // `"`/`|`
-    [CS_BACKSPACE_DELETE]  = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),                 // `⌫`/`⌦`
+    [CS_QUOTE_EXCLAMATION]    = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),              // `'`/`!`
+    [CS_DOUBLEQUOTE_QUESTION] = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Slash)),  // `"`/`?`
+    [CS_SLASH_BACKSLASH]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Slash, Key_Backslash),              // `/`/`\`
+    [CS_BACKSPACE_DELETE]     = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),             // `⌫`/`⌦`
+    [CS_PERIOD_PARENS]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_9)),             // `.`/`(`
+    [CS_COMMA_CLOSE_PARENS]   = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, LSHIFT(Key_0)),              // `,`/`)`
   );
 
   QUKEYS(
@@ -595,7 +601,7 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_LeftControl),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui))
+  Qukeys.setMinimumPriorInterval(0);
   Qukeys.setHoldTimeout(200);
   Qukeys.setOverlapThreshold(90);
 }
