@@ -110,7 +110,6 @@
 
 enum {
   MACRO_VERSION_INFO,
-  MACRO_ANY,
 };
 
 /** This 'enum' is a list of all CharShifted keys.
@@ -371,21 +370,6 @@ static void versionInfoMacro(uint8_t key_state) {
   }
 }
 
-/** anyKeyMacro is used to provide the functionality of the 'Any' key.
- *
- * When the 'any key' macro is toggled on, a random alphanumeric key is
- * selected. While the key is held, the function generates a synthetic
- * keypress event repeating that randomly selected key.
- *
- */
-
-static void anyKeyMacro(KeyEvent &event) {
-  if (keyToggledOn(event.state)) {
-    event.key.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
-    event.key.setFlags(0);
-  }
-}
-
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
@@ -404,10 +388,6 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
   case MACRO_VERSION_INFO:
     versionInfoMacro(event.state);
-    break;
-
-  case MACRO_ANY:
-    anyKeyMacro(event);
     break;
   }
   return MACRO_NONE;
