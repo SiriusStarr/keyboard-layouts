@@ -188,6 +188,7 @@ enum {
   NAVIGATION,
   MOUSE,
   MEDIA,
+  BUTTON,
 };  // layers
 
 // Macros For Keymap
@@ -305,7 +306,7 @@ KEYMAPS(
    ___, Key_LeftGui, Key_LeftAlt, Key_LeftControl, Key_LeftShift, XXX,
    ___, XXX,         XXX,         XXX,             XXX,           XXX, ___,
 
-   XXX, ___, ___, XXX,
+   XXX, XXX, ___, ___,
 
    ___,
 
@@ -334,6 +335,25 @@ KEYMAPS(
    ___, XXX, XXX,                        XXX,                                 XXX,                                 XXX,                    ___,
 
    ___, Consumer_Stop, Consumer_PlaySlashPause, Key_Mute,
+
+   ___),
+
+  [BUTTON] = KEYMAP_STACKED
+  (___, ___,  ___, ___,  ___,   ___,  ___,
+   ___, UNDO, CUT, COPY, PASTE, REDO, ___,
+   ___, XXX,  XXX, XXX,  XXX,   XXX,
+   ___, UNDO, CUT, COPY, PASTE, REDO, ___,
+
+   Key_mouseBtnM, Key_mouseBtnL, Key_mouseBtnR, ___,
+
+   ___,
+
+   ___, ___,  ___,   ___,  ___, ___,  ___,
+   ___, REDO, PASTE, COPY, CUT, UNDO, ___,
+        XXX,  XXX,   XXX,  XXX, XXX,  ___,
+   ___, REDO, PASTE, COPY, CUT, UNDO, ___,
+
+   ___, Key_mouseBtnR, Key_mouseBtnL, Key_mouseBtnM,
 
    ___),
 ) // KEYMAPS(
@@ -714,7 +734,11 @@ void setup() {
 
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)))
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)),
+
+    // Pinkie Layer Shifts
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 1), ShiftToLayer(BUTTON)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 14), ShiftToLayer(BUTTON)), )
 
   Qukeys.setMinimumPriorInterval(0);
   Qukeys.setHoldTimeout(200);
