@@ -185,7 +185,15 @@ enum {
   NUMBER,
   SYMBOL,
   FUNCTION,
+  NAVIGATION,
 };  // layers
+
+// Macros For Keymap
+#define REDO  LSHIFT(LCTRL(Key_Z))
+#define PASTE LCTRL(Key_V)
+#define COPY  LCTRL(Key_C)
+#define CUT   LCTRL(Key_X)
+#define UNDO  LCTRL(Key_Z)
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -267,6 +275,25 @@ KEYMAPS(
    ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
 
    ___, XXX, XXX, ___,
+
+   ___),
+
+  [NAVIGATION] = KEYMAP_STACKED
+  (___, ___,         ___,         ___,             ___,           ___, ___,
+   ___, XXX,         XXX,         XXX,             XXX,           XXX, ___,
+   ___, Key_LeftGui, Key_LeftAlt, Key_LeftControl, Key_LeftShift, XXX,
+   ___, XXX,         XXX,         XXX,             XXX,           XXX, ___,
+
+   XXX, ___, XXX, ___,
+
+   ___,
+
+   ___, ___,          ___,            ___,          ___,         ___,            ___,
+   ___, REDO,         PASTE,         COPY,          CUT,         UNDO,           ___,
+        Key_CapsLock, Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___,
+   ___, Key_Insert,   Key_Home,      Key_PageDown,  Key_PageUp,  Key_End,        ___,
+
+   ___, Key_Enter, Key_Space, Key_Tab,
 
    ___),
 ) // KEYMAPS(
@@ -640,7 +667,9 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui),
 
-    // Layer Shifts
+    // Thumb Layer Shifts
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NAVIGATION)),
+
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)))
