@@ -127,6 +127,9 @@ enum {
   CS_COMMA_CLOSE_PARENS,
   CS_ASTERISK_SLASH,
   CS_PLUS_MINUS,
+  CS_PARENS_CLOSE,
+  CS_BRACKET_CLOSE,
+  CS_BRACE_CLOSE,
 };
 
 /** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
@@ -180,7 +183,7 @@ enum {
 enum {
   PRIMARY,
   NUMBER,
-  FUNCTION,
+  SYMBOL,
 };  // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -228,21 +231,24 @@ KEYMAPS(
 
    ___),
 
+  [SYMBOL] =  KEYMAP_STACKED
+  (___, ___,          ___,                  ___,                   ___,                ___, ___,
+   ___, XXX,          LSHIFT(Key_3),        LSHIFT(Key_4),         LSHIFT(Key_5),      XXX, ___,
+   ___, Key_Backtick, LSHIFT(Key_Comma),    LSHIFT(Key_Backslash), LSHIFT(Key_Period), XXX,
+   ___, XXX,          LSHIFT(Key_Backtick), LSHIFT(Key_2),         LSHIFT(Key_7),      XXX, ___,
 
-  [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
-   Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
-   ___, Key_Delete, ___, ___,
+   CS(CS_BRACE_CLOSE), CS(CS_PARENS_CLOSE), CS(CS_BRACKET_CLOSE), ___,
+
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
-   ___, ___, Key_Enter, ___,
-   ___)
+   ___, ___, ___,           ___,             ___,         ___,         ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+        XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui, ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+
+   ___, ___, XXX, XXX,
+
+   ___),
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
@@ -587,14 +593,17 @@ void setup() {
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
 
   CS_KEYS(
-    [CS_QUOTE_EXCLAMATION]    = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),              // `'`/`!`
-    [CS_DOUBLEQUOTE_QUESTION] = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Slash)),  // `"`/`?`
-    [CS_SLASH_BACKSLASH]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Slash, Key_Backslash),              // `/`/`\`
-    [CS_BACKSPACE_DELETE]     = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),             // `⌫`/`⌦`
-    [CS_PERIOD_PARENS]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_9)),             // `.`/`(`
-    [CS_COMMA_CLOSE_PARENS]   = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, LSHIFT(Key_0)),              // `,`/`)`
-    [CS_ASTERISK_SLASH]       = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_8), Key_Slash),              // `*`/`/`
-    [CS_PLUS_MINUS]           = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Equals), Key_Minus),         // `+`/`-`
+    [CS_QUOTE_EXCLAMATION]    = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                           // `'`/`!`
+    [CS_DOUBLEQUOTE_QUESTION] = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Slash)),               // `"`/`?`
+    [CS_SLASH_BACKSLASH]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Slash, Key_Backslash),                           // `/`/`\`
+    [CS_BACKSPACE_DELETE]     = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),                          // `⌫`/`⌦`
+    [CS_PERIOD_PARENS]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_9)),                          // `.`/`(`
+    [CS_COMMA_CLOSE_PARENS]   = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, LSHIFT(Key_0)),                           // `,`/`)`
+    [CS_ASTERISK_SLASH]       = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_8), Key_Slash),                           // `*`/`/`
+    [CS_PLUS_MINUS]           = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Equals), Key_Minus),                      // `+`/`-`
+    [CS_PARENS_CLOSE]         = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_9), LSHIFT(Key_0)),                       // `(`/`)`
+    [CS_BRACKET_CLOSE]        = kaleidoscope::plugin::CharShift::KeyPair(Key_LeftBracket, Key_RightBracket),                  // `[`/`]`
+    [CS_BRACE_CLOSE]          = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_LeftBracket), LSHIFT(Key_RightBracket)),  // `{`/`}`
   );
 
   QUKEYS(
@@ -612,7 +621,8 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui),
 
     // Layer Shifts
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)))
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)))
 
   Qukeys.setMinimumPriorInterval(0);
   Qukeys.setHoldTimeout(200);
