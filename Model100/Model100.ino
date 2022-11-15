@@ -186,6 +186,7 @@ enum {
   SYMBOL,
   FUNCTION,
   NAVIGATION,
+  MOUSE,
 };  // layers
 
 // Macros For Keymap
@@ -294,6 +295,25 @@ KEYMAPS(
    ___, Key_Insert,   Key_Home,      Key_PageDown,  Key_PageUp,  Key_End,        ___,
 
    ___, Key_Enter, Key_Space, Key_Tab,
+
+   ___),
+
+  [MOUSE] = KEYMAP_STACKED
+  (___, ___,         ___,         ___,             ___,           ___, ___,
+   ___, XXX,         XXX,         XXX,             XXX,           XXX, ___,
+   ___, Key_LeftGui, Key_LeftAlt, Key_LeftControl, Key_LeftShift, XXX,
+   ___, XXX,         XXX,         XXX,             XXX,           XXX, ___,
+
+   XXX, ___, XXX, ___,
+
+   ___,
+
+   ___, ___,  ___,              ___,               ___,               ___,              ___,
+   ___, REDO, PASTE,            COPY,              CUT,               UNDO,             ___,
+        XXX,  Key_mouseL,       Key_mouseDn,       Key_mouseUp,       Key_mouseR,       ___,
+   ___, XXX,  Key_mouseScrollL, Key_mouseScrollDn, Key_mouseScrollUp, Key_mouseScrollR, ___,
+
+   ___, Key_mouseBtnR, Key_mouseBtnL, Key_mouseBtnM,
 
    ___),
 ) // KEYMAPS(
@@ -669,6 +689,7 @@ void setup() {
 
     // Thumb Layer Shifts
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NAVIGATION)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), ShiftToLayer(MOUSE)),
 
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)),
