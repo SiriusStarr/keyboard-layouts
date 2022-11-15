@@ -184,6 +184,7 @@ enum {
   PRIMARY,
   NUMBER,
   SYMBOL,
+  FUNCTION,
 };  // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -247,6 +248,25 @@ KEYMAPS(
    ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
 
    ___, ___, XXX, XXX,
+
+   ___),
+
+  [FUNCTION] =  KEYMAP_STACKED
+  (___, ___,     ___,    ___,    ___,    ___,             ___,
+   ___, Key_F12, Key_F7, Key_F8, Key_F9, Key_PrintScreen, ___,
+   ___, Key_F11, Key_F4, Key_F5, Key_F6, Key_ScrollLock,
+   ___, Key_F10, Key_F1, Key_F2, Key_F3, Key_Pause,       ___,
+
+   Key_Escape, Key_T, CS(CS_BACKSPACE_DELETE), ___,
+
+   ___,
+
+   ___, ___, ___,           ___,             ___,         ___,         ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+        XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui, ___,
+   ___, XXX, XXX,           XXX,             XXX,         XXX,         ___,
+
+   ___, XXX, XXX, ___,
 
    ___),
 ) // KEYMAPS(
@@ -622,7 +642,8 @@ void setup() {
 
     // Layer Shifts
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)))
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)))
 
   Qukeys.setMinimumPriorInterval(0);
   Qukeys.setHoldTimeout(200);
