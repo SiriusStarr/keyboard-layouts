@@ -129,45 +129,43 @@ enum {
   CS_BRACE_CLOSE,
 };
 
-/** The Model 100's key layouts are defined as 'keymaps'. By default, there are three
-  * keymaps: The standard QWERTY keymap, the "Function layer" keymap and the "Numpad"
-  * keymap.
-  *
-  * Each keymap is defined as a list using the 'KEYMAP_STACKED' macro, built
-  * of first the left hand's layout, followed by the right hand's layout.
-  *
-  * Keymaps typically consist mostly of `Key_` definitions. There are many, many keys
-  * defined as part of the USB HID Keyboard specification. You can find the names
-  * (if not yet the explanations) for all the standard `Key_` defintions offered by
-  * Kaleidoscope in these files:
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/key_defs/keyboard.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/key_defs/consumerctl.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/key_defs/sysctl.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/key_defs/keymaps.h
-  *
-  * Additional things that should be documented here include
-  *   using ___ to let keypresses fall through to the previously active layer
-  *   using XXX to mark a keyswitch as 'blocked' on this layer
-  *   using ShiftToLayer() and LockLayer() keys to change the active keymap.
-  *   keeping NUM and FN consistent and accessible on all layers
-  *
-  * The PROG key is special, since it is how you indicate to the board that you
-  * want to flash the firmware. However, it can be remapped to a regular key.
-  * When the keyboard boots, it first looks to see whether the PROG key is held
-  * down; if it is, it simply awaits further flashing instructions. If it is
-  * not, it continues loading the rest of the firmware and the keyboard
-  * functions normally, with whatever binding you have set to PROG. More detail
-  * here: https://community.keyboard.io/t/how-the-prog-key-gets-you-into-the-bootloader/506/8
-  *
-  * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
-  * The order of keymaps in the list is important, as the ShiftToLayer(#) and LockLayer(#)
-  * macros switch to key layers based on this list.
-  *
-  *
+// Colors for the colormap palette
+enum {
+  C_INACTIVE,
+  C_HOMEROW,
+  C_HOMING,
+  C_BASE,
+  C_NUMBER,
+  C_SYMBOL,
+  C_FUNCTION,
+  C_NAVIGATION,
+  C_MOUSE,
+  C_MEDIA,
+  C_BUTTON,
+  C_UNUSED_1,
+  C_UNUSED_2,
+  C_UNUSED_3,
+  C_UNUSED_4,
+  C_UNUSED_5
+};
 
-  * A key defined as 'ShiftToLayer(FUNCTION)' will switch to FUNCTION while held.
-  * Similarly, a key defined as 'LockLayer(NUMPAD)' will switch to NUMPAD when tapped.
-  */
+PALETTE(
+  [C_INACTIVE]   = CRGB(0x2e, 0x2e, 0x2e),
+  [C_HOMEROW]    = CRGB(0xd6, 0xd6, 0xd6),
+  [C_HOMING]     = CRGB(0xff, 0x00, 0x00),
+  [C_BASE]       = CRGB(0x79, 0x79, 0x79),
+  [C_NUMBER]     = CRGB(0xe5, 0xb5, 0x67),
+  [C_SYMBOL]     = CRGB(0xb4, 0xd2, 0x73),
+  [C_FUNCTION]   = CRGB(0xb0, 0x00, 0x79),
+  [C_NAVIGATION] = CRGB(0x9e, 0x00, 0xc8),
+  [C_MOUSE]      = CRGB(0x6c, 0x99, 0xbb),
+  [C_MEDIA]      = CRGB(0xe8, 0x7d, 0x00),
+  [C_BUTTON]     = CRGB(0x79, 0x79, 0x79),
+  [C_UNUSED_1]   = CRGB(0x00, 0x00, 0x00),
+  [C_UNUSED_2]   = CRGB(0x00, 0x00, 0x00),
+  [C_UNUSED_3]   = CRGB(0x00, 0x00, 0x00),
+  [C_UNUSED_4]   = CRGB(0x00, 0x00, 0x00),
+  [C_UNUSED_5]   = CRGB(0x00, 0x00, 0x00))
 
 /**
   * Layers are "0-indexed" -- That is the first one is layer 0. The second one is layer 1.
@@ -353,7 +351,167 @@ KEYMAPS(
    ___, Key_mouseBtnR, Key_mouseBtnL, Key_mouseBtnM,
 
    ___),
-) // KEYMAPS(
+)
+
+/* This comment temporarily turns off astyle's indent enforcement
+ *   so we can make the keymaps actually resemble the physical key layout better
+ */
+// clang-format off
+
+COLORMAPS(
+  [PRIMARY] = COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_INACTIVE,
+   C_INACTIVE, C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_HOMING,   C_BASE,
+   C_INACTIVE, C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_INACTIVE,
+
+   C_MEDIA, C_NAVIGATION, C_MOUSE, C_BASE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_INACTIVE,
+               C_BASE,     C_HOMING,   C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_INACTIVE,
+   C_INACTIVE, C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_BASE,     C_INACTIVE,
+
+   C_BASE, C_SYMBOL, C_NUMBER, C_FUNCTION,
+
+   C_INACTIVE),
+
+
+  [NUMBER] =  COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_NUMBER,   C_NUMBER,   C_NUMBER,   C_NUMBER,   C_NUMBER,   C_INACTIVE,
+   C_INACTIVE, C_NUMBER,   C_NUMBER,   C_NUMBER,   C_NUMBER,   C_NUMBER,
+   C_INACTIVE, C_INACTIVE, C_NUMBER,   C_NUMBER,   C_NUMBER,   C_NUMBER,   C_INACTIVE,
+
+   C_NUMBER, C_NUMBER, C_NUMBER, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+               C_INACTIVE, C_HOMING,   C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_NUMBER, C_INACTIVE,
+
+   C_INACTIVE),
+
+  [SYMBOL] =  COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_SYMBOL,   C_SYMBOL,   C_SYMBOL,   C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_SYMBOL,   C_SYMBOL,   C_SYMBOL,   C_SYMBOL,   C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_SYMBOL,   C_SYMBOL,   C_SYMBOL,   C_INACTIVE, C_INACTIVE,
+
+   C_SYMBOL, C_SYMBOL, C_SYMBOL, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+               C_INACTIVE, C_HOMING,   C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_SYMBOL, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE),
+
+  [FUNCTION] =  COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_INACTIVE,
+   C_INACTIVE, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION,
+   C_INACTIVE, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_FUNCTION, C_INACTIVE,
+
+   C_BASE, C_BASE, C_BASE, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+               C_INACTIVE, C_HOMING,   C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_FUNCTION,
+
+   C_INACTIVE),
+
+  [NAVIGATION] = COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_HOMING,   C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_NAVIGATION, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE,   C_INACTIVE,   C_INACTIVE,   C_INACTIVE,   C_INACTIVE,   C_INACTIVE,
+   C_INACTIVE, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_INACTIVE,
+               C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_INACTIVE,
+   C_INACTIVE, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_NAVIGATION, C_INACTIVE,
+
+   C_INACTIVE, C_BASE, C_BASE, C_BASE,
+
+   C_INACTIVE),
+
+  [MOUSE] = COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_HOMING,   C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_MOUSE, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_MOUSE,    C_MOUSE,    C_MOUSE,    C_MOUSE,    C_MOUSE,    C_INACTIVE,
+               C_INACTIVE, C_MOUSE,    C_MOUSE,    C_MOUSE,    C_MOUSE,    C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_MOUSE,    C_MOUSE,    C_MOUSE,    C_MOUSE,    C_INACTIVE,
+
+   C_INACTIVE, C_MOUSE, C_MOUSE, C_MOUSE,
+
+   C_INACTIVE),
+
+  [MEDIA] = COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_HOMEROW,  C_HOMEROW,  C_HOMEROW,  C_HOMING,   C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_MEDIA, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_MEDIA,    C_MEDIA,    C_MEDIA,    C_MEDIA,    C_INACTIVE,
+               C_INACTIVE, C_MEDIA,    C_MEDIA,    C_MEDIA,    C_MEDIA,    C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+
+   C_INACTIVE, C_MEDIA, C_MEDIA, C_MEDIA,
+
+   C_INACTIVE),
+
+  [BUTTON] = COLORMAP_STACKED
+  (C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_INACTIVE,
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_INACTIVE,
+
+   C_BUTTON, C_BUTTON, C_BUTTON, C_INACTIVE,
+
+   C_INACTIVE,
+
+   C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_INACTIVE,
+               C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE, C_INACTIVE,
+   C_INACTIVE, C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_BUTTON,   C_INACTIVE,
+
+   C_INACTIVE, C_BUTTON, C_BUTTON, C_BUTTON,
+
+   C_INACTIVE),
+)
 
 /* Re-enable astyle's indent enforcement */
 // clang-format on
@@ -626,6 +784,7 @@ void setup() {
   StalkerEffect.variant = STALKER(BlazingTrail);
 
   ColormapEffect.max_layers(8);
+  DefaultColormap.install();
 
   // For Dynamic Macros, we need to reserve storage space for the editable
   // macros. A kilobyte is a reasonable default.
@@ -641,10 +800,7 @@ void setup() {
   // reserve 17 / layer in total.
   LayerNames.reserve_storage(17 * 8);
 
-  // Unless configured otherwise with Chrysalis, we want to make sure that the
-  // firmware starts with LED effects off. This avoids over-taxing devices that
-  // don't have a lot of power to share with USB devices
-  DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
+  DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&ColormapEffect);
 
   CS_KEYS(
     [CS_QUOTE_EXCLAMATION]    = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                           // `'`/`!`
