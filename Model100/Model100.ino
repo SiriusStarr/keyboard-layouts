@@ -200,21 +200,21 @@ enum {
 
 KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
-  (___, ___,   ___,   ___,   ___,   ___,   ___,
-   ___, Key_J, Key_G, Key_M, Key_P, Key_V, ___,
-   ___, Key_R, Key_S, Key_N, Key_D, Key_B,
-   ___, Key_X, Key_F, Key_L, Key_C, Key_W, ___,
+  (___, ___,           ___,      ___,      ___,      ___,   ___,
+   ___, Key_J,         Key_G,    Key_M,    Key_P,    Key_V, ___,
+   ___, GUI_T(R),      ALT_T(S), CTL_T(N), SFT_T(D), Key_B,
+   ___, LT(BUTTON, X), Key_F,    Key_L,    Key_C,    Key_W, ___,
 
-   Key_Escape, Key_T, CS(CS_BACKSPACE_DELETE), LGUI(Key_R),
+   LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_BACKSPACE_DELETE), LGUI(Key_R),
 
    ___,
 
    ___, ___,                       ___,                  ___,                    ___,                         ___,                      ___,
    ___, Key_Semicolon,             CS(CS_PERIOD_PARENS), CS(CS_SLASH_BACKSLASH), CS(CS_DOUBLEQUOTE_QUESTION), CS(CS_QUOTE_EXCLAMATION), ___,
-        CS(CS_COMMA_CLOSE_PARENS), Key_A,                Key_E,                  Key_I,                       Key_H,                    ___,
+        CS(CS_COMMA_CLOSE_PARENS), SFT_T(A),             CTL_T(E),               ALT_T(I),                    GUI_T(H),                 ___,
    ___, Key_Minus,                 Key_U,                Key_O,                  Key_Y,                       Key_K,                    ___,
 
-   LGUI(Key_P), Key_Enter, Key_Space, Key_Tab,
+   LGUI(Key_P), LT(SYMBOL, Enter), LT(NUMBER, Space), LT(FUNCTION, Tab),
 
    ___),
 
@@ -820,32 +820,11 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_Z),   // Left Pinkie Up/Z
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 14), Key_Q),  // Right Pinkie Down/Q
 
-    // Home row mods
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 1), Key_LeftGui),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 4), Key_LeftShift),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_LeftControl),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_LeftGui),
-
-    // Thumb Layer Shifts
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NAVIGATION)),
+    // Thumb Layer Shifts (not a base key, so have to include here)
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), ShiftToLayer(MOUSE)),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), ShiftToLayer(MEDIA)),
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(NUMBER)),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), ShiftToLayer(SYMBOL)),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)),
-
-    // Pinkie Layer Shifts
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 1), ShiftToLayer(BUTTON)),
+    // Pinkie Layer Shift (not a base key, so have to include here)
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 14), ShiftToLayer(BUTTON)), )
-
-  Qukeys.setMinimumPriorInterval(0);
-  Qukeys.setHoldTimeout(200);
-  Qukeys.setOverlapThreshold(90);
 }
 
 /** loop is the second of the standard Arduino sketch functions.
