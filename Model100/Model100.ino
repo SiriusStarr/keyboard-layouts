@@ -624,14 +624,14 @@ static void enterHardwareTestMode(uint8_t combo_index) {
  * recognise.
  */
 USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
-                  // Left Fn + Esc + Shift
-                  .keys = {R3C6, R2C6, R3C7}},
+                  // Left 1st Thumb  + Esc + Shift
+                  .keys = {R0C7, R0C0, R0C6}},
                  {.action = enterHardwareTestMode,
-                  // Left Fn + Prog + LED
-                  .keys = {R3C6, R0C0, R0C6}},
+                  // Left 3rd Thumb + Prog + LED
+                  .keys = {R2C7, R0C0, R0C6}},
                  {.action = toggleKeymapSource,
-                  // Left Fn + Prog + Shift
-                  .keys = {R3C6, R0C0, R3C7}});
+                  // Left 4th Thumb + Prog + LED
+                  .keys = {R3C7, R0C0, R0C6}});
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
