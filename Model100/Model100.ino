@@ -10,7 +10,9 @@
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
 
+// Support for storing the keymap in EEPROM
 #include "Kaleidoscope-EEPROM-Settings.h"
+#include "Kaleidoscope-EEPROM-Keymap.h"
 
 // Support for communicating with the host via a simple Serial protocol
 #include "Kaleidoscope-FocusSerial.h"
@@ -599,6 +601,16 @@ static void toggleKeyboardProtocol(uint8_t combo_index) {
   USBQuirks.toggleKeyboardProtocol();
 }
 
+/**
+ * Toggles between using the built-in keymap, and the EEPROM-stored one.
+ */
+static void toggleKeymapSource(uint8_t combo_index) {
+  if (Layer.getKey == Layer.getKeyFromPROGMEM) {
+    Layer.getKey = EEPROMKeymap.getKey;
+  } else {
+    Layer.getKey = Layer.getKeyFromPROGMEM;
+  }
+}
 
 /**
  *  This enters the hardware test mode
@@ -616,13 +628,20 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
                   .keys = {R3C6, R2C6, R3C7}},
                  {.action = enterHardwareTestMode,
                   // Left Fn + Prog + LED
-                  .keys = {R3C6, R0C0, R0C6}});
+                  .keys = {R3C6, R0C0, R0C6}},
+                 {.action = toggleKeymapSource,
+                  // Left Fn + Prog + Shift
+                  .keys = {R3C6, R0C0, R3C7}});
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
+  // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
+  // editable keymap in EEPROM.
   EEPROMSettings,
+  EEPROMKeymap,
+
   // SpaceCadet can turn your shifts into parens on tap, while keeping them as
   // Shifts when held. SpaceCadetConfig lets Chrysalis configure some aspects of
   // the plugin.
@@ -783,12 +802,26 @@ void setup() {
   // https://github.com/keyboardio/Kaleidoscope/blob/master/docs/plugins/LED-Stalker.md
   StalkerEffect.variant = STALKER(BlazingTrail);
 
+  // To make the keymap editable without flashing new firmware, we store
+  // additional layers in EEPROM. For now, we reserve space for eight layers. If
+  // one wants to use these layers, just set the default layer to one in EEPROM,
+  // by using the `settings.defaultLayer` Focus command, or by using the
+  // `keymap.onlyCustom` command to use EEPROM layers only.
+  EEPROMKeymap.setup(8);
+
+  // We need to tell the Colormap plugin how many layers we want to have custom
+  // maps for. To make things simple, we set it to eight layers, which is how
+  // many editable layers we have (see above).
   ColormapEffect.max_layers(8);
   DefaultColormap.install();
 
   // For Dynamic Macros, we need to reserve storage space for the editable
   // macros. A kilobyte is a reasonable default.
   DynamicMacros.reserve_storage(1024);
+
+  // If there's a default layer set in EEPROM, we should set that as the default
+  // here.
+  Layer.move(EEPROMSettings.default_layer());
 
   // To avoid any surprises, SpaceCadet is turned off by default. However, it
   // can be permanently enabled via Chrysalis, so we should only disable it if
