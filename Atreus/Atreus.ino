@@ -53,28 +53,44 @@ enum {
   */
 
 enum {
-  CS_QUOTE_EXCLAMATION,
-  CS_DOUBLEQUOTE_QUESTION,
-  CS_SLASH_BACKSLASH,
-  CS_BACKSPACE_DELETE,
-  CS_PERIOD_PARENS,
-  CS_COMMA_CLOSE_PARENS,
-  CS_ASTERISK_SLASH,
-  CS_PLUS_MINUS,
-  CS_PARENS_CLOSE,
-  CS_BRACKET_CLOSE,
-  CS_BRACE_CLOSE,
+  CS_Quote_Exclamation,
+  CS_DoubleQuote_Question,
+  CS_Slash_Backslash,
+  CS_Backspace_Delete,
+  CS_Period_LeftParenthesis,
+  CS_Comma_RightParenthesis,
+  CS_Asterisk_Slash,
+  CS_Plus_Minus,
+  CS_LeftRightParenthesis,
+  CS_LeftRightBracket,
+  CS_LeftRightBrace,
 };
 
-#define Key_Exclamation LSHIFT(Key_1)
-#define Key_At          LSHIFT(Key_2)
-#define Key_Hash        LSHIFT(Key_3)
-#define Key_Dollar      LSHIFT(Key_4)
-#define Key_Percent     LSHIFT(Key_5)
-#define Key_Caret       LSHIFT(Key_6)
-#define Key_And         LSHIFT(Key_7)
-#define Key_Star        LSHIFT(Key_8)
-#define Key_Plus        LSHIFT(Key_Equals)
+// Macros For Keymap
+#define REDO                 LSHIFT(LCTRL(Key_Z))
+#define PASTE                LCTRL(Key_V)
+#define COPY                 LCTRL(Key_C)
+#define CUT                  LCTRL(Key_X)
+#define UNDO                 LCTRL(Key_Z)
+#define Key_Exclamation      LSHIFT(Key_1)
+#define Key_At               LSHIFT(Key_2)
+#define Key_Hash             LSHIFT(Key_3)
+#define Key_Dollar           LSHIFT(Key_4)
+#define Key_Percent          LSHIFT(Key_5)
+#define Key_Caret            LSHIFT(Key_6)
+#define Key_And              LSHIFT(Key_7)
+#define Key_Asterisk         LSHIFT(Key_8)
+#define Key_LeftParenthesis  LSHIFT(Key_9)
+#define Key_RightParenthesis LSHIFT(Key_0)
+#define Key_LeftBrace        LSHIFT(Key_LeftBracket)
+#define Key_RightBrace       LSHIFT(Key_RightBracket)
+#define Key_Plus             LSHIFT(Key_Equals)
+#define Key_DoubleQuote      LSHIFT(Key_Quote)
+#define Key_QuestionMark     LSHIFT(Key_Slash)
+#define Key_Pipe             LSHIFT(Key_Backslash)
+#define Key_LessThan         LSHIFT(Key_Comma)
+#define Key_GreaterThan      LSHIFT(Key_Period)
+#define Key_Tilde            LSHIFT(Key_Backtick)
 
 /**
   * Layers are "0-indexed" -- That is the first one is layer 0. The second one is layer 1.
@@ -95,13 +111,6 @@ enum {
   BUTTON,
 };  // layers
 
-// Macros For Keymap
-#define REDO  LSHIFT(LCTRL(Key_Z))
-#define PASTE LCTRL(Key_V)
-#define COPY  LCTRL(Key_C)
-#define CUT   LCTRL(Key_X)
-#define UNDO  LCTRL(Key_Z)
-
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
  */
@@ -111,19 +120,19 @@ KEYMAPS(
   (Key_J,         Key_G,    Key_M,    Key_P,             Key_V,
    GUI_T(R),      ALT_T(S), CTL_T(N), SFT_T(D),          Key_B,
    LT(BUTTON, X), Key_F,    Key_L,    Key_C,             Key_W,             LGUI(Key_R),
-   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_BACKSPACE_DELETE),
+   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_Backspace_Delete),
 
-                     Key_Semicolon,             CS(CS_PERIOD_PARENS), CS(CS_SLASH_BACKSLASH), CS(CS_DOUBLEQUOTE_QUESTION), CS(CS_QUOTE_EXCLAMATION),
-                     CS(CS_COMMA_CLOSE_PARENS), SFT_T(A),             CTL_T(E),               ALT_T(I),                    GUI_T(H),
-   LGUI(Key_P),       Key_Minus,                 Key_U,                Key_O,                  Key_Y,                       Key_K,
-   LT(SYMBOL, Enter), LT(NUMBER, Space),         LT(FUNCTION, Tab),    ___,                    ___,                         ___
+                      Key_Semicolon,                 CS(CS_Period_LeftParenthesis), CS(CS_Slash_Backslash), CS(CS_DoubleQuote_Question), CS(CS_Quote_Exclamation),
+                      CS(CS_Comma_RightParenthesis), SFT_T(A),                      CTL_T(E),               ALT_T(I),                    GUI_T(H),
+   LGUI(Key_P),       Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_K,
+   LT(SYMBOL, Enter), LT(NUMBER, Space),             LT(FUNCTION, Tab),             ___,                    ___,                         ___
   ),
 
   [NUMBER] = KEYMAP_STACKED
-  (LSHIFT(Key_9), Key_7, Key_8, Key_9,             LSHIFT(Key_0),
-   Key_0,         Key_1, Key_2, Key_3,             CS(CS_ASTERISK_SLASH),
-   XXX,           Key_4, Key_5, Key_6,             LSHIFT(Key_6),         ___,
-   ___,           ___,   ___,   CS(CS_PLUS_MINUS), Key_Period,            Key_Equals,
+  (Key_LeftParenthesis, Key_7, Key_8, Key_9,             Key_RightParenthesis,
+   Key_0,               Key_1, Key_2, Key_3,             CS(CS_Asterisk_Slash),
+   XXX,                 Key_4, Key_5, Key_6,             Key_Caret,             ___,
+   ___,                 ___,   ___,   CS(CS_Plus_Minus), Key_Period,            Key_Equals,
 
         XXX, XXX,           XXX,             XXX,         XXX,
         XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui,
@@ -133,10 +142,10 @@ KEYMAPS(
    ),
 
   [SYMBOL] = KEYMAP_STACKED
-  (XXX,          LSHIFT(Key_3),        LSHIFT(Key_4),         LSHIFT(Key_5),      XXX,
-   Key_Backtick, LSHIFT(Key_Comma),    LSHIFT(Key_Backslash), LSHIFT(Key_Period), XXX,
-   XXX,          LSHIFT(Key_Backtick), LSHIFT(Key_2),         LSHIFT(Key_7),      XXX,                 ___,
-   ___,          ___,                  ___,                   CS(CS_BRACE_CLOSE), CS(CS_PARENS_CLOSE), CS(CS_BRACKET_CLOSE),
+  (XXX,          Key_Hash,     Key_Dollar, Key_Percent,           XXX,
+   Key_Backtick, Key_LessThan, Key_Pipe,   Key_GreaterThan,       XXX,
+   XXX,          Key_Tilde,    Key_At,     Key_And,               XXX,                         ___,
+   ___,          ___,          ___,        CS(CS_LeftRightBrace), CS(CS_LeftRightParenthesis), CS(CS_LeftRightBracket),
 
         XXX, XXX,           XXX,             XXX,         XXX,
         XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui,
@@ -148,7 +157,7 @@ KEYMAPS(
   (Key_F12, Key_F7, Key_F8, Key_F9,     Key_PrintScreen,
    Key_F11, Key_F4, Key_F5, Key_F6,     Key_ScrollLock,
    Key_F10, Key_F1, Key_F2, Key_F3,     Key_Pause,       ___,
-   ___,     ___,    ___,    Key_Escape, Key_T,           CS(CS_BACKSPACE_DELETE),
+   ___,     ___,    ___,    Key_Escape, Key_T,           CS(CS_Backspace_Delete),
 
         XXX, XXX,           XXX,             XXX,         XXX,
         XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui,
@@ -250,17 +259,17 @@ void setup() {
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
   CS_KEYS(
-    [CS_QUOTE_EXCLAMATION]    = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, LSHIFT(Key_1)),                           // `'`/`!`
-    [CS_DOUBLEQUOTE_QUESTION] = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Quote), LSHIFT(Key_Slash)),               // `"`/`?`
-    [CS_SLASH_BACKSLASH]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Slash, Key_Backslash),                           // `/`/`\`
-    [CS_BACKSPACE_DELETE]     = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),                          // `⌫`/`⌦`
-    [CS_PERIOD_PARENS]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_9)),                          // `.`/`(`
-    [CS_COMMA_CLOSE_PARENS]   = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, LSHIFT(Key_0)),                           // `,`/`)`
-    [CS_ASTERISK_SLASH]       = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_8), Key_Slash),                           // `*`/`/`
-    [CS_PLUS_MINUS]           = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_Equals), Key_Minus),                      // `+`/`-`
-    [CS_PARENS_CLOSE]         = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_9), LSHIFT(Key_0)),                       // `(`/`)`
-    [CS_BRACKET_CLOSE]        = kaleidoscope::plugin::CharShift::KeyPair(Key_LeftBracket, Key_RightBracket),                  // `[`/`]`
-    [CS_BRACE_CLOSE]          = kaleidoscope::plugin::CharShift::KeyPair(LSHIFT(Key_LeftBracket), LSHIFT(Key_RightBracket)),  // `{`/`}`
+    [CS_Quote_Exclamation]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, Key_Exclamation),                 // `'`/`!`
+    [CS_DoubleQuote_Question]   = kaleidoscope::plugin::CharShift::KeyPair(Key_DoubleQuote, Key_QuestionMark),          // `"`/`?`
+    [CS_Slash_Backslash]        = kaleidoscope::plugin::CharShift::KeyPair(Key_Slash, Key_Backslash),                   // `/`/`\`
+    [CS_Backspace_Delete]       = kaleidoscope::plugin::CharShift::KeyPair(Key_Backspace, Key_Delete),                  // `⌫`/`⌦`
+    [CS_Period_LeftParenthesis] = kaleidoscope::plugin::CharShift::KeyPair(Key_Period, Key_LeftParenthesis),            // `.`/`(`
+    [CS_Comma_RightParenthesis] = kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, Key_RightParenthesis),            // `,`/`)`
+    [CS_Asterisk_Slash]         = kaleidoscope::plugin::CharShift::KeyPair(Key_Asterisk, Key_Slash),                    // `*`/`/`
+    [CS_Plus_Minus]             = kaleidoscope::plugin::CharShift::KeyPair(Key_Plus, Key_Minus),                        // `+`/`-`
+    [CS_LeftRightParenthesis]   = kaleidoscope::plugin::CharShift::KeyPair(Key_LeftParenthesis, Key_RightParenthesis),  // `(`/`)`
+    [CS_LeftRightBracket]       = kaleidoscope::plugin::CharShift::KeyPair(Key_LeftBracket, Key_RightBracket),          // `[`/`]`
+    [CS_LeftRightBrace]         = kaleidoscope::plugin::CharShift::KeyPair(Key_LeftBrace, Key_RightBrace),              // `{`/`}`
   );
 
   QUKEYS(
