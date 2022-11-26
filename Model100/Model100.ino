@@ -794,8 +794,8 @@ void setup() {
   LEDRainbowEffect.brightness(170);
   LEDRainbowWaveEffect.brightness(160);
 
-  // Set the action key the test mode should listen for to Left Fn
-  HardwareTestMode.setActionKey(R3C6);
+  // Set the action key the test mode should listen for
+  HardwareTestMode.setActionKey(R0C6);
 
   // The LED Stalker mode has a few effects. The one we like is called
   // 'BlazingTrail'. For details on other options, see
