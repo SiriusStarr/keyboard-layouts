@@ -30,7 +30,6 @@
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
-#include "Kaleidoscope-SpaceCadet.h"
 #include "Kaleidoscope-LayerNames.h"
 #include "Kaleidoscope-CharShift.h"
 
@@ -216,20 +215,18 @@ KEYMAPS(
 // clang-format on
 
 KALEIDOSCOPE_INIT_PLUGINS(
-  EscapeOneShot,
   EEPROMSettings,
   EEPROMKeymap,
   Focus,
   FocusEEPROMCommand,
   FocusSettingsCommand,
   Qukeys,
-  SpaceCadet,
+  EscapeOneShot,
   OneShot,
   Macros,
   MouseKeys,
   EscapeOneShotConfig,
   LayerNames,
-  SpaceCadetConfig,
   OneShotConfig,
   MouseKeysConfig,
   // Enable remapping shifted versions of chars
@@ -252,11 +249,6 @@ void setup() {
   LayerNames.reserve_storage(17 * 8);
 
   Layer.move(EEPROMSettings.default_layer());
-
-  // To avoid any surprises, SpaceCadet is turned off by default. However, it
-  // can be permanently enabled via Chrysalis, so we should only disable it if
-  // no configuration exists.
-  SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
   CS_KEYS(
     [CS_Quote_Exclamation]      = kaleidoscope::plugin::CharShift::KeyPair(Key_Quote, Key_Exclamation),                 // `'`/`!`
