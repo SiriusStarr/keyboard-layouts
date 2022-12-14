@@ -81,10 +81,6 @@
 // Support for secondary actions on keys
 #include "Kaleidoscope-Qukeys.h"
 
-// Support for one-shot modifiers and layer keys
-#include "Kaleidoscope-OneShot.h"
-#include "Kaleidoscope-Escape-OneShot.h"
-
 // Support for dynamic, Chrysalis-editable macros
 #include "Kaleidoscope-DynamicMacros.h"
 
@@ -751,13 +747,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // Chrysalis. Keys with secondary actions will have their primary action
   // performed when tapped, but the secondary action when held.
   Qukeys,
-
-  // Enables the "Sticky" behavior for modifiers, and the "Layer shift when
-  // held" functionality for layer keys.
-  OneShot,
-  OneShotConfig,
-  EscapeOneShot,
-  EscapeOneShotConfig,
 
   // Turns LEDs off after a configurable amount of idle time.
   IdleLEDs,
