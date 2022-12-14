@@ -10,3 +10,7 @@ eeprom-backup.sh
 make flash
 eeprom-restore.sh
 ```
+
+## Layout
+
+![Layout](./Model100/Layout.svg)
