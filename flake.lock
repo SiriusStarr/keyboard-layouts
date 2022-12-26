@@ -18,11 +18,11 @@
     "kaleidoscope": {
       "flake": false,
       "locked": {
-        "lastModified": 1669526244,
-        "narHash": "sha256-GR4B4VPZdctSeYZ5iAeHLMqTCKtNJOosJtXpdKpzz20=",
+        "lastModified": 1671851675,
+        "narHash": "sha256-VxQTSCdJuDrF203I9tLP2kiEFtQeZ2ifEzfsQ5XssC4=",
         "owner": "keyboardio",
         "repo": "Kaleidoscope",
-        "rev": "da474b2a2c60ac424d0931d1c5741e22c6d9e925",
+        "rev": "904722f90eb4bd26eb5a49be7ee10036b6b7779d",
         "type": "github"
       },
       "original": {
