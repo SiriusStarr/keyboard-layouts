@@ -852,6 +852,7 @@ void setup() {
 
     // Pinkie Layer Shift (not a base key, so have to include here)
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 14), ShiftToLayer(BUTTON)), )
+  Qukeys.setMaxIntervalForTapRepeat(0);  // Disable tap-repeat, since I don't use it and it causes layer misfires on the space key at high speed
 }
 
 /** loop is the second of the standard Arduino sketch functions.
