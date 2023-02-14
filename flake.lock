@@ -2,11 +2,11 @@
   "nodes": {
     "flake-utils": {
       "locked": {
-        "lastModified": 1667077288,
-        "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "6ee9ebb6b1ee695d2cacc4faa053a7b9baa76817",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
         "type": "github"
       },
       "original": {
@@ -18,11 +18,11 @@
     "kaleidoscope": {
       "flake": false,
       "locked": {
-        "lastModified": 1671851675,
-        "narHash": "sha256-VxQTSCdJuDrF203I9tLP2kiEFtQeZ2ifEzfsQ5XssC4=",
+        "lastModified": 1675212897,
+        "narHash": "sha256-3W7t15f/pK+NYQp3qevYgf0M/NUCdbHAgQ4P2sl6t8o=",
         "owner": "keyboardio",
         "repo": "Kaleidoscope",
-        "rev": "904722f90eb4bd26eb5a49be7ee10036b6b7779d",
+        "rev": "c1acb3b6dae12dbe70dead81d029deeb2a7992d2",
         "type": "github"
       },
       "original": {
@@ -33,11 +33,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1667348372,
-        "narHash": "sha256-ZN7yk1H9FyfByCBnym3SLDuwedyXfJInPkVLs2nccbc=",
+        "lastModified": 1676410367,
+        "narHash": "sha256-cZlt+wNWQaoYvWNKh8u2LmD0HOJOwJNwH3/jLQQUtn0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d3e16830b27fdae4cd469dd143f0a9ef857eb673",
+        "rev": "b2cf9511b3781b2e04bfb9d41be8c22a0ff9e5c5",
         "type": "github"
       },
       "original": {
