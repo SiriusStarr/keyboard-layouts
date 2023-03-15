@@ -215,18 +215,18 @@ enum {
 KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
   (___, ___,           ___,      ___,      ___,      ___,   ___,
-   ___, Key_J,         Key_G,    Key_M,    Key_P,    Key_V, ___,
-   ___, GUI_T(R),      ALT_T(S), CTL_T(N), SFT_T(D), Key_B,
-   ___, LT(BUTTON, X), Key_F,    Key_L,    Key_C,    Key_W, ___,
+   ___, Key_W,         Key_X,    Key_M,    Key_G,    Key_J, ___,
+   ___, GUI_T(C),      ALT_T(S), CTL_T(N), SFT_T(T), Key_K,
+   ___, LT(BUTTON, P), Key_F,    Key_L,    Key_D,    Key_V, ___,
 
-   LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_Backspace_Delete), LGUI(Key_R),
+   LT(MEDIA, Escape), LT(NAVIGATION, R), CS(CS_Backspace_Delete), LGUI(Key_R),
 
    ___,
 
    ___, ___,                           ___,                           ___,                    ___,                         ___,                      ___,
    ___, Key_Semicolon,                 CS(CS_Period_LeftParenthesis), CS(CS_Slash_Backslash), CS(CS_DoubleQuote_Question), CS(CS_Quote_Exclamation), ___,
         CS(CS_Comma_RightParenthesis), SFT_T(A),                      CTL_T(E),               ALT_T(I),                    GUI_T(H),                 ___,
-   ___, Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_K,                    ___,
+   ___, Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_B,                    ___,
 
    LGUI(Key_P), LT(SYMBOL, Enter), LT(NUMBER, Space), LT(FUNCTION, Tab),
 

@@ -117,14 +117,14 @@ enum {
 // clang-format off
 KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
-  (Key_J,         Key_G,    Key_M,    Key_P,             Key_V,
-   GUI_T(R),      ALT_T(S), CTL_T(N), SFT_T(D),          Key_B,
-   LT(BUTTON, X), Key_F,    Key_L,    Key_C,             Key_W,             LGUI(Key_R),
-   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_Backspace_Delete),
+  (Key_W,         Key_X,    Key_M,    Key_G,             Key_J,
+   GUI_T(C),      ALT_T(S), CTL_T(N), SFT_T(T),          Key_K,
+   LT(BUTTON, P), Key_F,    Key_L,    Key_D,             Key_V,             LGUI(Key_R),
+   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, R), CS(CS_Backspace_Delete),
 
                       Key_Semicolon,                 CS(CS_Period_LeftParenthesis), CS(CS_Slash_Backslash), CS(CS_DoubleQuote_Question), CS(CS_Quote_Exclamation),
                       CS(CS_Comma_RightParenthesis), SFT_T(A),                      CTL_T(E),               ALT_T(I),                    GUI_T(H),
-   LGUI(Key_P),       Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_K,
+   LGUI(Key_P),       Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_B,
    LT(SYMBOL, Enter), LT(NUMBER, Space),             LT(FUNCTION, Tab),             ___,                    ___,                         ___
   ),
 
