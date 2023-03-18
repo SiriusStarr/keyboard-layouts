@@ -15,6 +15,21 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "kaleidoscope": {
       "flake": false,
       "locked": {
@@ -28,6 +43,22 @@
       "original": {
         "owner": "keyboardio",
         "repo": "Kaleidoscope",
+        "type": "github"
+      }
+    },
+    "keymap-drawer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1679088474,
+        "narHash": "sha256-PoFZ4VosyENMqh9LoF1DWls4dmQ1vt0vRl4Hrytx/Z0=",
+        "owner": "caksoylar",
+        "repo": "keymap-drawer",
+        "rev": "bda0cc89cf022e61f546c530711e917ae5125a5f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "caksoylar",
+        "repo": "keymap-drawer",
         "type": "github"
       }
     },
@@ -46,11 +77,34 @@
         "type": "github"
       }
     },
+    "poetry2nix": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678851068,
+        "narHash": "sha256-xiBA1KshEXeu9OzGIoqYFf/OfGp17YvQPRXks6jMkts=",
+        "owner": "nix-community",
+        "repo": "poetry2nix",
+        "rev": "9ce22528035da8f36ea579559b32a37d38668425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "poetry2nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "kaleidoscope": "kaleidoscope",
-        "nixpkgs": "nixpkgs"
+        "keymap-drawer-src": "keymap-drawer-src",
+        "nixpkgs": "nixpkgs",
+        "poetry2nix": "poetry2nix"
       }
     }
   },
