@@ -117,14 +117,14 @@ enum {
 // clang-format off
 KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
-  (Key_J,         Key_G,    Key_M,    Key_P,             Key_V,
-   GUI_T(R),      ALT_T(S), CTL_T(N), SFT_T(D),          Key_B,
-   LT(BUTTON, X), Key_F,    Key_L,    Key_C,             Key_W,             LGUI(Key_R),
-   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, T), CS(CS_Backspace_Delete),
+  (Key_W,         Key_X,    Key_M,    Key_G,             Key_J,
+   GUI_T(C),      ALT_T(S), CTL_T(N), SFT_T(T),          Key_K,
+   LT(BUTTON, P), Key_F,    Key_L,    Key_D,             Key_V,             LGUI(Key_R),
+   ___,           ___,      ___,      LT(MEDIA, Escape), LT(NAVIGATION, R), CS(CS_Backspace_Delete),
 
                       Key_Semicolon,                 CS(CS_Period_LeftParenthesis), CS(CS_Slash_Backslash), CS(CS_DoubleQuote_Question), CS(CS_Quote_Exclamation),
                       CS(CS_Comma_RightParenthesis), SFT_T(A),                      CTL_T(E),               ALT_T(I),                    GUI_T(H),
-   LGUI(Key_P),       Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_K,
+   LGUI(Key_P),       Key_Minus,                     Key_U,                         Key_O,                  Key_Y,                       Key_B,
    LT(SYMBOL, Enter), LT(NUMBER, Space),             LT(FUNCTION, Tab),             ___,                    ___,                         ___
   ),
 
@@ -157,7 +157,7 @@ KEYMAPS(
   (Key_F12, Key_F7, Key_F8, Key_F9,     Key_PrintScreen,
    Key_F11, Key_F4, Key_F5, Key_F6,     Key_ScrollLock,
    Key_F10, Key_F1, Key_F2, Key_F3,     Key_Pause,       ___,
-   ___,     ___,    ___,    Key_Escape, Key_T,           CS(CS_Backspace_Delete),
+   ___,     ___,    ___,    Key_Escape, Key_R,           CS(CS_Backspace_Delete),
 
         XXX, XXX,           XXX,             XXX,         XXX,
         XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui,
