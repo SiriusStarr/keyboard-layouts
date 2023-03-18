@@ -277,7 +277,7 @@ KEYMAPS(
    ___, Key_F11, Key_F4, Key_F5, Key_F6, Key_ScrollLock,
    ___, Key_F10, Key_F1, Key_F2, Key_F3, Key_Pause,       ___,
 
-   Key_Escape, Key_T, CS(CS_Backspace_Delete), ___,
+   Key_Escape, Key_R, CS(CS_Backspace_Delete), ___,
 
    ___,
 

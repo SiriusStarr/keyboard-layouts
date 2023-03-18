@@ -157,7 +157,7 @@ KEYMAPS(
   (Key_F12, Key_F7, Key_F8, Key_F9,     Key_PrintScreen,
    Key_F11, Key_F4, Key_F5, Key_F6,     Key_ScrollLock,
    Key_F10, Key_F1, Key_F2, Key_F3,     Key_Pause,       ___,
-   ___,     ___,    ___,    Key_Escape, Key_T,           CS(CS_Backspace_Delete),
+   ___,     ___,    ___,    Key_Escape, Key_R,           CS(CS_Backspace_Delete),
 
         XXX, XXX,           XXX,             XXX,         XXX,
         XXX, Key_LeftShift, Key_LeftControl, Key_LeftAlt, Key_LeftGui,
