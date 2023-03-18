@@ -13,4 +13,12 @@ eeprom-restore.sh
 
 ## Layout
 
-![Layout](./Model100/Layout.svg)
+### Updating
+
+```bash
+keymap draw Layout.yaml > Layout.svg
+```
+
+### SVG
+
+![Layout](./Layout.svg)
