@@ -33,6 +33,8 @@
 #include "Kaleidoscope-Qukeys.h"
 #include "Kaleidoscope-LayerNames.h"
 #include "Kaleidoscope-CharShift.h"
+// Support chorded combos
+#include "Kaleidoscope-Chord.h"
 
 /** This 'enum' is a list of all the macros used by the Atreus's firmware
   * The names aren't particularly important. What is important is that each
@@ -277,12 +279,18 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
   MouseKeys,
-  MouseKeysConfig  //,
+  MouseKeysConfig,
 
   // The MagicCombo plugin lets you use key combinations to trigger custom
   // actions - a bit like Macros, but triggered by pressing multiple keys at the
   // same time.
   // MagicCombo,
+
+  // This Kaleidoscope plugin allows you to define a chord of keys on your
+  // keyboard which, when pressed simultaneously, produce a single keycode. This
+  // differs from MagicCombo in that the individual keys making up a chord are
+  // suppressed, producing only the singular result.
+  Chord
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
@@ -322,7 +330,6 @@ void setup() {
   );
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 0), Key_Z),   // Left Pinkie Up/Z
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_Q),  // Right Pinkie Down/Q
 
     // Thumb Layer Shifts (not a base key, so have to include here)
@@ -331,6 +338,9 @@ void setup() {
     // Pinkie Layer Shift (not a base key, so have to include here)
     kaleidoscope::plugin::Qukey(0, KeyAddr(0, 11), ShiftToLayer(BUTTON)), )
   Qukeys.setMaxIntervalForTapRepeat(0);  // Disable tap-repeat, since I don't use it and it causes layer misfires on the space key at high speed
+
+  CHORDS(
+    CHORD(Key_W, Key_X), Key_Z, CHORD(Key_X, Key_G), Key_Q)
 }
 
 /** loop is the second of the standard Arduino sketch functions.

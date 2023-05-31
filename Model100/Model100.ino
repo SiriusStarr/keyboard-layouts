@@ -90,6 +90,9 @@
 // Support changing shifted chars
 #include "Kaleidoscope-CharShift.h"
 
+// Support chorded combos
+#include "Kaleidoscope-Chord.h"
+
 /** This 'enum' is a list of all the macros used by the Model 100's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -724,6 +727,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // same time.
   MagicCombo,
 
+  // This Kaleidoscope plugin allows you to define a chord of keys on your
+  // keyboard which, when pressed simultaneously, produce a single keycode. This
+  // differs from MagicCombo in that the individual keys making up a chord are
+  // suppressed, producing only the singular result.
+  Chord,
+
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
   // GeminiPR,
@@ -876,7 +885,6 @@ void setup() {
   );
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_Z),   // Left Pinkie Up/Z
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 14), Key_Q),  // Right Pinkie Down/Q
 
     // Thumb Layer Shifts (not a base key, so have to include here)
@@ -885,6 +893,9 @@ void setup() {
     // Pinkie Layer Shift (not a base key, so have to include here)
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 14), ShiftToLayer(BUTTON)), )
   Qukeys.setMaxIntervalForTapRepeat(0);  // Disable tap-repeat, since I don't use it and it causes layer misfires on the space key at high speed
+
+  CHORDS(
+    CHORD(Key_W, Key_X), Key_Z, CHORD(Key_X, Key_G), Key_Q)
 }
 
 /** loop is the second of the standard Arduino sketch functions.

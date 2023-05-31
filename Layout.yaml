@@ -3,7 +3,7 @@ layout:
 layers:
   Base:
     - [
-        { t: W, h: Z },
+        W,
         X,
         M,
         G,
@@ -150,3 +150,7 @@ layers:
         Left Click,
         Middle Click,
       ]
+
+combos:
+  - { p: [0, 1], k: z, l: ["Base"] }
+  - { p: [1, 3], k: q, l: ["Base"] }
