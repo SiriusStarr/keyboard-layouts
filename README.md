@@ -2,6 +2,16 @@
 
 ## Usage
 
+### QMK
+
+```bash
+nix develop
+qmk compile -kb <keyboard> -km SiriusStarr
+qmk flash -kb <keyboard> -km SiriusStarr
+```
+
+### Kaleidoscope
+
 ```bash
 nix develop
 cd <keyboard>

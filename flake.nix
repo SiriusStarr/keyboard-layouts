@@ -63,16 +63,29 @@
           buildInputs = with pkgs; [
             arduino-cli
             clang-tools
+            qmk
           ];
 
-          shellHook = ''
-            export KALEIDOSCOPE_DIR=${kaleidoscope}
-            export ARDUINO_DIRECTORIES_USER=/tmp/arduino/user
-            export ARDUINO_DIRECTORIES_DATA=/tmp/arduino/data
-            export ARDUINO_DIRECTORIES_DOWNLOADS=/tmp/arduino/downloads
-            make -f ${kaleidoscope}/Makefile setup
-            export PATH="${kaleidoscope}/bin:${pkgs.keymap-drawer}/bin:$PATH"
-          '';
+          shellHook = let
+            kaleidoscopeSetup = ''
+              export KALEIDOSCOPE_DIR=${kaleidoscope}
+              export ARDUINO_DIRECTORIES_USER=/tmp/arduino/user
+              export ARDUINO_DIRECTORIES_DATA=/tmp/arduino/data
+              export ARDUINO_DIRECTORIES_DOWNLOADS=/tmp/arduino/downloads
+              make -f ${kaleidoscope}/Makefile setup
+              export PATH="${kaleidoscope}/bin:${pkgs.keymap-drawer}/bin:$PATH"
+            '';
+
+            qmkSetup = ''
+              export QMK_HOME=/tmp/qmk_firmware
+              qmk setup -y
+              rm -rf /tmp/qmk_firmware/keyboards
+              ln -s ${self}/QMK/keyboards /tmp/qmk_firmware/
+              rm -rf /tmp/qmk_firmware/users
+              ln -s ${self}/QMK/users /tmp/qmk_firmware/
+            '';
+          in
+            kaleidoscopeSetup + qmkSetup;
         };
       }
     );
