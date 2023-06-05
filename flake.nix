@@ -79,6 +79,7 @@
             qmkSetup = ''
               export QMK_HOME=/tmp/qmk_firmware
               qmk setup -y
+              rm -rf /tmp/qmk_firmware/.build
               rm -rf /tmp/qmk_firmware/keyboards
               ln -s ${self}/QMK/keyboards /tmp/qmk_firmware/
               rm -rf /tmp/qmk_firmware/users
