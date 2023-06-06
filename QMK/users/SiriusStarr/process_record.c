@@ -1,4 +1,5 @@
 #include "extensions/custom_shift_keys.c"
+#include "extensions/adaptive_keys.c"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -8,6 +9,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_custom_shift_keys(keycode, record)) {
     return_state = false;
   }
+
+
+#ifdef ADAPTIVE_KEYS_ENABLE
+  if (!process_adaptive_key(keycode, record)) {
+    return_state = false;
+  }
+#endif
 
   switch (keycode) {
   // Q linger on B
