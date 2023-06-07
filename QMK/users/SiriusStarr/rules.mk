@@ -17,6 +17,10 @@ COMBO_ENABLE = yes       # chording
 LTO_ENABLE = yes
 EXTRAFLAGS += -flto
 
+# For the combo macros in keymap_combos.h
+VPATH += keyboards/gboards/g
+VPATH += $(USER_PATH)/defs
+VPATH += $(USER_PATH)/extensions
 SRC += SiriusStarr.c
 
 CFLAGS += -fcommon

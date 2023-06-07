@@ -1,0 +1,8 @@
+AK(GM, KC_G, KC_M, false, KC_L)   // GM produces GL
+AK(MG, KC_M, KC_G, true, KC_BSPC, KC_L)   // MG produces LG
+
+AK(AH, HOME_A, HOME_H, false, KC_U)   // AH produces AU
+AK(UH, KC_U, HOME_H, false, KC_A)   // UH produces UA
+
+AK(EH, HOME_E, HOME_H, false, KC_O)   // EH produces EO
+AK(OH, KC_O, HOME_H, false, KC_E)   // OH produces OE

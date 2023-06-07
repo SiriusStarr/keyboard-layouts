@@ -1,8 +1,8 @@
 #include "layer_names.h"
-#include "extensions/custom_shift_keys.h"
+#include "custom_shift_keys.h"
 
 const custom_shift_key_t custom_shift_keys[] = {
-  {KC_QUOTE, KC_EXCLAIM},                       // `'`/`!`
+  {LT(BUTTON, KC_QUOTE), KC_EXCLAIM},           // `'`/`!`
   {KC_DOUBLE_QUOTE, KC_QUESTION},               // `"`/`?`
   {KC_SLASH, KC_BACKSLASH},                     // `/`/`\`
   {LT(MOUSE, KC_BACKSPACE), KC_DELETE},         // `⌫`/`⌦`
