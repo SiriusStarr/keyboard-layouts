@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-
+#include "keymap_combo.h"
 #include "SiriusStarr.h"
 
 // clang-format off
@@ -11,10 +11,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                     Esc    R Bksp || Enter Space Tab
   */
   [PRIMARY] = LAYOUT(
-    KC_W,             KC_X,        KC_M,        KC_G,                 KC_J,                                                                KC_SEMICOLON,         KC_DOT,               KC_SLASH,    KC_DOUBLE_QUOTE, KC_QUOTE,
-    GUI_T(KC_C),      ALT_T(KC_S), CTL_T(KC_N), SFT_T(KC_T),          KC_K,                                                                KC_COMMA,             SFT_T(KC_A),          CTL_T(KC_E), ALT_T(KC_I),     GUI_T(KC_H),
-    LT(BUTTON, KC_P), KC_F,        KC_L,        KC_D,                 KC_V,                 LGUI(KC_R),              LGUI(KC_P),           KC_MINUS,             KC_U,                 KC_O,        KC_Y,            LT(0,KC_B),
-    XXXXXXX,          XXXXXXX,     XXXXXXX,     LT(MEDIA, KC_ESCAPE), LT(NAVIGATION, KC_R), LT(MOUSE, KC_BACKSPACE), LT(SYMBOL, KC_ENTER), LT(NUMBER, KC_SPACE), LT(FUNCTION, KC_TAB), XXXXXXX,     XXXXXXX,         XXXXXXX
+    KC_W,          KC_X,    KC_M,    KC_G,                 KC_J,                                                                KC_SEMICOLON,         KC_DOT,               KC_SLASH, KC_DOUBLE_QUOTE, QUOTE_HOLD_BUTTON,
+    HOME_C,        HOME_S,  HOME_N,  HOME_T,               KC_K,                                                                KC_COMMA,             HOME_A,               HOME_E,   HOME_I,          HOME_H,
+    P_HOLD_BUTTON, KC_F,    KC_L,    KC_D,                 KC_V,                 LGUI(KC_R),              LGUI(KC_P),           KC_MINUS,             KC_U,                 KC_O,     KC_Y,            B_HOLD_Q,
+    XXXXXXX,       XXXXXXX, XXXXXXX, LT(MEDIA, KC_ESCAPE), LT(NAVIGATION, KC_R), LT(MOUSE, KC_BACKSPACE), LT(SYMBOL, KC_ENTER), LT(NUMBER, KC_SPACE), LT(FUNCTION, KC_TAB), XXXXXXX,  XXXXXXX,         XXXXXXX
   ),
 
   /*
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F12,  KC_F7,   KC_F8,   KC_F9,     KC_PRINT_SCREEN,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_F11,  KC_F4,   KC_F5,   KC_F6,     KC_SCROLL_LOCK,                         XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     KC_F10,  KC_F1,   KC_F2,   KC_F3,     KC_PAUSE,        XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, KC_ESCAPE, KC_R,            KC_BACKSPACE, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX
+    QK_BOOT, XXXXXXX, XXXXXXX, KC_ESCAPE, KC_R,            KC_BACKSPACE, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   /*
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   XXXXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, OU_AUTO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    QK_BOOT, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, KC_MSTP, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, KC_MSTP, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   /*

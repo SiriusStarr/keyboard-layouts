@@ -80,10 +80,9 @@
               export QMK_HOME=/tmp/qmk_firmware
               qmk setup -y
               rm -rf /tmp/qmk_firmware/.build
-              rm -rf /tmp/qmk_firmware/keyboards
-              ln -s ${self}/QMK/keyboards /tmp/qmk_firmware/
-              rm -rf /tmp/qmk_firmware/users
-              ln -s ${self}/QMK/users /tmp/qmk_firmware/
+              rm -rf /tmp/qmk_firmware/keyboards/keyboardio
+              ln -fs ${self}/QMK/keyboards/* /tmp/qmk_firmware/keyboards
+              ln -fs ${self}/QMK/users/* /tmp/qmk_firmware/users
             '';
           in
             kaleidoscopeSetup + qmkSetup;

@@ -3,6 +3,8 @@
 
 #include "custom_shift_keys.h"
 
+#include "custom_shifts.c"
+
 bool process_custom_shift_keys(uint16_t keycode, keyrecord_t *record) {
   static uint16_t registered_keycode = KC_NO;
 

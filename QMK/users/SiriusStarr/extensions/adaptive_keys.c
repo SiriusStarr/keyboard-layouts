@@ -18,8 +18,9 @@
 /* This code is an adaptation of Alan Reiser's Adaptive keys as implemented */
 /* for Hands Down. */
 
+#include QMK_KEYBOARD_H
+#include "SiriusStarr.h"
 #include "adaptive_keys.h"
-#include <stddef.h>
 
 #ifdef ADAPTIVE_KEYS_ENABLE
 
@@ -117,7 +118,7 @@ bool process_adaptive_key(uint16_t keycode, keyrecord_t *record) {
     return true;  // no adaptive conditions, so return.
   }
 
-  ak = find_adaptive_key(keycode & QK_BASIC_MAX, prior_keycode);
+  ak = find_adaptive_key(keycode, prior_keycode);
 
   if (ak != NULL) {                     // send the keys if we found one.
     if (!is_caps_word_on()) {           // turn off shift, (first-words & Proper nouns)

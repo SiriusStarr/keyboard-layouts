@@ -21,6 +21,11 @@ EXTRAFLAGS += -flto
 VPATH += keyboards/gboards/g
 VPATH += $(USER_PATH)/defs
 VPATH += $(USER_PATH)/extensions
+
 SRC += SiriusStarr.c
+SRC += achordion_settings.c
+SRC += achordion.c
+SRC += custom_shift_keys.c
+SRC += adaptive_keys.c
 
 CFLAGS += -fcommon
