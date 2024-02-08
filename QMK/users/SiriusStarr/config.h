@@ -4,4 +4,4 @@
 
 // Adaptive keys
 #define ADAPTIVE_KEYS_ENABLE
-#define ADAPTIVE_TERM 100  // Rolling threshold
+#define ADAPTIVE_TERM 125  // Rolling threshold
