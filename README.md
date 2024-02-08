@@ -2,6 +2,16 @@
 
 ## Usage
 
+### Vial
+
+```bash
+nix develop
+vial-qmk compile -kb svalboard/trackpoint/right -km vial
+vial-qmk flash -kb svalboard/trackpoint/right -km vial
+```
+
+You can then use `Vial` to configure the keyboard.
+
 ### QMK
 
 ```bash

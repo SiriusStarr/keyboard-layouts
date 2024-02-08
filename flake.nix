@@ -34,7 +34,7 @@
     (
       system: let
         overlay = nixpkgs.lib.composeManyExtensions [
-          poetry2nix.overlay
+          poetry2nix.overlays.default
           (final: prev: {
             keymap-drawer = prev.poetry2nix.mkPoetryApplication {
               projectDir = keymap-drawer-src;
@@ -63,7 +63,9 @@
           buildInputs = with pkgs; [
             arduino-cli
             clang-tools
+            git
             qmk
+            vial
           ];
 
           shellHook = let
@@ -84,8 +86,14 @@
               ln -fs ${self}/QMK/keyboards/* /tmp/qmk_firmware/keyboards
               ln -fs ${self}/QMK/users/* /tmp/qmk_firmware/users
             '';
+
+            vialSetup = ''
+              alias vial-qmk='env QMK_HOME=/tmp/vial_firmware qmk'
+              vial-qmk setup SiriusStarr/svalboard-vial-qmk -b vial -y
+              rm -rf /tmp/vial_firmware/.build
+            '';
           in
-            kaleidoscopeSetup + qmkSetup;
+            kaleidoscopeSetup + vialSetup + qmkSetup;
         };
       }
     );
