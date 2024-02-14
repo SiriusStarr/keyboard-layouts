@@ -29,10 +29,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
 
-  // Handle custom-shifted keycodes
-  if (!process_custom_shift_keys(keycode, record)) {
-    return false;
-  }
+  #ifdef CUSTOM_SHIFT_KEYS_ENABLE
+    // Handle custom-shifted keycodes
+    if (!process_custom_shift_keys(keycode, record)) {
+      return false;
+    }
+  #endif
 
   #if defined(CONSOLE_ENABLE) && defined(CONSOLE_KEY_LOGGER_ENABLE)
     process_console_key_logger(keycode, record);

@@ -5,6 +5,8 @@
 
 #include "custom_shifts.c"
 
+#ifdef CUSTOM_SHIFT_KEYS_ENABLE
+
 bool process_custom_shift_keys(uint16_t keycode, keyrecord_t *record) {
   static uint16_t registered_keycode = KC_NO;
 
@@ -54,3 +56,5 @@ bool process_custom_shift_keys(uint16_t keycode, keyrecord_t *record) {
 
   return true;  // Continue with default handling.
 }
+
+#endif
