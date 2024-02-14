@@ -7,6 +7,7 @@ CONSOLE_ENABLE = no			# Necessary for keylogger
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 TAP_DANCE_ENABLE = no
+KEY_OVERRIDE_ENABLE = yes	# For custom shifts; if tight on firmware space, can use https://getreuer.info/posts/keyboards/custom-shift-keys/index.html insted, as it's smaller.
 
 AUTO_SHIFT_ENABLE = no  # requires 1936 bytes!
 
