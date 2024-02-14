@@ -64,6 +64,7 @@
             arduino-cli
             clang-tools
             git
+            hid-listen # For keylogging
             qmk
             vial
           ];

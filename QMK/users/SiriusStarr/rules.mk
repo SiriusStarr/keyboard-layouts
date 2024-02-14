@@ -3,7 +3,7 @@
 LEADER_ENABLE = no       # Enable the Leader Key feature
 MOUSEKEY_ENABLE = yes     # Mouse keys
 UNICODE_ENABLE = no
-CONSOLE_ENABLE = no
+CONSOLE_ENABLE = no			# Necessary for keylogger
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 TAP_DANCE_ENABLE = no
@@ -27,5 +27,6 @@ SRC += achordion_settings.c
 SRC += achordion.c
 SRC += custom_shift_keys.c
 SRC += adaptive_keys.c
+SRC += console_key_logger.c
 
 CFLAGS += -fcommon

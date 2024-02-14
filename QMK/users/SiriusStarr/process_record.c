@@ -2,6 +2,7 @@
 #include "achordion.h"
 #include "custom_shift_keys.h"
 #include "adaptive_keys.h"
+#include "console_key_logger.h"
 
 // Helper for implementing tap vs. long-press keys. Given a tap-hold
 // key event, replaces the hold function with `long_press_keycode`.
@@ -18,11 +19,11 @@ static bool process_tap_or_long_press_key(
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-#ifdef ADAPTIVE_KEYS_ENABLE
-  if (!process_adaptive_key(keycode, record)) {
-    return false;
-  }
-#endif
+  #ifdef ADAPTIVE_KEYS_ENABLE
+    if (!process_adaptive_key(keycode, record)) {
+      return false;
+    }
+  #endif
 
   if (!process_achordion(keycode, record)) {
     return false;
@@ -33,8 +34,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
 
+  #if defined(CONSOLE_ENABLE) && defined(CONSOLE_KEY_LOGGER_ENABLE)
+    process_console_key_logger(keycode, record);
+  #endif
+
   switch (keycode) {
-  case B_HOLD_Q:  // Comma on tap, Ctrl+C on long press.
+  case B_HOLD_Q:
     return process_tap_or_long_press_key(record, KC_Q);
   }
 

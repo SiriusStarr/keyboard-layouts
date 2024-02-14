@@ -6,6 +6,10 @@
 #include QMK_KEYBOARD_H
 #include "layer_names.h"
 
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+
 // Macros For Keymap
 #define REDO              LSFT(LCTL(KC_Z))
 #define PASTE             LCTL(KC_V)

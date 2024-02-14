@@ -5,3 +5,5 @@
 // Adaptive keys
 #define ADAPTIVE_KEYS_ENABLE
 #define ADAPTIVE_TERM 125  // Rolling threshold
+
+// #define CONSOLE_KEY_LOGGER_ENABLE  // Turn on keylogging for heat maps.
