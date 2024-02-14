@@ -5,6 +5,7 @@
 
 #include QMK_KEYBOARD_H
 #include "layer_names.h"
+#include "custom_keycodes.h"
 
 #ifdef CONSOLE_ENABLE
 #include "print.h"

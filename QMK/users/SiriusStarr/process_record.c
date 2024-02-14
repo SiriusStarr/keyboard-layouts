@@ -3,6 +3,7 @@
 #include "custom_shift_keys.h"
 #include "adaptive_keys.h"
 #include "console_key_logger.h"
+#include "select_word.h"
 
 // Helper for implementing tap vs. long-press keys. Given a tap-hold
 // key event, replaces the hold function with `long_press_keycode`.
@@ -40,10 +41,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_console_key_logger(keycode, record);
   #endif
 
+  if (!process_select_word(keycode, record, SEL_WORD)) { return false; }
+
   switch (keycode) {
-  case B_HOLD_Q:
-    return process_tap_or_long_press_key(record, KC_Q);
-  }
+    case B_HOLD_Q:
+      return process_tap_or_long_press_key(record, KC_Q);
+    }
 
   return true;
 }

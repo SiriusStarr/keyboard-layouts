@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "keymap_combo.h"
 #include "SiriusStarr.h"
+#include "keymap_combo.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
