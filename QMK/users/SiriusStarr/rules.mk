@@ -31,5 +31,6 @@ SRC += adaptive_keys.c
 SRC += console_key_logger.c
 SRC += select_word.c
 SRC += macros.c
+SRC += sentence_case.c
 
 CFLAGS += -fcommon

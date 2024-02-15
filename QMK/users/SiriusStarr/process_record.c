@@ -5,6 +5,7 @@
 #include "console_key_logger.h"
 #include "select_word.h"
 #include "macros.h"
+#include "features/sentence_case.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -30,6 +31,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #endif
 
   if (!process_select_word(keycode, record, SEL_WORD)) { return false; }
+
+  #ifdef SENTENCE_CASE_ENABLE
+    if (!process_sentence_case(keycode, record)) { return false; }
+  #endif
 
   if (!process_macro_event(keycode, record)) { return false; }
   return true;

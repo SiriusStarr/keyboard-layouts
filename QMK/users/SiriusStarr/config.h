@@ -11,4 +11,7 @@
 // Overrides are used instead, but these take less firmware space
 // #define CUSTOM_SHIFT_KEYS_ENABLE
 
+
+#define SENTENCE_CASE_ENABLE
+
 // #define CONSOLE_KEY_LOGGER_ENABLE  // Turn on keylogging for heat maps.
