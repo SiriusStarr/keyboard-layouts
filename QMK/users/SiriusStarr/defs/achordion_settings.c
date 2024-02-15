@@ -13,14 +13,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
   // Consider the following chords as holds
   switch (tap_hold_keycode) {
-  case B_HOLD_Q:  // B + U for QU roll.
-    if (other_keycode == KC_U) {
-      return true;
-    }
-    break;
 
-  case LT(BUTTON, KC_P):  // Allow BUTTON layer shortcuts
-  case LT(BUTTON, KC_QUOTE):
+  case COMBO_QU: // For hold making q not qu
+    return true;
+
+  case LT(BUTTON, KC_P): // Allow BUTTON layer shortcuts
+  case LT(BUTTON, KC_B):
     return true;
   }
 

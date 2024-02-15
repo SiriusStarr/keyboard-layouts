@@ -5,7 +5,7 @@
 #include "console_key_logger.h"
 #include "select_word.h"
 #include "macros.h"
-#include "features/sentence_case.h"
+#include "sentence_case.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -37,6 +37,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #endif
 
   if (!process_macro_event(keycode, record)) { return false; }
+
+  // Handle MT's for non-basic keys
+  if (record->tap.count != 0) {  // Key is being held.
+    if (record->event.pressed) {
+      switch (keycode) {
+        case HOME_LEFT_ANGLE_BRACKET:
+          tap_code16(KC_LEFT_ANGLE_BRACKET);
+          return false;
+        case HOME_PIPE:
+          tap_code16(KC_PIPE);
+          return false;
+        case HOME_RIGHT_ANGLE_BRACKET:
+          tap_code16(KC_RIGHT_ANGLE_BRACKET);
+          return false;
+      }
+    }
+  }
   return true;
 }
 

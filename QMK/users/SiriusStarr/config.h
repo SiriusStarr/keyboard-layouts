@@ -11,6 +11,7 @@
 // Overrides are used instead, but these take less firmware space
 // #define CUSTOM_SHIFT_KEYS_ENABLE
 
+#define CAPS_WORD_INVERT_ON_SHIFT
 
 #define SENTENCE_CASE_ENABLE
 

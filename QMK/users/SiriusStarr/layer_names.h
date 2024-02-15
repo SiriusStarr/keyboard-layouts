@@ -1,10 +1,8 @@
 enum layer_names {
   PRIMARY,
-  NUMBER,
-  SYMBOL,
-  FUNCTION,
+  NUMBER_AND_SYMBOL,
+  FUNCTION_AND_MEDIA,
   NAVIGATION,
   MOUSE,
-  MEDIA,
   BUTTON,
 };
