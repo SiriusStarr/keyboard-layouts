@@ -41,9 +41,14 @@ eeprom-restore.sh
 ### Updating
 
 ```bash
-keymap draw Layout.yaml > Layout.svg
+keymap draw QMK/Layout.yaml > QMK/Layout.svg
+keymap draw Kaleidoscope/Layout.yaml > Kaleidoscope/Layout.svg
 ```
 
-### SVG
+### SVG (QMK)
 
-![Layout](./Layout.svg)
+![QMK Layout](./QMK/Layout.svg)
+
+### SVG (Kaleidoscope)
+
+![Kaleidoscope Layout](./Kaleidoscope/Layout.svg)
