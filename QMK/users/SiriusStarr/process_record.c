@@ -4,19 +4,7 @@
 #include "adaptive_keys.h"
 #include "console_key_logger.h"
 #include "select_word.h"
-
-// Helper for implementing tap vs. long-press keys. Given a tap-hold
-// key event, replaces the hold function with `long_press_keycode`.
-static bool process_tap_or_long_press_key(
-  keyrecord_t *record, uint16_t long_press_keycode) {
-  if (record->tap.count == 0) {  // Key is being held.
-    if (record->event.pressed) {
-      tap_code16(long_press_keycode);
-    }
-    return false;  // Skip default handling.
-  }
-  return true;  // Continue default handling.
-}
+#include "macros.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -43,11 +31,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_select_word(keycode, record, SEL_WORD)) { return false; }
 
-  switch (keycode) {
-    case B_HOLD_Q:
-      return process_tap_or_long_press_key(record, KC_Q);
-    }
-
+  if (!process_macro_event(keycode, record)) { return false; }
   return true;
 }
 

@@ -30,5 +30,6 @@ SRC += custom_shift_keys.c
 SRC += adaptive_keys.c
 SRC += console_key_logger.c
 SRC += select_word.c
+SRC += macros.c
 
 CFLAGS += -fcommon
