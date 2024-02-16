@@ -165,4 +165,4 @@ combos:
   - { p: [12, 13], k: th, l: ["Base"] }
   - { p: [10, 13], k: ch, l: ["Base"], align: top }
   - { p: [21, 23], k: ph, l: ["Base"], align: bottom }
-  - { p: [26, 28], k: "qu/q", l: ["Base"], align: bottom }
+  - { p: [20, 21], k: "qu/q", l: ["Base"], align: bottom }
