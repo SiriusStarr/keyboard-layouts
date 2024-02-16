@@ -9,48 +9,54 @@
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  #ifdef ADAPTIVE_KEYS_ENABLE
-    if (!process_adaptive_key(keycode, record)) {
-      return false;
-    }
-  #endif
+#ifdef ADAPTIVE_KEYS_ENABLE
+  if (!process_adaptive_key(keycode, record)) {
+    return false;
+  }
+#endif
 
   if (!process_achordion(keycode, record)) {
     return false;
   }
 
-  #ifdef CUSTOM_SHIFT_KEYS_ENABLE
-    // Handle custom-shifted keycodes
-    if (!process_custom_shift_keys(keycode, record)) {
-      return false;
-    }
-  #endif
+#ifdef CUSTOM_SHIFT_KEYS_ENABLE
+  // Handle custom-shifted keycodes
+  if (!process_custom_shift_keys(keycode, record)) {
+    return false;
+  }
+#endif
 
-  #if defined(CONSOLE_ENABLE) && defined(CONSOLE_KEY_LOGGER_ENABLE)
-    process_console_key_logger(keycode, record);
-  #endif
+#if defined(CONSOLE_ENABLE) && defined(CONSOLE_KEY_LOGGER_ENABLE)
+  process_console_key_logger(keycode, record);
+#endif
 
-  if (!process_select_word(keycode, record, SEL_WORD)) { return false; }
+  if (!process_select_word(keycode, record, SEL_WORD)) {
+    return false;
+  }
 
-  #ifdef SENTENCE_CASE_ENABLE
-    if (!process_sentence_case(keycode, record)) { return false; }
-  #endif
+#ifdef SENTENCE_CASE_ENABLE
+  if (!process_sentence_case(keycode, record)) {
+    return false;
+  }
+#endif
 
-  if (!process_macro_event(keycode, record)) { return false; }
+  if (!process_macro_event(keycode, record)) {
+    return false;
+  }
 
   // Handle MT's for non-basic keys
   if (record->tap.count != 0) {  // Key is being held.
     if (record->event.pressed) {
       switch (keycode) {
-        case HOME_LEFT_ANGLE_BRACKET:
-          tap_code16(KC_LEFT_ANGLE_BRACKET);
-          return false;
-        case HOME_PIPE:
-          tap_code16(KC_PIPE);
-          return false;
-        case HOME_RIGHT_ANGLE_BRACKET:
-          tap_code16(KC_RIGHT_ANGLE_BRACKET);
-          return false;
+      case HOME_LEFT_ANGLE_BRACKET:
+        tap_code16(KC_LEFT_ANGLE_BRACKET);
+        return false;
+      case HOME_PIPE:
+        tap_code16(KC_PIPE);
+        return false;
+      case HOME_RIGHT_ANGLE_BRACKET:
+        tap_code16(KC_RIGHT_ANGLE_BRACKET);
+        return false;
       }
     }
   }

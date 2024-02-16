@@ -52,21 +52,26 @@ enum {
 // clang-format on
 
 #if SENTENCE_CASE_TIMEOUT > 0
-static uint16_t idle_timer = 0;
+static uint16_t idle_timer                            = 0;
 #endif  // SENTENCE_CASE_TIMEOUT > 0
 #if SENTENCE_CASE_BUFFER_SIZE > 1
 static uint16_t key_buffer[SENTENCE_CASE_BUFFER_SIZE] = {0};
 #endif  // SENTENCE_CASE_BUFFER_SIZE > 1
 static uint8_t state_history[STATE_HISTORY_SIZE];
-static uint16_t suppress_key = KC_NO;
+static uint16_t suppress_key  = KC_NO;
 static uint8_t sentence_state = STATE_INIT;
 
 // Sets the current state to `new_state`.
 static void set_sentence_state(uint8_t new_state) {
 #ifndef NO_DEBUG
   if (debug_enable && sentence_state != new_state) {
-    static const char* state_names[] = {
-        "INIT", "WORD", "ABBREV", "ENDING", "PRIMED", "DISABLED",
+    static const char *state_names[] = {
+      "INIT",
+      "WORD",
+      "ABBREV",
+      "ENDING",
+      "PRIMED",
+      "DISABLED",
     };
     dprintf("Sentence case: %s\n", state_names[new_state]);
   }
@@ -118,7 +123,9 @@ void sentence_case_toggle(void) {
   }
 }
 
-bool is_sentence_case_on(void) { return sentence_state != STATE_DISABLED; }
+bool is_sentence_case_on(void) {
+  return sentence_state != STATE_DISABLED;
+}
 
 #if SENTENCE_CASE_TIMEOUT > 0
 #if SENTENCE_CASE_TIMEOUT < 100 || SENTENCE_CASE_TIMEOUT > 30000
@@ -134,7 +141,7 @@ void sentence_case_task(void) {
 }
 #endif  // SENTENCE_CASE_TIMEOUT > 0
 
-bool process_sentence_case(uint16_t keycode, keyrecord_t* record) {
+bool process_sentence_case(uint16_t keycode, keyrecord_t *record) {
   // Only process while enabled, and only process press events.
   if (sentence_state == STATE_DISABLED || !record->event.pressed) {
     return true;
@@ -142,47 +149,47 @@ bool process_sentence_case(uint16_t keycode, keyrecord_t* record) {
 
 #if SENTENCE_CASE_TIMEOUT > 0
   idle_timer = (record->event.time + SENTENCE_CASE_TIMEOUT) | 1;
-#endif  // SENTENCE_CASE_TIMEOUT > 0
+#endif                   // SENTENCE_CASE_TIMEOUT > 0
 
   switch (keycode) {
-    case KC_LCTL ... KC_RGUI:  // Ignore mod keys.
-    case QK_ONE_SHOT_MOD ... QK_ONE_SHOT_MOD_MAX:  // Ignore one-shot mod.
-    // Ignore MO, TO, TG, TT, OSL, TL layer switch keys.
-    case QK_MOMENTARY ... QK_MOMENTARY_MAX:
-    case QK_TO ... QK_TO_MAX:
-    case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
-    case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
-    case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:  // Ignore one-shot layer.
+  case KC_LCTL ... KC_RGUI:                      // Ignore mod keys.
+  case QK_ONE_SHOT_MOD ... QK_ONE_SHOT_MOD_MAX:  // Ignore one-shot mod.
+  // Ignore MO, TO, TG, TT, OSL, TL layer switch keys.
+  case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+  case QK_TO ... QK_TO_MAX:
+  case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+  case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
+  case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:  // Ignore one-shot layer.
 #ifdef TRI_LAYER_ENABLE  // Ignore Tri Layer keys.
-    case QK_TRI_LAYER_LOWER:
-    case QK_TRI_LAYER_UPPER:
-#endif  // TRI_LAYER_ENABLE
-      return true;
+  case QK_TRI_LAYER_LOWER:
+  case QK_TRI_LAYER_UPPER:
+#endif                   // TRI_LAYER_ENABLE
+    return true;
 
 #ifndef NO_ACTION_TAPPING
-    case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-      if (record->tap.count == 0) {
-        return true;
-      }
-      keycode = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
-      break;
+  case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+    if (record->tap.count == 0) {
+      return true;
+    }
+    keycode = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+    break;
 #ifndef NO_ACTION_LAYER
-    case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-      if (record->tap.count == 0) {
-        return true;
-      }
-      keycode = QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
-      break;
+  case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+    if (record->tap.count == 0) {
+      return true;
+    }
+    keycode = QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
+    break;
 #endif  // NO_ACTION_LAYER
 #endif  // NO_ACTION_TAPPING
 
 #ifdef SWAP_HANDS_ENABLE
-    case QK_SWAP_HANDS ... QK_SWAP_HANDS_MAX:
-      if (IS_SWAP_HANDS_KEYCODE(keycode) || record->tap.count == 0) {
-        return true;
-      }
-      keycode = QK_SWAP_HANDS_GET_TAP_KEYCODE(keycode);
-      break;
+  case QK_SWAP_HANDS ... QK_SWAP_HANDS_MAX:
+    if (IS_SWAP_HANDS_KEYCODE(keycode) || record->tap.count == 0) {
+      return true;
+    }
+    keycode = QK_SWAP_HANDS_GET_TAP_KEYCODE(keycode);
+    break;
 #endif  // SWAP_HANDS_ENABLE
   }
 
@@ -193,15 +200,14 @@ bool process_sentence_case(uint16_t keycode, keyrecord_t* record) {
     memmove(state_history + 1, state_history, STATE_HISTORY_SIZE - 1);
     state_history[0] = STATE_INIT;
 #if SENTENCE_CASE_BUFFER_SIZE > 1
-    memmove(key_buffer + 1, key_buffer,
-            (SENTENCE_CASE_BUFFER_SIZE - 1) * sizeof(uint16_t));
+    memmove(key_buffer + 1, key_buffer, (SENTENCE_CASE_BUFFER_SIZE - 1) * sizeof(uint16_t));
     key_buffer[0] = KC_NO;
 #endif  // SENTENCE_CASE_BUFFER_SIZE > 1
     return true;
   }
 
   const uint8_t mods = get_mods() | get_weak_mods() | get_oneshot_mods();
-  uint8_t new_state = STATE_INIT;
+  uint8_t new_state  = STATE_INIT;
 
   // We search for sentence beginnings using a simple finite state machine. It
   // matches things like "a. a" and "a.  a" but not "a.. a" or "a.a. a". The
@@ -217,61 +223,61 @@ bool process_sentence_case(uint16_t keycode, keyrecord_t* record) {
   char code = sentence_case_press_user(keycode, record, mods);
   dprintf("Sentence Case: code = '%c' (%d)\n", code, (int)code);
   switch (code) {
-    case '\0':  // Current key should be ignored.
-      return true;
+  case '\0':  // Current key should be ignored.
+    return true;
 
-    case 'a':  // Current key is a letter.
-      switch (sentence_state) {
-        case STATE_ABBREV:
-        case STATE_ENDING:
-          new_state = STATE_ABBREV;
-          break;
+  case 'a':  // Current key is a letter.
+    switch (sentence_state) {
+    case STATE_ABBREV:
+    case STATE_ENDING:
+      new_state = STATE_ABBREV;
+      break;
 
-        case STATE_PRIMED:
-          // This is the start of a sentence.
-          if (keycode != suppress_key) {
-            suppress_key = keycode;
-            set_oneshot_mods(MOD_BIT(KC_LSFT));  // Shift mod to capitalize.
-            new_state = STATE_WORD;
-          }
-          break;
-
-        default:
-          new_state = STATE_WORD;
+    case STATE_PRIMED:
+      // This is the start of a sentence.
+      if (keycode != suppress_key) {
+        suppress_key = keycode;
+        set_oneshot_mods(MOD_BIT(KC_LSFT));  // Shift mod to capitalize.
+        new_state = STATE_WORD;
       }
       break;
 
-    case '.':  // Current key is sentence-ending punctuation.
-      switch (sentence_state) {
-        case STATE_WORD:
-          new_state = STATE_ENDING;
-          break;
+    default:
+      new_state = STATE_WORD;
+    }
+    break;
 
-        default:
-          new_state = STATE_ABBREV;
-      }
+  case '.':  // Current key is sentence-ending punctuation.
+    switch (sentence_state) {
+    case STATE_WORD:
+      new_state = STATE_ENDING;
       break;
 
-    case ' ':  // Current key is a space.
-      if (sentence_state == STATE_PRIMED ||
-          (sentence_state == STATE_ENDING
+    default:
+      new_state = STATE_ABBREV;
+    }
+    break;
+
+  case ' ':  // Current key is a space.
+    if (sentence_state == STATE_PRIMED ||
+        (sentence_state == STATE_ENDING
 #if SENTENCE_CASE_BUFFER_SIZE > 1
-           && sentence_case_check_ending(key_buffer)
+         && sentence_case_check_ending(key_buffer)
 #endif  // SENTENCE_CASE_BUFFER_SIZE > 1
-               )) {
-        new_state = STATE_PRIMED;
-        suppress_key = KC_NO;
-      }
-      break;
+           )) {
+      new_state    = STATE_PRIMED;
+      suppress_key = KC_NO;
+    }
+    break;
 
-    case '\'':  // Current key is a quote.
-      new_state = sentence_state;
-      break;
+  case '\'':  // Current key is a quote.
+    new_state = sentence_state;
+    break;
   }
 
-    // Slide key_buffer and state_history buffers one element to the left.
-    // Optimization note: Using manual loops instead of memmove() here saved
-    // ~100 bytes on AVR.
+  // Slide key_buffer and state_history buffers one element to the left.
+  // Optimization note: Using manual loops instead of memmove() here saved
+  // ~100 bytes on AVR.
 #if SENTENCE_CASE_BUFFER_SIZE > 1
   for (int8_t i = 0; i < SENTENCE_CASE_BUFFER_SIZE - 1; ++i) {
     key_buffer[i] = key_buffer[i + 1];
@@ -294,8 +300,7 @@ bool process_sentence_case(uint16_t keycode, keyrecord_t* record) {
   return true;
 }
 
-bool sentence_case_just_typed_P(const uint16_t* buffer, const uint16_t* pattern,
-                                int8_t pattern_len) {
+bool sentence_case_just_typed_P(const uint16_t *buffer, const uint16_t *pattern, int8_t pattern_len) {
 #if SENTENCE_CASE_BUFFER_SIZE > 1
   buffer += SENTENCE_CASE_BUFFER_SIZE - pattern_len;
   for (int8_t i = 0; i < pattern_len; ++i) {
@@ -309,7 +314,7 @@ bool sentence_case_just_typed_P(const uint16_t* buffer, const uint16_t* pattern,
 #endif  // SENTENCE_CASE_BUFFER_SIZE > 1
 }
 
-__attribute__((weak)) bool sentence_case_check_ending(const uint16_t* buffer) {
+__attribute__((weak)) bool sentence_case_check_ending(const uint16_t *buffer) {
 #if SENTENCE_CASE_BUFFER_SIZE >= 5
   // Don't consider the abbreviations "vs." and "etc." to end the sentence.
   if (SENTENCE_CASE_JUST_TYPED(KC_SPC, KC_V, KC_S, KC_DOT) ||
@@ -321,35 +326,35 @@ __attribute__((weak)) bool sentence_case_check_ending(const uint16_t* buffer) {
 }
 
 __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
-                                                    keyrecord_t* record,
+                                                    keyrecord_t *record,
                                                     uint8_t mods) {
   if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
     const bool shifted = mods & MOD_MASK_SHIFT;
     switch (keycode) {
-      case KC_A ... KC_Z:
-        return 'a';  // Letter key.
+    case KC_A ... KC_Z:
+      return 'a';  // Letter key.
 
-      case KC_DOT:  // . is punctuation, Shift . is a symbol (>)
-        return !shifted ? '.' : '#';
-      case KC_1:
-      case KC_SLSH:
-        return shifted ? '.' : '#';
-      case KC_EXLM:
-      case KC_QUES:
-        return '.';
-      case KC_2 ... KC_0:  // 2 3 4 5 6 7 8 9 0
-      case KC_AT ... KC_RPRN:  // @ # $ % ^ & * ( )
-      case KC_MINS ... KC_SCLN:  // - = [ ] backslash ;
-      case KC_UNDS ... KC_COLN:  // _ + { } | :
-      case KC_GRV:
-      case KC_COMM:
-        return '#';  // Symbol key.
+    case KC_DOT:  // . is punctuation, Shift . is a symbol (>)
+      return !shifted ? '.' : '#';
+    case KC_1:
+    case KC_SLSH:
+      return shifted ? '.' : '#';
+    case KC_EXLM:
+    case KC_QUES:
+      return '.';
+    case KC_2 ... KC_0:        // 2 3 4 5 6 7 8 9 0
+    case KC_AT ... KC_RPRN:    // @ # $ % ^ & * ( )
+    case KC_MINS ... KC_SCLN:  // - = [ ] backslash ;
+    case KC_UNDS ... KC_COLN:  // _ + { } | :
+    case KC_GRV:
+    case KC_COMM:
+      return '#';  // Symbol key.
 
-      case KC_SPC:
-        return ' ';  // Space key.
+    case KC_SPC:
+      return ' ';  // Space key.
 
-      case KC_QUOT:
-        return '\'';  // Quote key.
+    case KC_QUOT:
+      return '\'';  // Quote key.
     }
   }
 

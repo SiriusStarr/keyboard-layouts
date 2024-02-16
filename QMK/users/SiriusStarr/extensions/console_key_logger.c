@@ -32,8 +32,7 @@ void process_console_key_logger(uint16_t keycode, keyrecord_t *record) {
             record->event.pressed,
             get_mods(),
             get_oneshot_mods(),
-            record->tap.count
-            );
+            record->tap.count);
   }
 }
 #endif

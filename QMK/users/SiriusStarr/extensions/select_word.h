@@ -43,8 +43,7 @@ extern "C" {
 #endif
 
 /** Handler function for select word. */
-bool process_select_word(uint16_t keycode, keyrecord_t* record,
-                         uint16_t sel_keycode);
+bool process_select_word(uint16_t keycode, keyrecord_t *record, uint16_t sel_keycode);
 
 /**
  * @fn select_word_task(void)

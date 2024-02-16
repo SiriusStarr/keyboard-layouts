@@ -47,8 +47,7 @@ void select_word_task(void) {
 }
 #endif  // SELECT_WORD_TIMEOUT > 0
 
-bool process_select_word(uint16_t keycode, keyrecord_t* record,
-                         uint16_t sel_keycode) {
+bool process_select_word(uint16_t keycode, keyrecord_t *record, uint16_t sel_keycode) {
   if (keycode == KC_LSFT || keycode == KC_RSFT) {
     return true;
   }
@@ -111,34 +110,34 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
 
   // `sel_keycode` was released, or another key was pressed.
   switch (state) {
-    case STATE_WORD:
-      unregister_code(KC_RGHT);
+  case STATE_WORD:
+    unregister_code(KC_RGHT);
 #ifdef MAC_HOTKEYS
-      unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT));
+    unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT));
 #else
-      unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
+    unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
 #endif  // MAC_HOTKEYS
-      state = STATE_SELECTED;
-      break;
+    state = STATE_SELECTED;
+    break;
 
-    case STATE_FIRST_LINE:
-      state = STATE_SELECTED;
-      break;
+  case STATE_FIRST_LINE:
+    state = STATE_SELECTED;
+    break;
 
-    case STATE_LINE:
-      unregister_code(KC_DOWN);
-      state = STATE_SELECTED;
-      break;
+  case STATE_LINE:
+    unregister_code(KC_DOWN);
+    state = STATE_SELECTED;
+    break;
 
-    case STATE_SELECTED:
-      if (keycode == KC_ESC) {
-        tap_code(KC_RGHT);
-        state = STATE_NONE;
-        return false;
-      }
-      // Fallthrough intended.
-    default:
+  case STATE_SELECTED:
+    if (keycode == KC_ESC) {
+      tap_code(KC_RGHT);
       state = STATE_NONE;
+      return false;
+    }
+    // Fallthrough intended.
+  default:
+    state = STATE_NONE;
   }
 
   return true;

@@ -32,6 +32,6 @@
 #define HOME_LEFT_ANGLE_BRACKET  RSFT_T(KC_COMMA)
 #define HOME_PIPE                RCTL_T(KC_BACKSLASH)
 #define HOME_RIGHT_ANGLE_BRACKET RGUI_T(KC_DOT)
-#define COMBO_QU                 LT(0, KC_LANGUAGE_9) // Ugly hack, since LT() only works with basic codes
+#define COMBO_QU                 LT(0, KC_LANGUAGE_9)  // Ugly hack, since LT() only works with basic codes
 
 #endif
