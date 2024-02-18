@@ -66,7 +66,6 @@
             git
             hid-listen # For keylogging
             qmk
-            vial
           ];
 
           shellHook = let
