@@ -65,9 +65,9 @@ layers:
   Function & Media:
     - [
         F12,
-        F7,
-        F8,
         F9,
+        F8,
+        F7,
         PrtScn SysRq,
         "",
         "",
@@ -76,10 +76,10 @@ layers:
         "",
       ]
     - [
-        F11,
-        F4,
+        F10,
         F5,
-        F6,
+        F2,
+        F1,
         Scroll Lock,
         "",
         { t: Stop, h: Shift },
@@ -87,7 +87,7 @@ layers:
         { t: Mute, h: Alt },
         Meta,
       ]
-    - [F10, F1, F2, F3, Pause Break, "", Prev, Volume Down, Volume Up, Next]
+    - [F11, F6, F4, F3, Pause Break, "", Prev, Volume Down, Volume Up, Next]
     - [Esc, R, { t: Bksp, s: Del }, "", "", { type: held }]
   Nav:
     - [
