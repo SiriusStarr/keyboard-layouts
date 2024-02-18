@@ -12,12 +12,11 @@ vial-qmk flash -kb svalboard/trackpoint/right -km vial
 
 You can then use `Vial` to configure the keyboard.
 
-### QMK
+### Atreus (QMK)
 
 ```bash
 nix develop
-qmk compile -kb <keyboard> -km SiriusStarr
-qmk flash -kb <keyboard> -km SiriusStarr
+qmk flash -kb keyboardio/atreus -km SiriusStarr
 ```
 
 For keylogging, set `CONSOLE_ENABLE = yes` in `rules.mk` and uncomment
