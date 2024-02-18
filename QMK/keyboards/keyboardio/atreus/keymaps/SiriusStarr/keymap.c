@@ -11,10 +11,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                     Esc    R Bksp || Enter Space Tab
   */
   [PRIMARY] = LAYOUT(
-    KC_W,          KC_X,    KC_M,    KC_G,                 KC_J,                                           KC_SEMICOLON,                    KC_DOT,                         KC_SLASH, KC_DOUBLE_QUOTE, KC_QUOTE,
-    HOME_C,        HOME_S,  HOME_N,  HOME_T,               KC_K,                                           KC_COMMA,                        HOME_A,                         HOME_E,   HOME_I,          HOME_H,
-    P_HOLD_BUTTON, KC_F,    KC_L,    KC_D,                 KC_V,                 LGUI(KC_R),   LGUI(KC_P), KC_MINUS,                        KC_U,                           KC_O,     KC_Y,            B_HOLD_BUTTON,
-    XXXXXXX,       XXXXXXX, XXXXXXX, LT(MOUSE, KC_ESCAPE), LT(NAVIGATION, KC_R), KC_BACKSPACE, KC_ENTER,   LT(NUMBER_AND_SYMBOL, KC_SPACE), LT(FUNCTION_AND_MEDIA, KC_TAB), XXXXXXX,  XXXXXXX,         XXXXXXX
+    KC_W,       KC_X,    KC_M,    KC_G,           KC_J,                                 KC_SEMICOLON,   KC_DOT,        KC_SLASH, KC_DOUBLE_QUOTE, KC_QUOTE,
+    HOME_C,     HOME_S,  HOME_N,  HOME_T,         KC_K,                                 KC_COMMA,       HOME_A,        HOME_E,   HOME_I,          HOME_H,
+    P_HOLD_BUT, KC_F,    KC_L,    KC_D,           KC_V,       LGUI(KC_R),   LGUI(KC_P), KC_MINUS,       KC_U,          KC_O,     KC_Y,            B_HOLD_BUTTON,
+    XXXXXXX,    XXXXXXX, XXXXXXX, ESC_HOLD_MOUSE, R_HOLD_NAV, KC_BACKSPACE, KC_ENTER,   SPACE_HOLD_NAS, TAB_HOLD_FUNC, XXXXXXX,  XXXXXXX,         XXXXXXX
   ),
 
   /*
@@ -24,10 +24,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                     $      {} ~^ ||
    */
   [NUMBER_AND_SYMBOL] = LAYOUT(
-    KC_AMPERSAND, KC_9,         KC_8,         KC_7,         XXXXXXX,                                XXXXXXX,  KC_DOT,                  KC_PLUS,   KC_HASH,          XXXXXXX,
-    LALT_T(KC_0), LALT_T(KC_5), LCTL_T(KC_2), LSFT_T(KC_1), KC_PERCENT,                             KC_COMMA, HOME_LEFT_ANGLE_BRACKET, HOME_PIPE, RALT_T(KC_MINUS), HOME_RIGHT_ANGLE_BRACKET,
-    KC_AT,        KC_6,         KC_4,         KC_3,         XXXXXXX,             XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LEFT_BRACKET,         KC_EQUAL,  KC_GRAVE,         KC_ASTERISK,
-    XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_DOLLAR,    KC_LEFT_CURLY_BRACE, KC_TILDE, XXXXXXX, _______,  XXXXXXX,                 XXXXXXX,   XXXXXXX,          XXXXXXX
+    KC_AMPERSAND, KC_9,         KC_8,         KC_7,         XXXXXXX,                       XXXXXXX,  KC_DOT,         KC_PLUS,  KC_HASH,   XXXXXXX,
+    LGUI_T(KC_0), LALT_T(KC_5), LCTL_T(KC_2), LSFT_T(KC_1), KC_PERCENT,                    KC_COMMA, HRM_L_ANG_BRAC, HRM_PIPE, HRM_MINUS, HRM_R_ANG_BRAC,
+    KC_AT,        KC_6,         KC_4,         KC_3,         XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,        KC_EQUAL, KC_GRAVE,  KC_ASTERISK,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_DOLLAR,    KC_LCBR,    KC_TILDE, XXXXXXX, _______,  XXXXXXX,        XXXXXXX,  XXXXXXX,   XXXXXXX
   ),
 
   /*

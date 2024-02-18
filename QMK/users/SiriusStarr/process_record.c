@@ -48,13 +48,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->tap.count != 0) {  // Key is being held.
     if (record->event.pressed) {
       switch (keycode) {
-      case HOME_LEFT_ANGLE_BRACKET:
+      case HRM_L_ANG_BRAC:
         tap_code16(KC_LEFT_ANGLE_BRACKET);
         return false;
-      case HOME_PIPE:
+      case HRM_PIPE:
         tap_code16(KC_PIPE);
         return false;
-      case HOME_RIGHT_ANGLE_BRACKET:
+      case HRM_R_ANG_BRAC:
         tap_code16(KC_RIGHT_ANGLE_BRACKET);
         return false;
       }
