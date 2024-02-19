@@ -1,0 +1,9 @@
+enum layer_names {
+  PRIMARY,
+  NUMBER_AND_SYMBOL,
+  FUNCTION_AND_MEDIA,
+  NAVIGATION,
+  MOUSE,
+  BUTTON,
+  MBO,
+};

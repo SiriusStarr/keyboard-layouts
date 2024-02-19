@@ -91,6 +91,13 @@
               alias vial-qmk='env QMK_HOME=/tmp/vial_firmware qmk'
               vial-qmk setup SiriusStarr/svalboard-vial-qmk -b vial -y
               rm -rf /tmp/vial_firmware/.build
+              rm -rf /tmp/vial_firmware/keyboards/svalboard/keymaps/SiriusStarr
+              ln -fs ${self}/Vial/keyboards/svalboard/keymaps/SiriusStarr /tmp/vial_firmware/keyboards/svalboard/keymaps/SiriusStarr
+              rm -rf /tmp/vial_firmware/users/SiriusStarr
+              mkdir /tmp/vial_firmware/users/SiriusStarr
+              ln -fs ${self}/QMK/users/SiriusStarr/defs /tmp/vial_firmware/users/SiriusStarr/
+              ln -fs ${self}/QMK/users/SiriusStarr/extensions /tmp/vial_firmware/users/SiriusStarr/
+              ln -fs ${self}/Vial/users/SiriusStarr/* /tmp/vial_firmware/users/SiriusStarr/
             '';
           in
             kaleidoscopeSetup + vialSetup + qmkSetup;
