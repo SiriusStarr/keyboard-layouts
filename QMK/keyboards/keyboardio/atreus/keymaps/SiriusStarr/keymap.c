@@ -37,10 +37,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *            Esc R       Bksp ||
    */
   [FUNCTION_AND_MEDIA] = LAYOUT(
-    KC_F12,  KC_F9,   KC_F8,   KC_F7,     KC_PSCR,                               XXXXXXX, XXXXXXX,         KC_BRID,         KC_BRIU,         XXXXXXX,
-    KC_F10,  KC_F5,   KC_F2,   KC_F1,     KC_SCROLL_LOCK,                        XXXXXXX, RSFT_T(KC_MSTP), RCTL_T(KC_MPLY), RALT_T(KC_MUTE), KC_RGUI,
-    KC_F11,  KC_F6,   KC_F4,   KC_F3,     KC_PAUSE,       XXXXXXX,      XXXXXXX, XXXXXXX, KC_MPRV,         KC_VOLD,         KC_VOLU,         KC_MNXT,
-    QK_BOOT, XXXXXXX, XXXXXXX, KC_ESCAPE, KC_R,           KC_BACKSPACE, XXXXXXX, XXXXXXX, _______,         XXXXXXX,         XXXXXXX,         XXXXXXX
+    KC_F12,  KC_F9,   KC_F8,   KC_F7,     KC_PSCR,                               XXXXXXX, XXXXXXX,  KC_BRID,  KC_BRIU,  XXXXXXX,
+    KC_F10,  KC_F5,   KC_F2,   KC_F1,     KC_SCROLL_LOCK,                        XXXXXXX, HRM_MSTP, HRM_MPLY, HRM_MUTE, KC_RGUI,
+    KC_F11,  KC_F6,   KC_F4,   KC_F3,     KC_PAUSE,       XXXXXXX,      XXXXXXX, XXXXXXX, KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT,
+    QK_BOOT, XXXXXXX, XXXXXXX, KC_ESCAPE, KC_R,           KC_BACKSPACE, XXXXXXX, XXXXXXX, _______,  XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
 
   /*
