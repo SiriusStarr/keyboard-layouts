@@ -2,15 +2,17 @@
 
 ## Usage
 
-### Vial
+### Svalboard (Vial)
 
 ```bash
 nix develop
-vial-qmk compile -kb svalboard/trackpoint/right -km vial
-vial-qmk flash -kb svalboard/trackpoint/right -km vial
+vial-qmk flash -kb svalboard/trackpoint/right -km SiriusStarr
 ```
 
-You can then use `Vial` to configure the keyboard.
+For keylogging, set `CONSOLE_ENABLE = yes` in `rules.mk` and uncomment
+`#define CONSOLE_KEY_LOGGER_ENABLE` in `config.h`.  On the host computer, run
+`./listen_keylogger.sh` to log output to `keylog.csv`.  This data can be
+analyzed [here](https://precondition.github.io/qmk-heatmap).
 
 ### Atreus (QMK)
 
@@ -44,9 +46,13 @@ keymap draw QMK/Layout.yaml > QMK/Layout.svg
 keymap draw Kaleidoscope/Layout.yaml > Kaleidoscope/Layout.svg
 ```
 
-### SVG (QMK)
+### SVG (Atreus)
 
 ![QMK Layout](./QMK/Layout.svg)
+
+### SVG (Svaboard)
+
+![Vial Layout](./Vial/Layout.svg)
 
 ### SVG (Kaleidoscope)
 
