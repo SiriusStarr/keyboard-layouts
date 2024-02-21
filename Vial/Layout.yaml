@@ -85,7 +85,7 @@ layers:
     - ["", "", "", "", ""]
     - ["", "", "", "", ""]
 combos:
-  - { p: [6, 16], k: wh, l: ["Base"], align: top, offset: 1.5 }
+  - { p: [6, 11], k: wh, l: ["Base"], align: top }
   - { p: [11, 16], k: gh, l: ["Base"] }
   - { p: [5, 10], k: sh, l: ["Base"], align: top, offset: -1.25 }
   - { p: [10, 15], k: th, l: ["Base"], align: bottom, offset: -1.25 }

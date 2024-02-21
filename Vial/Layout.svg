@@ -1,4 +1,4 @@
-<svg width="1208" height="3011" viewBox="0 0 1208 3011" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1208" height="2997" viewBox="0 0 1208 2997" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <style>/* inherit to force styles through use tags */
 svg path {
     fill: inherit;
@@ -102,7 +102,7 @@ path.combo {
 </style>
 <g transform="translate(30, 0)" class="layer-Base">
 <text x="0" y="28" class="label">Base:</text>
-<g transform="translate(0, 71)">
+<g transform="translate(0, 57)">
 <g transform="translate(56, 112)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">C</text>
@@ -320,10 +320,10 @@ path.combo {
 <text x="0" y="0" class="key tap">qu/q</text>
 </g>
 <g class="combo combopos-0">
-<path d="M280,-15 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v42" class="combo"/>
-<path d="M280,-15 h106 a6.0,6.0 0 0 1 6.0,6.0 v42" class="combo"/>
-<rect rx="6" ry="6" x="266" y="-28" width="28" height="26" class="combo"/>
-<text x="280" y="-15" class="combo tap">wh</text>
+<path d="M224,-1 h-50 a6.0,6.0 0 0 0 -6.0,6.0 v28" class="combo"/>
+<path d="M224,-1 h50 a6.0,6.0 0 0 1 6.0,6.0 v0" class="combo"/>
+<rect rx="6" ry="6" x="210" y="-14" width="28" height="26" class="combo"/>
+<text x="224" y="-1" class="combo tap">wh</text>
 </g>
 <g class="combo combopos-1">
 <path d="M336,28 l-38,-9" class="combo"/>
@@ -357,7 +357,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 435)" class="layer-Numbers &amp; Symbols">
+<g transform="translate(30, 421)" class="layer-Numbers &amp; Symbols">
 <text x="0" y="28" class="label">Numbers &amp; Symbols:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
@@ -562,7 +562,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 855)" class="layer-Nav">
+<g transform="translate(30, 841)" class="layer-Nav">
 <text x="0" y="28" class="label">Nav:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
@@ -759,7 +759,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 1275)" class="layer-Function &amp; Media">
+<g transform="translate(30, 1261)" class="layer-Function &amp; Media">
 <text x="0" y="28" class="label">Function &amp; Media:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
@@ -974,7 +974,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 1695)" class="layer-Mouse">
+<g transform="translate(30, 1681)" class="layer-Mouse">
 <text x="0" y="28" class="label">Mouse:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
@@ -1178,7 +1178,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 2115)" class="layer-Button">
+<g transform="translate(30, 2101)" class="layer-Button">
 <text x="0" y="28" class="label">Button:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
@@ -1383,7 +1383,7 @@ path.combo {
 </g>
 </g>
 </g>
-<g transform="translate(30, 2535)" class="layer-Mouse Button Override">
+<g transform="translate(30, 2521)" class="layer-Mouse Button Override">
 <text x="0" y="28" class="label">Mouse Button Override:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(56, 112)" class="key keypos-0">
