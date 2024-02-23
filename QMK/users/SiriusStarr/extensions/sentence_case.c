@@ -334,14 +334,14 @@ __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
     case KC_A ... KC_Z:
       return 'a';  // Letter key.
 
-    case KC_DOT:  // . is punctuation, Shift . is a symbol (>)
+    case KC_DOT:  // . is punctuation, Shift . is a symbol "("
       return !shifted ? '.' : '#';
     case KC_1:
-    case KC_SLSH:
       return shifted ? '.' : '#';
     case KC_EXLM:
     case KC_QUES:
       return '.';
+    case KC_SLSH:              // Because of overrides, not a sentence ender when shifted.
     case KC_2 ... KC_0:        // 2 3 4 5 6 7 8 9 0
     case KC_AT ... KC_RPRN:    // @ # $ % ^ & * ( )
     case KC_MINS ... KC_SCLN:  // - = [ ] backslash ;
@@ -353,8 +353,10 @@ __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
     case KC_SPC:
       return ' ';  // Space key.
 
-    case KC_QUOT:
-      return '\'';  // Quote key.
+    case KC_QUOTE:
+    case KC_DOUBLE_QUOTE:
+      // Since we have overrides, these are sentence enders when shifted.
+      return shifted ? '.' : '\'';
     }
   }
 
