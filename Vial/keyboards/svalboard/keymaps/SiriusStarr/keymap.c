@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ KC_F10,          KC_F12,          XXXXXXX,        KC_F11,         XXXXXXX,
 
              /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_ENTER,        XXXXXXX,         XXXXXXX,        _______,        XXXXXXX,     XXXXXXX,
+        /*RT*/ XXXXXXX,         XXXXXXX,         XXXXXXX,        _______,        XXXXXXX,     XXXXXXX,
         /*LT*/ KC_BACKSPACE,    KC_R,            XXXXXXX,        KC_ESCAPE,      XXXXXXX,     XXXXXXX
     ),
 
