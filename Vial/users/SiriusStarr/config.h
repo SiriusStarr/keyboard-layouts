@@ -15,4 +15,6 @@
 
 #define SENTENCE_CASE_ENABLE
 
+#define PHYSICAL_ROW_IS_KEY_COL_NOT_ROW  // Sval keymap is weird, so need to fix achordion
+
 // #define CONSOLE_KEY_LOGGER_ENABLE  // Turn on keylogging for heat maps.

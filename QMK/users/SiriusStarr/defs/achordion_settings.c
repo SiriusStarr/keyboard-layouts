@@ -22,10 +22,22 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     return true;
   }
 
+#ifdef PHYSICAL_ROW_IS_KEY_COL_NOT_ROW
+  // Also allow same-hand holds for keys a row or more apart
+  if (tap_hold_record->event.key.col != other_record->event.key.col) {
+    return true;
+  }
+
+  // Sval thumb keys should also always be valid
+  if ((tap_hold_record->event.key.row == 0) || (other_record->event.key.row == 0) || (tap_hold_record->event.key.row == 5) || (other_record->event.key.row == 5)) {
+    return true;
+  }
+#else
   // Also allow same-hand holds for keys a row or more apart
   if (tap_hold_record->event.key.row != other_record->event.key.row) {
     return true;
   }
+#endif
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
