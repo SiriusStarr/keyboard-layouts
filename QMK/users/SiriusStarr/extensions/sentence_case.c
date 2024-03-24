@@ -21,6 +21,7 @@
  */
 
 #include "sentence_case.h"
+#include "SiriusStarr.h"
 
 #include <string.h>
 
@@ -332,7 +333,8 @@ __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
     const bool shifted = mods & MOD_MASK_SHIFT;
     switch (keycode) {
     case KC_A ... KC_Z:
-      return 'a';  // Letter key.
+    case COMBO_WH ... COMBO_PH:  // Digraph combos are letters
+      return 'a';                // Letter key.
 
     case KC_DOT:  // . is punctuation, Shift . is a symbol "("
       return !shifted ? '.' : '#';
