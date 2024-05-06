@@ -4,6 +4,7 @@
 #include "SiriusStarr.h"
 #include "keymap_combo.h"
 
+
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 void pointing_device_init_user(void) {
   set_auto_mouse_layer(MBO);
@@ -116,18 +117,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [MBO] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ _______,         _______,         _______,        KC_BTN1,        _______,
-        /*R2*/ _______,         _______,         _______,        KC_BTN3,        _______,
-        /*R3*/ _______,         _______,         _______,        KC_BTN2,        _______,
-        /*R4*/ _______,         _______,         _______,        _______,        _______,
-        /*L1*/ _______,         _______,         _______,        KC_BTN1,        _______,
-        /*L2*/ _______,         _______,         _______,        KC_BTN3,        _______,
-        /*L3*/ _______,         _______,         _______,        KC_BTN2,        _______,
-        /*L4*/ _______,         _______,         _______,        _______,        _______,
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX
+             /*Center           North            East                    South           West*/
+        /*R1*/ _______,         _______,         _______,                KC_BTN1,        _______,
+        /*R2*/ _______,         _______,         _______,                KC_BTN3,        _______,
+        /*R3*/ _______,         _______,         _______,                KC_BTN2,        _______,
+        /*R4*/ _______,         _______,         _______,                _______,        _______,
+        /*L1*/ _______,         _______,         SV_RECALIBRATE_POINTER, KC_BTN1,        _______,
+        /*L2*/ _______,         _______,         _______,                KC_BTN3,        _______,
+        /*L3*/ _______,         _______,         _______,                KC_BTN2,        _______,
+        /*L4*/ SV_SET_DEADZONE,         _______,         _______,                _______,        _______,
+             /*Down             Inner (pad)      Upper (Mode)            O.Upper (nail)  OL (knuckle) Pushthrough*/
+        /*RT*/ _______,         _______,         _______,                _______,        _______,     _______,
+        /*LT*/ _______,         _______,         _______,                _______,        _______,     _______
         )
 
 };

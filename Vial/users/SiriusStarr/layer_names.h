@@ -1,3 +1,4 @@
+
 enum layer_names {
   PRIMARY,
   NUMBER_AND_SYMBOL,
@@ -7,3 +8,4 @@ enum layer_names {
   BUTTON,
   MBO,
 };
+#define MH_AUTO_BUTTONS_LAYER   MBO

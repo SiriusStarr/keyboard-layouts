@@ -7,6 +7,10 @@
 #include "macros.h"
 #include "sentence_case.h"
 
+#ifdef PS2_MOUSE_ENABLE
+#include "ps2_mouse.h"
+#include "ps2.h"
+#endif
 
 #if defined MH_AUTO_BUTTONS && defined PS2_MOUSE_ENABLE && defined MOUSEKEY_ENABLE
 void mouse_mode(bool);
@@ -36,19 +40,141 @@ void mouse_mode(bool on) {
 
 #endif  // defined MH_AUTO_BUTTONS && defined PS2_MOUSE_ENABLE && #defined MOUSEKEY_ENABLE
 
+#if defined(POINTING_DEVICE_AUTO_MOUSE_MH_ENABLE)
+
+#define SCROLL_DIVISOR 20
+
+static int _ds_l_x = 0;
+static int _ds_l_y = 0;
+static int _ds_r_x = 0;
+static int _ds_r_y = 0;
+
+report_mouse_t pointing_device_task_combined_user(report_mouse_t reportMouse1, report_mouse_t reportMouse2) {
+  if (reportMouse1.x == 0 && reportMouse1.y == 0 && reportMouse2.x == 0 && reportMouse2.y == 0)
+    return pointing_device_combine_reports(reportMouse1, reportMouse2);
+
+  if (global_saved_values.left_scroll) {
+    int div_x;
+    int div_y;
+
+    _ds_l_x += reportMouse1.x;
+    _ds_l_y -= reportMouse1.y;
+
+    div_x = _ds_l_x / SCROLL_DIVISOR;
+    div_y = _ds_l_y / SCROLL_DIVISOR;
+    if (div_x != 0) {
+      reportMouse1.h += div_x;
+      _ds_l_x -= div_x * SCROLL_DIVISOR;
+    }
+
+    if (div_y != 0) {
+      reportMouse1.v += div_y;
+      _ds_l_y -= div_y * SCROLL_DIVISOR;
+    }
+    reportMouse1.x = 0;
+    reportMouse1.y = 0;
+  }
+
+  if (global_saved_values.right_scroll) {
+    int div_x;
+    int div_y;
+
+    _ds_r_x += reportMouse2.x;
+    _ds_r_y -= reportMouse2.y;
+
+    div_x = _ds_r_x / SCROLL_DIVISOR;
+    div_y = _ds_r_y / SCROLL_DIVISOR;
+    if (div_x != 0) {
+      reportMouse2.h += div_x;
+      _ds_r_x -= div_x * SCROLL_DIVISOR;
+    }
+
+    if (div_y != 0) {
+      reportMouse2.v += div_y;
+      _ds_r_y -= div_y * SCROLL_DIVISOR;
+    }
+    reportMouse2.x = 0;
+    reportMouse2.y = 0;
+  }
+
+  if (mh_auto_buttons_timer) {
+    mh_auto_buttons_timer = timer_read();
+  } else {
+    mouse_mode(true);
+  }
+  return pointing_device_combine_reports(reportMouse1, reportMouse2);
+}
+
+report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
+  if (reportMouse.x == 0 && reportMouse.y == 0)
+    return reportMouse;
+
+  if (mh_auto_buttons_timer) {
+    mh_auto_buttons_timer = timer_read();
+  } else {
+    mouse_mode(true);
+  }
+  return reportMouse;
+}
+#endif
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-#if defined MH_AUTO_BUTTONS && defined PS2_MOUSE_ENABLE && defined MOUSEKEY_ENABLE
+#if (defined MH_AUTO_BUTTONS && defined PS2_MOUSE_ENABLE && defined MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_AUTO_MOUSE_MH_ENABLE)
   if (mh_auto_buttons_timer) {
     switch (keycode) {
     case KC_BTN1:
     case KC_BTN2:
     case KC_BTN3:
+    case KC_BTN4:
+    case KC_BTN5:
     case KC_WH_U:
     case KC_WH_D:
+    case KC_WH_R:
+    case KC_WH_L:
+    case KC_LSFT:
+    case KC_RSFT:
+    case KC_LCTL:
+    case KC_RCTL:
+    case KC_LALT:
+    case KC_RALT:
+    case KC_LGUI:
+    case KC_RGUI:
+    case SV_RECALIBRATE_POINTER:
+    case SV_SET_DEADZONE:
       break;
     default:
       mouse_mode(false);
+    }
+  }
+  if (!record->event.pressed) {
+    switch (keycode) {
+    case SV_LEFT_DPI_INC:
+      increase_left_dpi();
+      break;
+    case SV_LEFT_DPI_DEC:
+      decrease_left_dpi();
+      break;
+    case SV_RIGHT_DPI_INC:
+      increase_right_dpi();
+      break;
+    case SV_RIGHT_DPI_DEC:
+      decrease_right_dpi();
+      break;
+    case SV_LEFT_SCROLL_TOGGLE:
+      global_saved_values.left_scroll = !global_saved_values.left_scroll;
+      write_eeprom_kb();
+      break;
+    case SV_RIGHT_SCROLL_TOGGLE:
+      global_saved_values.right_scroll = !global_saved_values.right_scroll;
+      write_eeprom_kb();
+      break;
+    case SV_RECALIBRATE_POINTER:
+      recalibrate_pointer();
+    case SV_SET_DEADZONE:
+      PS2_MOUSE_SEND(0x92, "pts: 0x0a");
+    default:
+      break;
     }
   }
 #endif
