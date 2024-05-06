@@ -2,6 +2,11 @@
 #include "SiriusStarr.h"
 #include "macros.h"
 
+#ifdef PS2_MOUSE_ENABLE
+#include "ps2_mouse.h"
+#include "ps2.h"
+#endif
+
 // Helper for digraph combos.
 static bool digraph_combo(keyrecord_t *record, uint16_t first_letter, uint16_t second_letter) {
   if (record->event.pressed) {
@@ -42,6 +47,9 @@ bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
         tap_code16(KC_U);
       }
     }
+    return false;
+  case SV_SET_DEADZONE:
+    PS2_MOUSE_SEND(0x92, "pts: 0x0a");
     return false;
   }
 

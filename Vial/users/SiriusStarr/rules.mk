@@ -24,6 +24,8 @@ COMBO_ENABLE = yes       # chording
 VPATH += keyboards/gboards/g
 VPATH += $(USER_PATH)/defs
 VPATH += $(USER_PATH)/extensions
+# For keymap_support.c
+VPATH += keyboards/svalboard/keymaps 
 
 SRC += SiriusStarr.c
 SRC += achordion_settings.c

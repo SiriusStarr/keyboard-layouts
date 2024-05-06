@@ -3,14 +3,7 @@
 #include <stdint.h>
 #include "SiriusStarr.h"
 #include "keymap_combo.h"
-
-
-#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
-void pointing_device_init_user(void) {
-  set_auto_mouse_layer(MBO);
-  set_auto_mouse_enable(true);
-}
-#endif
+#include "keymap_support.c"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

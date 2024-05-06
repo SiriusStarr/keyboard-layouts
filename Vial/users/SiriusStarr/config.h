@@ -18,5 +18,3 @@
 #define PHYSICAL_ROW_IS_KEY_COL_NOT_ROW  // Sval keymap is weird, so need to fix achordion
 
 // #define CONSOLE_KEY_LOGGER_ENABLE  // Turn on keylogging for heat maps.
-#define MH_AUTO_BUTTONS_TIMEOUT 5000
-#define PS2_MOUSE_SCROLL_BTN_MASK (1<<PS2_MOUSE_BTN_MIDDLE) // this mask disables the key for non-PS2 purposes
