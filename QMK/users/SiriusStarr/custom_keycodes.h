@@ -6,5 +6,4 @@ enum custom_keycodes {
   COMBO_SH,
   COMBO_TH,
   COMBO_PH,
-  SV_SET_DEADZONE,
 };

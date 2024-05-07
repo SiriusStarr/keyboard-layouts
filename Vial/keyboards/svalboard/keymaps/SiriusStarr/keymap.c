@@ -6,7 +6,7 @@
 #include "keymap_support.c"
 
 // clang-format off
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_COLS] = {
     [PRIMARY] = LAYOUT(
              /*Center           North            East            South           West*/
         /*R1*/ HOME_A,          KC_DOT,          XXXXXXX,        KC_U,           KC_COMMA,
@@ -17,7 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /*L1*/ HOME_T,          KC_G,            KC_K,           KC_D,           XXXXXXX,
         /*L2*/ HOME_N,          KC_M,            KC_J,           KC_L,           XXXXXXX,
         /*L3*/ HOME_S,          KC_X,            KC_V,           KC_F,           XXXXXXX,
-        /*L4*/ HOME_C,          KC_W,            KC_Z,           P_HOLD_BUT,  XXXXXXX,
+        /*L4*/ HOME_C,          KC_W,            KC_Z,           P_HOLD_BUT,     XXXXXXX,
 
              /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
         /*RT*/ KC_ENTER,        SPACE_HOLD_NAS,  XXXXXXX,        TAB_HOLD_FUNC,  XXXXXXX,     XXXXXXX,
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
              /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
         /*RT*/ XXXXXXX,         _______,         XXXXXXX,        XXXXXXX,        XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_TILDE,        KC_LCBR,      XXXXXXX,        KC_DOLLAR,      XXXXXXX,     XXXXXXX
+        /*LT*/ KC_TILDE,        KC_LCBR,         XXXXXXX,        KC_DOLLAR,      XXXXXXX,     XXXXXXX
     ),
 
     [FUNCTION_AND_MEDIA] = LAYOUT(
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /*LT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX
     ),
 
-    [MBO] = LAYOUT(
+    [MH_AUTO_BUTTONS_LAYER] = LAYOUT(
              /*Center           North            East                    South           West*/
         /*R1*/ _______,         _______,         _______,                KC_BTN1,        _______,
         /*R2*/ _______,         _______,         _______,                KC_BTN3,        _______,
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /*L1*/ _______,         _______,         SV_RECALIBRATE_POINTER, KC_BTN1,        _______,
         /*L2*/ _______,         _______,         _______,                KC_BTN3,        _______,
         /*L3*/ _______,         _______,         _______,                KC_BTN2,        _______,
-        /*L4*/ SV_SET_DEADZONE,         _______,         _______,                _______,        _______,
+        /*L4*/ _______,         _______,         _______,                _______,        _______,
              /*Down             Inner (pad)      Upper (Mode)            O.Upper (nail)  OL (knuckle) Pushthrough*/
         /*RT*/ _______,         _______,         _______,                _______,        _______,     _______,
         /*LT*/ _______,         _______,         _______,                _______,        _______,     _______

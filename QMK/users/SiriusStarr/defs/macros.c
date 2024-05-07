@@ -48,9 +48,6 @@ bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
       }
     }
     return false;
-  case SV_SET_DEADZONE:
-    PS2_MOUSE_SEND(0x92, "pts: 0x0a");
-    return false;
   }
 
   return true;  // Continue with default handling.
