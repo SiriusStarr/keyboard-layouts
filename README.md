@@ -7,7 +7,7 @@
 ```bash
 nix develop
 # Plug in left side
-vial-qmk flash -kb svalboard/trackpoint/left -km SiriusStarr
+vial-qmk flash -kb svalboard/left -km SiriusStarr
 # Plug in right side
 vial-qmk flash -kb svalboard/trackpoint/right -km SiriusStarr
 ```

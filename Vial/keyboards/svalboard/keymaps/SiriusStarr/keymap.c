@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include "SiriusStarr.h"
 #include "keymap_combo.h"
-#include "keymap_support.c"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_COLS] = {
