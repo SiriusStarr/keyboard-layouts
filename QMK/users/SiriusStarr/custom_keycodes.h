@@ -1,7 +1,5 @@
 #ifdef SVALBOARD
-#ifndef SV_SAFE_RANGE
-#include "keymap_support.c"
-#endif
+#include "keymap_support.h"
 #define RANGE_START SV_SAFE_RANGE
 #else
 #define RANGE_START SAFE_RANGE

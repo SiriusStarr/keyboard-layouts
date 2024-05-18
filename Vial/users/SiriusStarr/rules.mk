@@ -25,7 +25,7 @@ VPATH += keyboards/gboards/g
 VPATH += $(USER_PATH)/defs
 VPATH += $(USER_PATH)/extensions
 # For keymap_support.c
-VPATH += keyboards/svalboard/keymaps 
+VPATH += keyboards/svalboard/keymaps
 
 SRC += SiriusStarr.c
 SRC += achordion_settings.c
@@ -36,5 +36,6 @@ SRC += console_key_logger.c
 SRC += select_word.c
 SRC += macros.c
 SRC += sentence_case.c
+SRC += keymap_support.c
 
 CFLAGS += -fcommon
