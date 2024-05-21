@@ -1,111 +1,110 @@
 #include QMK_KEYBOARD_H
-#include <stdbool.h>
-#include <stdint.h>
 #include "SiriusStarr.h"
 #include "keymap_combo.h"
+#include "layout.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_COLS] = {
     [PRIMARY] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ HOME_A,          KC_DOT,          XXXXXXX,        KC_U,           KC_COMMA,
-        /*R2*/ HOME_E,          KC_SLASH,        XXXXXXX,        KC_O,           KC_SEMICOLON,
-        /*R3*/ HOME_I,          KC_DOUBLE_QUOTE, XXXXXXX,        KC_Y,           KC_MINUS,
-        /*R4*/ HOME_H,          KC_QUOTE,        XXXXXXX,        B_HOLD_BUTTON,  COMBO_QU,
+             /*Center      North       East         South          West*/
+        /*R1*/ R_1_H_BASE, R_1_T_BASE, XXXXXXX,     R_1_B_BASE,    R_I_H_BASE,
+        /*R2*/ R_2_H_BASE, R_2_T_BASE, XXXXXXX,     R_2_B_BASE,    R_I_T_BASE,
+        /*R3*/ R_3_H_BASE, R_3_T_BASE, XXXXXXX,     R_3_B_BASE,    R_I_B_BASE,
+        /*R4*/ R_4_H_BASE, R_4_T_BASE, XXXXXXX,     R_4_B_BASE,    COMBO_QU,
 
-        /*L1*/ HOME_T,          KC_G,            KC_K,           KC_D,           XXXXXXX,
-        /*L2*/ HOME_N,          KC_M,            KC_J,           KC_L,           XXXXXXX,
-        /*L3*/ HOME_S,          KC_X,            KC_V,           KC_F,           XXXXXXX,
-        /*L4*/ HOME_C,          KC_W,            KC_Z,           P_HOLD_BUT,     XXXXXXX,
+        /*L1*/ L_1_H_BASE, L_1_T_BASE, L_I_H_BASE,  L_1_B_BASE,    XXXXXXX,
+        /*L2*/ L_2_H_BASE, L_2_T_BASE, L_I_T_BASE,  L_2_B_BASE,    XXXXXXX,
+        /*L3*/ L_3_H_BASE, L_3_T_BASE, L_I_B_BASE,  L_3_B_BASE,    XXXXXXX,
+        /*L4*/ L_4_H_BASE, L_4_T_BASE, KC_Z,        L_4_B_BASE,    XXXXXXX,
 
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_ENTER,        SPACE_HOLD_NAS,  XXXXXXX,        TAB_HOLD_FUNC,  XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_BACKSPACE,    R_HOLD_NAV,      XXXXXXX,        ESC_HOLD_MOUSE, XXXXXXX,     XXXXXXX
+             /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_BASE, R_T_1_BASE, XXXXXXX,     R_T_3_BASE,    XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_BASE, L_T_1_BASE, XXXXXXX,     L_T_3_BASE,    XXXXXXX,     XXXXXXX
     ),
 
     [NUMBER_AND_SYMBOL] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ HRM_L_ANG_BRAC,  KC_DOT,          XXXXXXX,        KC_LBRC,        KC_COMMA,
-        /*R2*/ HRM_PIPE,        KC_PLUS,         XXXXXXX,        KC_EQUAL,       XXXXXXX,
-        /*R3*/ HRM_MINUS,       KC_HASH,         XXXXXXX,        KC_GRAVE,       XXXXXXX,
-        /*R4*/ HRM_R_ANG_BRAC,  XXXXXXX,         XXXXXXX,        KC_ASTERISK,    XXXXXXX,
+             /*Center      North       East         South          West*/
+        /*R1*/ R_1_H_NAS, R_1_T_NAS,   XXXXXXX,     R_1_B_NAS,     R_I_H_NAS,
+        /*R2*/ R_2_H_NAS, R_2_T_NAS,   XXXXXXX,     R_2_B_NAS,     R_I_T_NAS,
+        /*R3*/ R_3_H_NAS, R_3_T_NAS,   XXXXXXX,     R_3_B_NAS,     R_I_B_NAS,
+        /*R4*/ R_4_H_NAS, R_4_T_NAS,   XXXXXXX,     R_4_B_NAS,     XXXXXXX,
 
-        /*L1*/ LSFT_T(KC_1),    KC_7,            KC_PERCENT,     KC_3,           XXXXXXX,
-        /*L2*/ LCTL_T(KC_2),    KC_8,            XXXXXXX,        KC_4,           XXXXXXX,
-        /*L3*/ LALT_T(KC_5),    KC_9,            XXXXXXX,        KC_6,           XXXXXXX,
-        /*L4*/ LGUI_T(KC_0),    KC_AMPERSAND,    XXXXXXX,        KC_AT,          XXXXXXX,
+        /*L1*/ L_1_H_NAS, L_1_T_NAS,   L_I_H_NAS,   L_1_B_NAS,     XXXXXXX,
+        /*L2*/ L_2_H_NAS, L_2_T_NAS,   L_I_T_NAS,   L_2_B_NAS,     XXXXXXX,
+        /*L3*/ L_3_H_NAS, L_3_T_NAS,   L_I_B_NAS,   L_3_B_NAS,     XXXXXXX,
+        /*L4*/ L_4_H_NAS, L_4_T_NAS,   XXXXXXX,     L_4_B_NAS,     XXXXXXX,
 
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ XXXXXXX,         _______,         XXXXXXX,        XXXXXXX,        XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_TILDE,        KC_LCBR,         XXXXXXX,        KC_DOLLAR,      XXXXXXX,     XXXXXXX
-    ),
-
-    [FUNCTION_AND_MEDIA] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ HRM_MSTP,        XXXXXXX,         XXXXXXX,        KC_MPRV,        XXXXXXX,
-        /*R2*/ HRM_MPLY,        KC_BRID,         XXXXXXX,        KC_VOLD,        XXXXXXX,
-        /*R3*/ HRM_MUTE,        KC_BRIU,         XXXXXXX,        KC_VOLU,        XXXXXXX,
-        /*R4*/ KC_RGUI,         XXXXXXX,         XXXXXXX,        KC_MNXT,        XXXXXXX,
-
-        /*L1*/ KC_F1,           KC_F7,           KC_SCROLL_LOCK, KC_F3,          XXXXXXX,
-        /*L2*/ KC_F2,           KC_F8,           KC_PSCR,        KC_F4,          XXXXXXX,
-        /*L3*/ KC_F5,           KC_F9,           KC_PAUSE,       KC_F6,          XXXXXXX,
-        /*L4*/ KC_F10,          KC_F12,          XXXXXXX,        KC_F11,         XXXXXXX,
-
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ XXXXXXX,         XXXXXXX,         XXXXXXX,        _______,        XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_BACKSPACE,    KC_R,            XXXXXXX,        KC_ESCAPE,      XXXXXXX,     XXXXXXX
+             /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_NAS, R_T_1_NAS,   XXXXXXX,     R_T_3_NAS,     XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_NAS, L_T_1_NAS,   XXXXXXX,     L_T_3_NAS,     XXXXXXX,     XXXXXXX
     ),
 
     [NAVIGATION] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ KC_LEFT,         CW_TOGG,         XXXXXXX,        KC_HOME,        KC_CAPS,
-        /*R2*/ KC_DOWN,         SEL_WORD,        XXXXXXX,        KC_PAGE_DOWN,   XXXXXXX,
-        /*R3*/ KC_UP,           XXXXXXX,         XXXXXXX,        KC_PAGE_UP,     KC_INSERT,
-        /*R4*/ KC_RIGHT,        XXXXXXX,         XXXXXXX,        KC_END,         XXXXXXX,
+             /*Center      North       East         South          West*/
+        /*R1*/ R_1_H_NAV, R_1_T_NAV,   XXXXXXX,     R_1_B_NAV,     R_I_H_NAV,
+        /*R2*/ R_2_H_NAV, R_2_T_NAV,   XXXXXXX,     R_2_B_NAV,     R_I_T_NAV,
+        /*R3*/ R_3_H_NAV, R_3_T_NAV,   XXXXXXX,     R_3_B_NAV,     R_I_B_NAV,
+        /*R4*/ R_4_H_NAV, R_4_T_NAV,   XXXXXXX,     R_4_B_NAV,     XXXXXXX,
 
-        /*L1*/ KC_LSFT,         XXXXXXX,         REDO,           PASTE,          XXXXXXX,
-        /*L2*/ KC_LCTL,         XXXXXXX,         XXXXXXX,        COPY,           XXXXXXX,
-        /*L3*/ KC_LALT,         XXXXXXX,         XXXXXXX,        CUT,            XXXXXXX,
-        /*L4*/ KC_LGUI,         XXXXXXX,         XXXXXXX,        UNDO,           XXXXXXX,
+        /*L1*/ L_1_H_NAV, L_1_T_NAV,   L_I_H_NAV,   L_1_B_NAV,     XXXXXXX,
+        /*L2*/ L_2_H_NAV, L_2_T_NAV,   L_I_T_NAV,   L_2_B_NAV,     XXXXXXX,
+        /*L3*/ L_3_H_NAV, L_3_T_NAV,   L_I_B_NAV,   L_3_B_NAV,     XXXXXXX,
+        /*L4*/ L_4_H_NAV, L_4_T_NAV,   XXXXXXX,     L_4_B_NAV,     XXXXXXX,
 
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_ENTER,        KC_SPACE,        XXXXXXX,        KC_TAB,         XXXXXXX,     XXXXXXX,
-        /*LT*/ XXXXXXX,         _______,         XXXXXXX,        XXXXXXX,        XXXXXXX,     XXXXXXX
+             /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_NAV, R_T_1_NAV,   XXXXXXX,     R_T_3_NAV,     XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_NAV, L_T_1_NAV,   XXXXXXX,     L_T_3_NAV,     XXXXXXX,     XXXXXXX
+    ),
+
+    [FUNCTION_AND_MEDIA] = LAYOUT(
+             /*Center      North       East         South          West*/
+        /*R1*/ R_1_H_FAM, R_1_T_FAM,   XXXXXXX,     R_1_B_FAM,     R_I_H_FAM,
+        /*R2*/ R_2_H_FAM, R_2_T_FAM,   XXXXXXX,     R_2_B_FAM,     R_I_T_FAM,
+        /*R3*/ R_3_H_FAM, R_3_T_FAM,   XXXXXXX,     R_3_B_FAM,     R_I_B_FAM,
+        /*R4*/ R_4_H_FAM, R_4_T_FAM,   XXXXXXX,     R_4_B_FAM,     XXXXXXX,
+
+        /*L1*/ L_1_H_FAM, L_1_T_FAM,   L_I_H_FAM,   L_1_B_FAM,     XXXXXXX,
+        /*L2*/ L_2_H_FAM, L_2_T_FAM,   L_I_T_FAM,   L_2_B_FAM,     XXXXXXX,
+        /*L3*/ L_3_H_FAM, L_3_T_FAM,   L_I_B_FAM,   L_3_B_FAM,     XXXXXXX,
+        /*L4*/ L_4_H_FAM, L_4_T_FAM,   XXXXXXX,     L_4_B_FAM,     XXXXXXX,
+
+             /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_FAM, R_T_1_FAM,   XXXXXXX,     R_T_3_FAM,     XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_FAM, L_T_1_FAM,   XXXXXXX,     L_T_3_FAM,     XXXXXXX,     XXXXXXX
     ),
 
     [MOUSE] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ KC_MS_LEFT,      PASTE,           XXXXXXX,        KC_MS_WH_LEFT,  REDO,
-        /*R2*/ KC_MS_DOWN,      COPY,            XXXXXXX,        KC_MS_WH_DOWN,  XXXXXXX,
-        /*R3*/ KC_MS_UP,        CUT,             XXXXXXX,        KC_MS_WH_UP,    XXXXXXX,
-        /*R4*/ KC_MS_RIGHT,     UNDO,            XXXXXXX,        KC_MS_WH_RIGHT, XXXXXXX,
+             /*Center       North        East         South          West*/
+        /*R1*/ R_1_H_MOUSE, R_1_T_MOUSE, XXXXXXX,     R_1_B_MOUSE,   R_I_H_MOUSE,
+        /*R2*/ R_2_H_MOUSE, R_2_T_MOUSE, XXXXXXX,     R_2_B_MOUSE,   R_I_T_MOUSE,
+        /*R3*/ R_3_H_MOUSE, R_3_T_MOUSE, XXXXXXX,     R_3_B_MOUSE,   R_I_B_MOUSE,
+        /*R4*/ R_4_H_MOUSE, R_4_T_MOUSE, XXXXXXX,     R_4_B_MOUSE,   XXXXXXX,
 
-        /*L1*/ KC_LSFT,         XXXXXXX,         REDO,           PASTE,          XXXXXXX,
-        /*L2*/ KC_LCTL,         XXXXXXX,         XXXXXXX,        COPY,           XXXXXXX,
-        /*L3*/ KC_LALT,         XXXXXXX,         XXXXXXX,        CUT,            XXXXXXX,
-        /*L4*/ KC_LGUI,         XXXXXXX,         XXXXXXX,        UNDO,           XXXXXXX,
+        /*L1*/ L_1_H_MOUSE, L_1_T_MOUSE, L_I_H_MOUSE, L_1_B_MOUSE,   XXXXXXX,
+        /*L2*/ L_2_H_MOUSE, L_2_T_MOUSE, L_I_T_MOUSE, L_2_B_MOUSE,   XXXXXXX,
+        /*L3*/ L_3_H_MOUSE, L_3_T_MOUSE, L_I_B_MOUSE, L_3_B_MOUSE,   XXXXXXX,
+        /*L4*/ L_4_H_MOUSE, L_4_T_MOUSE, XXXXXXX,     L_4_B_MOUSE,   XXXXXXX,
 
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX,
-        /*LT*/ XXXXXXX,         XXXXXXX,         XXXXXXX,        _______,        XXXXXXX,     XXXXXXX
+             /*Down         Inner (pad)  Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_MOUSE, R_T_1_MOUSE, XXXXXXX,     R_T_3_MOUSE,   XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_MOUSE, L_T_1_MOUSE, XXXXXXX,     L_T_3_MOUSE,   XXXXXXX,     XXXXXXX
     ),
 
     [BUTTON] = LAYOUT(
-             /*Center           North            East            South           West*/
-        /*R1*/ KC_RSFT,         PASTE,           XXXXXXX,        PASTE,          REDO,
-        /*R2*/ KC_RCTL,         COPY,            XXXXXXX,        COPY,           XXXXXXX,
-        /*R3*/ KC_RALT,         CUT,             XXXXXXX,        CUT,            XXXXXXX,
-        /*R4*/ KC_RGUI,         UNDO,            XXXXXXX,        UNDO,           XXXXXXX,
+             /*Center      North       East         South          West*/
+        /*R1*/ R_1_H_BUT, R_1_T_BUT,   XXXXXXX,     R_1_B_BUT,     R_I_H_BUT,
+        /*R2*/ R_2_H_BUT, R_2_T_BUT,   XXXXXXX,     R_2_B_BUT,     R_I_T_BUT,
+        /*R3*/ R_3_H_BUT, R_3_T_BUT,   XXXXXXX,     R_3_B_BUT,     R_I_B_BUT,
+        /*R4*/ R_4_H_BUT, R_4_T_BUT,   XXXXXXX,     R_4_B_BUT,     XXXXXXX,
 
-        /*L1*/ KC_LSFT,         PASTE,           REDO,           PASTE,          XXXXXXX,
-        /*L2*/ KC_LCTL,         COPY,            XXXXXXX,        COPY,           XXXXXXX,
-        /*L3*/ KC_LALT,         CUT,             XXXXXXX,        CUT,            XXXXXXX,
-        /*L4*/ KC_LGUI,         UNDO,            XXXXXXX,        UNDO,           XXXXXXX,
+        /*L1*/ L_1_H_BUT, L_1_T_BUT,   L_I_H_BUT,   L_1_B_BUT,     XXXXXXX,
+        /*L2*/ L_2_H_BUT, L_2_T_BUT,   L_I_T_BUT,   L_2_B_BUT,     XXXXXXX,
+        /*L3*/ L_3_H_BUT, L_3_T_BUT,   L_I_B_BUT,   L_3_B_BUT,     XXXXXXX,
+        /*L4*/ L_4_H_BUT, L_4_T_BUT,   XXXXXXX,     L_4_B_BUT,     XXXXXXX,
 
-             /*Down             Inner (pad)      Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/
-        /*RT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX,
-        /*LT*/ KC_MS_BTN2,      KC_MS_BTN1,      XXXXXXX,        KC_MS_BTN3,     XXXXXXX,     XXXXXXX
+             /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough*/
+        /*RT*/ R_T_2_BUT, R_T_1_BUT,   XXXXXXX,     R_T_3_BUT,     XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_BUT, L_T_1_BUT,   XXXXXXX,     L_T_3_BUT,     XXXXXXX,     XXXXXXX
     ),
 
     [MH_AUTO_BUTTONS_LAYER] = LAYOUT(
