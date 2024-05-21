@@ -13,18 +13,18 @@
 #define R_3_T_BASE KC_DOUBLE_QUOTE
 #define R_4_T_BASE KC_QUOTE
 // Home Row
-#define L_4_H_BASE HOME_C
-#define L_3_H_BASE HOME_S
-#define L_2_H_BASE HOME_N
-#define L_1_H_BASE HOME_T
+#define L_4_H_BASE LGUI_T(KC_C)
+#define L_3_H_BASE LALT_T(KC_S)
+#define L_2_H_BASE LCTL_T(KC_N)
+#define L_1_H_BASE LSFT_T(KC_T)
 #define L_I_H_BASE KC_K
 #define R_I_H_BASE KC_COMMA
-#define R_1_H_BASE HOME_A
-#define R_2_H_BASE HOME_E
-#define R_3_H_BASE HOME_I
-#define R_4_H_BASE HOME_H
+#define R_1_H_BASE RSFT_T(KC_A)
+#define R_2_H_BASE RCTL_T(KC_E)
+#define R_3_H_BASE RALT_T(KC_I)
+#define R_4_H_BASE RGUI_T(KC_H)
 // Bottom Row
-#define L_4_B_BASE P_HOLD_BUT
+#define L_4_B_BASE LT(BUTTON, KC_P)
 #define L_3_B_BASE KC_F
 #define L_2_B_BASE KC_L
 #define L_1_B_BASE KC_D
@@ -33,14 +33,14 @@
 #define R_1_B_BASE KC_U
 #define R_2_B_BASE KC_O
 #define R_3_B_BASE KC_Y
-#define R_4_B_BASE B_HOLD_BUTTON
+#define R_4_B_BASE LT(BUTTON, KC_B)
 // Thumbs
-#define L_T_1_BASE R_HOLD_NAV
+#define L_T_1_BASE LT(NAVIGATION, KC_R)
 #define L_T_2_BASE KC_BACKSPACE
-#define L_T_3_BASE ESC_HOLD_MOUSE
-#define R_T_1_BASE SPACE_HOLD_NAS
+#define L_T_3_BASE LT(MOUSE, KC_ESCAPE)
+#define R_T_1_BASE LT(NUMBER_AND_SYMBOL, KC_SPACE)
 #define R_T_2_BASE KC_ENTER
-#define R_T_3_BASE TAB_HOLD_FUNC
+#define R_T_3_BASE LT(FUNCTION_AND_MEDIA, KC_TAB)
 
 
 // Number & Symbol Layer
@@ -64,7 +64,7 @@
 #define R_I_H_NAS KC_COMMA
 #define R_1_H_NAS HRM_L_ANG_BRAC
 #define R_2_H_NAS HRM_PIPE
-#define R_3_H_NAS HRM_MINUS
+#define R_3_H_NAS RALT_T(KC_MINUS)
 #define R_4_H_NAS HRM_R_ANG_BRAC
 // Bottom Row
 #define L_4_B_NAS KC_AT
@@ -148,9 +148,9 @@
 #define L_1_H_FAM KC_F1
 #define L_I_H_FAM KC_SCROLL_LOCK
 #define R_I_H_FAM XXXXXXX
-#define R_1_H_FAM HRM_MSTP
-#define R_2_H_FAM HRM_MPLY
-#define R_3_H_FAM HRM_MUTE
+#define R_1_H_FAM RSFT_T(KC_MSTP)
+#define R_2_H_FAM RCTL_T(KC_MPLY)
+#define R_3_H_FAM RALT_T(KC_MUTE)
 #define R_4_H_FAM KC_RGUI
 // Bottom Row
 #define L_4_B_FAM KC_F11
