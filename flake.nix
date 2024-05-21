@@ -99,7 +99,6 @@
               ln -fs ${self}/QMK/users/SiriusStarr/defs /tmp/vial_firmware/users/SiriusStarr/
               ln -fs ${self}/QMK/users/SiriusStarr/extensions /tmp/vial_firmware/users/SiriusStarr/
               ln -fs ${self}/QMK/users/SiriusStarr/* /tmp/vial_firmware/users/SiriusStarr/
-              ln -fs ${self}/Vial/users/SiriusStarr/config.h /tmp/vial_firmware/users/SiriusStarr/
               ln -fs ${self}/Vial/users/SiriusStarr/rules.mk /tmp/vial_firmware/users/SiriusStarr/
             '';
           in
