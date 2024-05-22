@@ -18,9 +18,9 @@
 #define CUT            LCTL(KC_X)
 #define UNDO           LCTL(KC_Z)
 
-#define HRM_L_ANG_BRAC RSFT_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
-#define HRM_PIPE       RCTL_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
-#define HRM_R_ANG_BRAC RGUI_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
+#define HRM_L_ANG_BRAC LALT_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
+#define HRM_PIPE       LCTL_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
+#define HRM_R_ANG_BRAC LSFT_T(KC_LANGUAGE_9)  // Ugly hack, since MT() only works with basic codes
 #define COMBO_QU       LT(0, KC_LANGUAGE_9)   // Ugly hack, since LT() only works with basic codes
 
 #endif

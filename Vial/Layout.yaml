@@ -2,92 +2,145 @@ layout:
   qmk_info_json: Vial/svalboard-info.json
 layers:
   Base:
-    - [{ t: C, h: Meta }, W, Z, { t: P, h: Button }, ""]
-    - [{ t: S, h: Alt }, X, V, F, ""]
-    - [{ t: N, h: Ctrl }, M, J, L, ""]
-    - [{ t: T, h: Shift }, G, K, D, ""]
-    - [{ t: Bksp, s: Del, h: Mouse }, { t: R, h: Nav }, "", Esc, "", ""]
-    - [{ t: Enter, h: Fun/Med }, { t: Space, h: Num/Sym }, "", Tab, "", ""]
-    - [{ t: A, h: Shift }, { t: ., s: ( }, { t: ",", s: ) }, U, ""]
-    - [{ t: E, h: Ctrl }, { t: /, s: \ }, "", O, { t: ;, s: ":" }]
-    - [{ t: I, h: Alt }, { t: '"', s: "?" }, "", Y, { t: "-", s: _ }]
-    - [{ t: H, h: Meta }, { t: "'", s: "!" }, "", { t: B, h: Button }, "qu/q"]
-  Numbers & Symbols:
-    - [{ t: 0, h: Meta }, "&", "", "@", ""]
-    - [{ t: 5, h: Alt }, 9, "", 6, ""]
-    - [{ t: 2, h: Ctrl }, 8, "", 4, ""]
-    - [{ t: 1, h: Shift }, 7, "%", 3, ""]
-    - [{ t: "~", s: "^" }, { t: "{", s: "}" }, "", "$", "", ""]
-    - ["", { type: held }, "", "", "", ""]
     - [
-        { t: <, h: Shift },
-        { t: ., s: ( },
-        { t: ",", s: ) },
-        { t: "[", s: "]" },
+        W,
+        X,
+        M,
+        G,
+        { t: ., s: ":" },
+        { t: /, s: \ },
+        { t: '"', s: "?" },
+        { t: "'", s: "!" },
+      ]
+    - [
+        { t: C, h: Meta },
+        { t: S, h: Alt },
+        { t: N, h: Ctrl },
+        { t: T, h: Shift },
+
+        { t: A, h: Shift },
+        { t: E, h: Ctrl },
+        { t: I, h: Alt },
+        { t: H, h: Meta },
+      ]
+    - [
+        Z,
+        V,
+        J,
+        K,
+        { t: ",", s: ";" },
+        { t: "*", s: "#" },
+        { t: "-", s: _ },
+        { t: "QU", h: "Q" },
+      ]
+    - [{ t: P, h: Button }, F, L, D, U, O, Y, { t: B, h: Button }]
+    - [
+        { t: R, h: N&S },
+        { t: ⌫, s: ⌦ },
+        { t: Esc, h: F&M },
+        { t: ⭾, h: Mouse },
+        ↵,
+        { t: ␣, h: Nav },
+      ]
+  Numbers & Symbols:
+    - ["%", "@", $, { t: "~", s: "^" }, 7, 8, 9, ""]
+    - [
+        { t: "-", h: Meta },
+        { t: "<", h: Alt },
+        { t: "|", h: Ctrl },
+        { t: ">", h: Shift },
+        { t: 1, h: Shift },
+        { t: 2, h: Ctrl },
+        { t: 5, h: Alt },
+        { t: 0, h: Meta },
+      ]
+    - ["", "", "", "", "", "", "", ""]
+    - ["&", +, "=", "`", 3, 4, 6, ""]
+    - [{ type: held }, "", "", "", ",", "."]
+  Nav:
+    - [
+        Ins,
+        "Caps Lock",
+        { t: "Sel Word", s: "Sel Sent" },
+        "Caps Word",
+        Paste,
+        Copy,
+        Cut,
+        Undo,
+      ]
+    - [←, ↑, ↓, →, Shift, Ctrl, Alt, Meta]
+    - ["", "", "", "", Redo, Redo, Redo, ""]
+    - [Home, Pg Up, Pg Dn, End, Paste, Copy, Cut, Undo]
+    - [R, { t: ⌫, s: ⌦ }, Esc, "", "", { type: held }]
+  Function & Media:
+    - ["", 🔆, 🔅, "", F7, F8, F9, F12]
+    - [
+        Meta,
+        { t: 🔇, h: Alt },
+        { t: ◼, h: Ctrl },
+        { t: ⏯, h: Shift },
+        F1,
+        F2,
+        F5,
+        F10,
+      ]
+    - ["", "", "", "", Scrll Lock, PrSc SyRq, Ps Brk, ""]
+    - [⏮, 🔊, 🔉, ⏭, F3, F4, F6, F11]
+    - ["", "", { type: held }, ⭾, ↵, ␣]
+  Mouse:
+    - ["", "", "", "", Paste, Copy, Cut, Undo]
+    - [🖰 Left, 🖰 Up, 🖰 Down, 🖰 Right, Shift, Ctrl, Alt, Meta]
+    - ["", "", "", "", Redo, Redo, Redo, ""]
+    - [
+        Scroll Left,
+        Scroll Up,
+        Scroll Down,
+        Scroll Right,
+        Paste,
+        Copy,
+        Cut,
+        Undo,
+      ]
+    - [Left Clck, Right Clck, Mid Clck, { type: held }, "", ""]
+  Button:
+    - [Undo, Cut, Copy, Paste, Paste, Copy, Cut, Undo]
+    - [Meta, Alt, Ctrl, Shift, Shift, Ctrl, Alt, Meta]
+    - ["", Redo, Redo, Redo, Redo, Redo, Redo, ""]
+    - [
+        { t: Undo, type: held },
+        Cut,
+        Copy,
+        Paste,
+        Paste,
+        Copy,
+        Cut,
+
+        { t: Undo, type: held },
+      ]
+    - [Left Clck, Right Clck, Mid Clck, Mid Clck, Right Clck, Left Clck]
+  Mouse Button Override:
+    - ["", "", "", "", "", "", "", ""]
+    - [Meta, Alt, Ctrl, Shift, Shift, Ctrl, Alt, Meta]
+    - ["", "", "", Cali Tp, Cali Tp, "", "", ""]
+    - [
+        "",
+        Right Click,
+        Mid Click,
+        Left Click,
+        Left Click,
+        Mid Click,
+        Right Click,
         "",
       ]
-    - [{ t: "|", h: Ctrl }, +, "", "=", { t: ;, s: ":" }]
-    - [{ t: "-", h: Alt }, "#", "", "`", ""]
-    - [{ t: ">", h: Meta }, "", "", { t: "*", s: / }, ""]
-  Nav:
-    - [Meta, "", "", Undo, ""]
-    - [Alt, "", "", Cut, ""]
-    - [Ctrl, "", "", Copy, ""]
-    - [Shift, "", Redo, Paste, ""]
-    - ["", { type: held }, "", "", "", ""]
-    - [Enter, Space, "", Tab, "", ""]
-    - [Left, Caps Word, Caps Lock, Home, ""]
-    - [Down, { t: Sel Word, s: Sel Sent }, "", Pg Dn, ""]
-    - [Up, "#", "", Pg Up, Ins]
-    - [Right, "", "", End, ""]
-  Function & Media:
-    - [{ t: F10, h: Meta }, F12, "", F11, ""]
-    - [{ t: F5, h: Alt }, F9, Pause Break, F6, ""]
-    - [{ t: F2, h: Ctrl }, F8, PrtScn SysRq, F4, ""]
-    - [{ t: F1, h: Shift }, F7, Scroll Lock, F3, ""]
-    - [{ t: Bksp, s: Del }, R, "", Esc, "", ""]
-    - ["", "", "", { type: held }, "", ""]
-    - [{ t: Stop, h: Shift }, "", "", Prev, ""]
-    - [{ t: "Play Pause", h: Ctrl }, Disp Brtns Down, "", Volume Down, ""]
-    - [{ t: Mute, h: Alt }, Disp Brtns Up, "", Volume Up, ""]
-    - [Meta, "", "", Next, ""]
-  Mouse:
-    - [Meta, "", "", "", ""]
-    - [Alt, "", "", "", ""]
-    - [Ctrl, "", "", "", ""]
-    - [Shift, "", "", "", ""]
-    - ["", "", "", { type: held }, "", ""]
-    - [Right Click, Left Click, "", Middle Click, "", ""]
-    - [Mouse Left, Paste, "Redo", Scroll Left, ""]
-    - [Mouse Down, Copy, "", Scroll Down, ""]
-    - [Mouse Up, Cut, "", Scroll Up, ""]
-    - [Mouse Right, Undo, "", Scroll Right, ""]
-  Button:
-    - [Meta, Undo, "", { t: Undo, type: held }, ""]
-    - [Alt, Cut, "", Cut, ""]
-    - [Ctrl, Copy, "", Copy, ""]
-    - [Shift, Paste, Redo, Paste, ""]
-    - [Right Click, Left Click, "", Middle Click, "", ""]
-    - [Right Click, Left Click, "", Middle Click, "", ""]
-    - [Shift, Paste, Redo, Paste, ""]
-    - [Alt, Cut, "", Cut, ""]
-    - [Ctrl, Copy, "", Copy, ""]
-    - [Meta, Undo, "", { t: Undo, type: held }, ""]
-  Mouse Button Override:
-    - [Meta, "", "", "", ""]
-    - [Alt, "", "", "Right Click", ""]
-    - [Ctrl, "", "", "Middle Click", ""]
-    - [Shift, "", "Cali TP", "Left Click", ""]
-    - [Scroll Up, Scroll Down, "", "", "", ""]
-    - [Scroll Up, Scroll Down, "", "", "", ""]
-    - [Shift, "", "", "", ""]
-    - [Ctrl, "", "", "", ""]
-    - [Alt, "", "", "", ""]
-    - [Meta, "", "", "", ""]
+    - [Scrll Down, Scrll Up, "", "", Scrll Up, Scrll Down]
+
 combos:
-  - { p: [6, 11], k: wh, l: ["Base"], align: top }
-  - { p: [11, 16], k: gh, l: ["Base"] }
-  - { p: [5, 10], k: sh, l: ["Base"], align: top, offset: -1.25 }
-  - { p: [10, 15], k: th, l: ["Base"], align: bottom, offset: -1.25 }
-  - { p: [0, 15], k: ch, l: ["Base"], align: bottom, offset: 0.25 }
-  - { p: [8, 18], k: ph, l: ["Base"] }
+  - { p: [1, 2], k: WH, l: ["Base"] }
+  - { p: [2, 3], k: GH, l: ["Base"] }
+  - { p: [9, 10], k: SH, l: ["Base"], draw_separate: true }
+  - { p: [10, 11], k: TH, l: ["Base"], draw_separate: true }
+  - { p: [8, 11], k: CH, l: ["Base"], draw_separate: true }
+  - { p: [25, 27], k: PH, l: ["Base"], align: bottom }
+  - { p: [12, 13], k: { t: "(", s: ")" }, l: ["Base"], draw_separate: true }
+  - { p: [13, 14], k: { t: "{", s: "}" }, l: ["Base"], draw_separate: true }
+  - { p: [12, 14], k: { t: "[", s: "]" }, l: ["Base"], draw_separate: true }
