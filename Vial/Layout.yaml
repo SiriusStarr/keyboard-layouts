@@ -45,8 +45,8 @@ layers:
   Numbers & Symbols:
     - ["%", "@", $, { t: "~", s: "^" }, 7, 8, 9, ""]
     - [
-        { t: "-", h: Meta },
-        { t: "<", h: Alt },
+        { t: "<", h: Meta },
+        { t: "-", h: Alt },
         { t: "|", h: Ctrl },
         { t: ">", h: Shift },
         { t: 1, h: Shift },

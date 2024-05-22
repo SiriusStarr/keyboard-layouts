@@ -56,8 +56,8 @@
 #define R_3_T_NAS KC_9
 #define R_4_T_NAS XXXXXXX
 // Home Row
-#define L_4_H_NAS LGUI_T(KC_MINUS)
-#define L_3_H_NAS HRM_L_ANG_BRAC
+#define L_4_H_NAS HRM_L_ANG_BRAC
+#define L_3_H_NAS LALT_T(KC_MINUS)
 #define L_2_H_NAS HRM_PIPE
 #define L_1_H_NAS HRM_R_ANG_BRAC
 #define L_I_H_NAS XXXXXXX
