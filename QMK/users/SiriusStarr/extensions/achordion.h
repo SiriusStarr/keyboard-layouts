@@ -53,6 +53,27 @@
 
 #include "quantum.h"
 
+/**
+ * Suppress tap-hold mods within a *typing streak* by defining
+ * ACHORDION_STREAK. This can help preventing accidental mod
+ * activation when performing a fast tapping sequence.
+ * This is inspired by https://sunaku.github.io/home-row-mods.html#typing-streaks
+ *
+ * Enable with:
+ *
+ *    #define ACHORDION_STREAK
+ *
+ * Adjust the maximum time between key events before modifiers can be enabled
+ * by defining the following callback in your keymap.c:
+ *
+ *    uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
+ *      return 100;  // Default of 100 ms.
+ *    }
+ */
+#ifdef ACHORDION_STREAK
+uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode);
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -62,7 +83,7 @@ extern "C" {
  *
  * Call this function from `process_record_user()` as
  *
- *     #include "achordion.h"
+ *     #include "features/achordion.h"
  *
  *     bool process_record_user(uint16_t keycode, keyrecord_t* record) {
  *       if (!process_achordion(keycode, record)) { return false; }
