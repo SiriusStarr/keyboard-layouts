@@ -7,10 +7,14 @@
 
 enum custom_keycodes {
   SEL_WORD = RANGE_START,
+  COMBO_Z,
   COMBO_WH,
   COMBO_GH,
   COMBO_CH,
   COMBO_SH,
   COMBO_TH,
   COMBO_PH,
+  COMBO_PAREN,
+  COMBO_BRACE,
+  COMBO_BRACK,
 };

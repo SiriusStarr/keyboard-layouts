@@ -2,20 +2,47 @@
 #include "SiriusStarr.h"
 #include "macros.h"
 
-#ifdef PS2_MOUSE_ENABLE
-#include "ps2_mouse.h"
-#include "ps2.h"
-#endif
 
 // Helper for digraph combos.
 static bool digraph_combo(keyrecord_t *record, uint16_t first_letter, uint16_t second_letter) {
   if (record->event.pressed) {
-    if (is_caps_word_on()) {
-      add_weak_mods(MOD_BIT(KC_LSFT));
+    // Fire digraph combos only on base layer
+    if (layer_state_cmp(layer_state, PRIMARY)) {
+      if (is_caps_word_on()) {
+        add_weak_mods(MOD_BIT(KC_LSFT));
+      }
+      tap_code16(first_letter);
+      unregister_mods(MOD_MASK_SHIFT);
+      tap_code16(second_letter);
     }
-    tap_code16(first_letter);
-    unregister_mods(MOD_MASK_SHIFT);
-    tap_code16(second_letter);
+  }
+  return false;
+}
+
+// Helper for combos that should resolve to HRMs if they aren't on base.
+static bool hrm_combo(keyrecord_t *record, uint16_t key, uint16_t shifted_key, int first_hold, int second_hold) {
+  if (record->event.pressed) {
+    // If on base layer
+    if (layer_state_cmp(layer_state, PRIMARY)) {
+      // Key overrides don't work for macros, so we have to do this manually
+      if (get_mods() & MOD_MASK_SHIFT) {
+        // Turn off shift, since sometimes we want an unshifted key
+        unregister_mods(MOD_MASK_SHIFT);
+        tap_code16(shifted_key);
+        register_mods(MOD_MASK_SHIFT);
+      } else {
+        // No shift and on base, so resolve the combo
+        tap_code16(key);
+      }
+    } else {
+      // If not on base layer, set the mod holds, since that's probably what we want.
+      register_code(first_hold);
+      register_code(second_hold);
+    }
+  } else {
+    // If the combo was released, unset the mods.
+    unregister_code(first_hold);
+    unregister_code(second_hold);
   }
   return false;
 }
@@ -47,6 +74,15 @@ bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
         tap_code16(KC_U);
       }
     }
+    return false;
+  case COMBO_PAREN:
+    hrm_combo(record, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_RSFT, KC_RCTL);
+    return false;
+  case COMBO_BRACE:
+    hrm_combo(record, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_RCTL, KC_RALT);
+    return false;
+  case COMBO_BRACK:
+    hrm_combo(record, KC_LEFT_BRACKET, KC_RIGHT_BRACKET, KC_RSFT, KC_RALT);
     return false;
   }
 
