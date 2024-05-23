@@ -49,6 +49,14 @@ static bool hrm_combo(keyrecord_t *record, uint16_t key, uint16_t shifted_key, i
 
 bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case COMBO_Z:
+    if (record->event.pressed) {
+      if (is_caps_word_on()) {
+        add_weak_mods(MOD_BIT(KC_LSFT));
+      }
+      tap_code16(KC_Z);
+    }
+    return false;
   case COMBO_WH:
     return digraph_combo(record, KC_W, KC_H);
   case COMBO_GH:
