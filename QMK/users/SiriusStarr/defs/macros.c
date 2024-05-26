@@ -29,7 +29,6 @@ static bool hrm_combo(keyrecord_t *record, uint16_t key, uint16_t shifted_key, i
         // Turn off shift, since sometimes we want an unshifted key
         unregister_mods(MOD_MASK_SHIFT);
         tap_code16(shifted_key);
-        register_mods(MOD_MASK_SHIFT);
       } else {
         // No shift and on base, so resolve the combo
         tap_code16(key);
