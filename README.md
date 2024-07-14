@@ -7,9 +7,9 @@
 ```bash
 nix develop
 # Plug in left side
-vial-qmk flash -kb svalboard/left -km SiriusStarr
+vial-qmk flash -kb svalboard/trackpoint/left -km SiriusStarr
 # Plug in right side
-vial-qmk flash -kb svalboard/trackpoint/right -km SiriusStarr
+vial-qmk flash -kb svalboard/trackball/pmw3389/right -km SiriusStarr
 ```
 
 For keylogging, set `CONSOLE_ENABLE = yes` in `rules.mk` and uncomment
@@ -46,6 +46,7 @@ eeprom-restore.sh
 
 ```bash
 keymap draw QMK/Layout.yaml > QMK/Layout.svg
+keymap draw Vial/Layout.yaml > Vial/Layout.svg
 keymap draw Kaleidoscope/Layout.yaml > Kaleidoscope/Layout.svg
 ```
 
