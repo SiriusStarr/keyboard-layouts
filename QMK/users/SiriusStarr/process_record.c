@@ -67,3 +67,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_scan_user(void) {
   achordion_task();
 }
+
+void keyboard_post_init_user(void) {
+  global_saved_values.mh_timer_index = 1; // Set mousekeys timer to 500 ms.
+}
