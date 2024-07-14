@@ -50,7 +50,7 @@
 #define L_2_T_NAS KC_DOLLAR
 #define L_1_T_NAS KC_TILDE
 #define L_I_T_NAS XXXXXXX
-#define R_I_T_NAS XXXXXXX
+#define R_I_T_NAS KC_ASTERISK
 #define R_1_T_NAS KC_7
 #define R_2_T_NAS KC_8
 #define R_3_T_NAS KC_9
@@ -61,7 +61,7 @@
 #define L_2_H_NAS HRM_PIPE
 #define L_1_H_NAS HRM_R_ANG_BRAC
 #define L_I_H_NAS XXXXXXX
-#define R_I_H_NAS XXXXXXX
+#define R_I_H_NAS KC_COMMA
 #define R_1_H_NAS RSFT_T(KC_1)
 #define R_2_H_NAS RCTL_T(KC_2)
 #define R_3_H_NAS RALT_T(KC_5)
@@ -72,7 +72,7 @@
 #define L_2_B_NAS KC_EQUAL
 #define L_1_B_NAS KC_GRAVE
 #define L_I_B_NAS XXXXXXX
-#define R_I_B_NAS XXXXXXX
+#define R_I_B_NAS KC_MINUS
 #define R_1_B_NAS KC_3
 #define R_2_B_NAS KC_4
 #define R_3_B_NAS KC_6
