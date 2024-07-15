@@ -18,8 +18,8 @@ const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_C
         /*L4*/ L_4_H_BASE, L_4_T_BASE, KC_Z,        L_4_B_BASE,    XXXXXXX,    XXXXXXX,
 
              /*Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough */
-        /*RT*/ R_T_2_BASE, R_T_1_BASE, XXXXXXX,     R_T_3_BASE,    XXXXXXX,     XXXXXXX,
-        /*LT*/ L_T_2_BASE, L_T_1_BASE, XXXXXXX,     L_T_3_BASE,    XXXXXXX,     XXXXXXX
+        /*RT*/ R_T_2_BASE, R_T_1_BASE, KC_F24,      R_T_3_BASE,    XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_BASE, L_T_1_BASE, KC_F24,      L_T_3_BASE,    XXXXXXX,     XXXXXXX
     ),
 
     [NUMBER_AND_SYMBOL] = LAYOUT(
@@ -119,6 +119,8 @@ const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_C
         /*L3*/ KC_LALT,         _______,         _______,                KC_BTN2,        _______,   _______,
         /*L4*/ KC_LGUI,         _______,         _______,                _______,        _______,   _______,
              /*Down             Inner (pad)      Upper (Mode)            O.Upper (nail)  OL (knuckle) Pushthrough */
+        /*RT*/ KC_MS_WH_UP,     KC_MS_WH_DOWN,   KC_F24,                 _______,        _______,     _______,
+        /*LT*/ KC_MS_WH_UP,     KC_MS_WH_DOWN,   KC_F24,                 _______,        _______,     _______
         )
 
 };
