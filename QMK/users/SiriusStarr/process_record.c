@@ -69,5 +69,27 @@ void matrix_scan_user(void) {
 }
 
 void keyboard_post_init_user(void) {
-  global_saved_values.mh_timer_index = 1; // Set mousekeys timer to 500 ms.
+#ifdef SVALBOARD
+  global_saved_values.mh_timer_index  = 1;  // Set mousekeys timer to 500 ms.
+  global_saved_values.left_scroll     = 1;  // Set left pointer to scroll
+  global_saved_values.right_dpi_index = 5;  // Set right pointer DPI to 2400
+#endif
+}
+
+
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+  // This is taken from https://docs.qmk.fm/features/combo
+  // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you:
+  uint16_t key;
+  uint8_t idx = 0;
+  while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) {
+    switch (key) {
+    case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+    case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+    case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+      return true;
+    }
+    idx += 1;
+  }
+  return false;
 }
