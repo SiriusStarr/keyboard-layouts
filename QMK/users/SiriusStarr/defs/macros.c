@@ -19,29 +19,19 @@ static bool digraph_combo(keyrecord_t *record, uint16_t first_letter, uint16_t s
   return false;
 }
 
-// Helper for combos that should resolve to HRMs if they aren't on base.
-static bool hrm_combo(keyrecord_t *record, uint16_t key, uint16_t shifted_key, int first_hold, int second_hold) {
+// Helper for combos that type something different when shifted.
+static bool shift_override_combo(keyrecord_t *record, uint16_t key, uint16_t shifted_key, int first_hold, int second_hold) {
   if (record->event.pressed) {
-    // If on base layer
-    if (layer_state_cmp(layer_state, PRIMARY)) {
-      // Key overrides don't work for macros, so we have to do this manually
-      if (get_mods() & MOD_MASK_SHIFT) {
-        // Turn off shift, since sometimes we want an unshifted key
-        unregister_mods(MOD_MASK_SHIFT);
-        tap_code16(shifted_key);
-      } else {
-        // No shift and on base, so resolve the combo
-        tap_code16(key);
-      }
+    // Key overrides don't work for macros, so we have to do this manually
+    if (get_mods() & MOD_MASK_SHIFT) {
+      uint8_t temp_mods = get_mods();
+      unregister_mods(MOD_MASK_SHIFT);  // Turn off shift, since sometimes we want an unshifted key
+      tap_code16(shifted_key);
+      set_mods(temp_mods);
     } else {
-      // If not on base layer, set the mod holds, since that's probably what we want.
-      register_code(first_hold);
-      register_code(second_hold);
+      // No shift, so resolve the combo normally
+      tap_code16(key);
     }
-  } else {
-    // If the combo was released, unset the mods.
-    unregister_code(first_hold);
-    unregister_code(second_hold);
   }
   return false;
 }
@@ -83,13 +73,13 @@ bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   case COMBO_PAREN:
-    hrm_combo(record, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_RSFT, KC_RCTL);
+    shift_override_combo(record, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_RSFT, KC_RCTL);
     return false;
   case COMBO_BRACE:
-    hrm_combo(record, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_RCTL, KC_RALT);
+    shift_override_combo(record, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_RCTL, KC_RALT);
     return false;
   case COMBO_BRACK:
-    hrm_combo(record, KC_LEFT_BRACKET, KC_RIGHT_BRACKET, KC_RSFT, KC_RALT);
+    shift_override_combo(record, KC_LEFT_BRACKET, KC_RIGHT_BRACKET, KC_RSFT, KC_RALT);
     return false;
   }
 

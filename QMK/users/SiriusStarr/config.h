@@ -2,6 +2,9 @@
 #define QUICK_TAP_TERM 0  // Disable tap to repeat
 #define PERMISSIVE_HOLD   // Resolve to held value for a key pressed and released while mod-tap is held
 
+// Limit some combos to tap only
+#define COMBO_MUST_TAP_PER_COMBO
+
 // Adaptive keys
 // No longer used
 // #define ADAPTIVE_KEYS_ENABLE
