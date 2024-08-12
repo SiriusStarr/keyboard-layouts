@@ -2,7 +2,7 @@
   description = "My keyboard firmware";
 
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs;
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     kaleidoscope = {
       url = "github:keyboardio/Kaleidoscope";
