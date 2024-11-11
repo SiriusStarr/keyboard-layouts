@@ -23,8 +23,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   }
 
 #ifdef SVALBOARD  // Svalboard flips columns and rows
-  // Also allow same-hand holds for keys a row or more apart
-  if (tap_hold_record->event.key.col != other_record->event.key.col) {
+  // Also allow same-hand holds for keys a row or more apart, if not the same cluster
+  if (tap_hold_record->event.key.row != other_record->event.key.row && tap_hold_record->event.key.col != other_record->event.key.col) {
     return true;
   }
 
