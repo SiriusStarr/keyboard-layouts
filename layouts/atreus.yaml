@@ -1,0 +1,149 @@
+layout:
+  qmk_keyboard: boardsource/microdox/v1
+layers:
+  Base:
+    - [
+        W,
+        X,
+        M,
+        G,
+        J,
+        { t: "*", s: "#" },
+        { t: ., s: ":" },
+        { t: /, s: \ },
+        { t: '"', s: "?" },
+        { t: "'", s: "!" },
+      ]
+    - [
+        { t: C, h: Meta },
+        { t: S, h: Alt },
+        { t: N, h: Ctrl },
+        { t: T, h: Shift },
+        K,
+        { t: ",", s: ";" },
+        { t: A, h: Shift },
+        { t: E, h: Ctrl },
+        { t: I, h: Alt },
+        { t: H, h: Meta },
+      ]
+    - [
+        { t: P, h: Button },
+        F,
+        L,
+        D,
+        V,
+        { t: "-", s: _ },
+        U,
+        O,
+        Y,
+        { t: B, h: Button },
+      ]
+    - [
+        { t: Esc, h: Fun/Med },
+        { t: R, h: Num/Sym },
+        { t: ⌫, s: ⌦ },
+        ↵,
+        { t: ␣, h: Nav },
+        { t: ⭾, h: Mouse },
+      ]
+  Numbers & Symbols:
+    - ["%", "@", $, { t: "~", s: "^" }, "", { t: "*", s: "#" }, 7, 8, 9, ""]
+    - [
+        { t: "<", h: Meta },
+        { t: "-", h: Alt },
+        { t: "|", h: Ctrl },
+        { t: ">", h: Shift },
+        "",
+        { t: ",", s: ";" },
+        { t: 1, h: Shift },
+        { t: 2, h: Ctrl },
+        { t: 5, h: Alt },
+        { t: 0, h: Meta },
+      ]
+    - ["&", +, "=", "`", "", { t: "-", s: _ }, 3, 4, 6, ""]
+    - ["", { type: held }, "", ",", ".", ""]
+  Nav:
+    - [
+        Ins,
+        "Caps Lock",
+        { t: "Sel Word", s: "Sel Sent" },
+        "Caps Word",
+        "",
+        Redo,
+        Paste,
+        Copy,
+        Cut,
+        Undo,
+      ]
+    - [←, ↑, ↓, →, "", Redo, Shift, Ctrl, Alt, Meta]
+    - [Home, Pg Up, Pg Dn, End, "", Redo, Paste, Copy, Cut, Undo]
+    - [Esc, R, { t: ⌫, s: ⌦ }, "", { type: held }, ""]
+  Function & Media:
+    - ["", 🔆, 🔅, "", "", PrtScn SysRq, F7, F8, F9, F12]
+    - [
+        Meta,
+        { t: 🔇, h: Alt },
+        { t: ◼, h: Ctrl },
+        { t: ⏯, h: Shift },
+        "",
+        Scroll Lock,
+        F1,
+        F2,
+        F5,
+        F10,
+      ]
+    - [⏮, 🔊, 🔉, ⏭, "", Pause Break, F3, F4, F6, F11]
+    - [{ type: held }, "", "", ↵, ␣, ⭾]
+  Mouse:
+    - [Undo, Cut, Copy, Paste, Redo, Redo, Paste, Copy, Cut, Undo]
+    - [🖰 Left, 🖰 Up, 🖰 Down, 🖰 Right, "", Redo, Shift, Ctrl, Alt, Meta]
+    - [
+        Scroll Left,
+        Scroll Up,
+        Scroll Down,
+        Scroll Right,
+        "",
+        Redo,
+        Paste,
+        Copy,
+        Cut,
+        Undo,
+      ]
+    - [Middle Click, Left Click, Right Click, "", "", { type: held }]
+  Button:
+    - [Undo, Cut, Copy, Paste, Redo, Redo, Paste, Copy, Cut, Undo]
+    - [Meta, Alt, Ctrl, Shift, Redo, Redo, Shift, Ctrl, Alt, Meta]
+    - [
+        { t: Undo, type: held },
+        Cut,
+        Copy,
+        Paste,
+        Redo,
+        Redo,
+        Paste,
+        Copy,
+        Cut,
+
+        { t: Undo, type: held },
+      ]
+    - [
+        Middle Click,
+        Left Click,
+        Right Click,
+        Right Click,
+        Left Click,
+        Middle Click,
+      ]
+
+combos:
+  - { p: [0, 1], k: Z, l: ["Base"] }
+  - { p: [1, 2], k: WH, l: ["Base"] }
+  - { p: [1, 3], k: { t: "QU", h: "Q" }, l: ["Base"], align: top, offset: 0.3 }
+  - { p: [2, 3], k: GH, l: ["Base"] }
+  - { p: [11, 12], k: SH, l: ["Base"] }
+  - { p: [12, 13], k: TH, l: ["Base"] }
+  - { p: [10, 13], k: CH, l: ["Base"], align: bottom, offset: -0.1 }
+  - { p: [21, 23], k: PH, l: ["Base"], align: bottom, offset: 0.1 }
+  - { p: [16, 17], k: { t: "(", s: ")" }, l: ["Base"] }
+  - { p: [17, 18], k: { t: "{", s: "}" }, l: ["Base"] }
+  - { p: [16, 18], k: { t: "[", s: "]" }, l: ["Base"], align: top }

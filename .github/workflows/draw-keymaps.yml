@@ -1,0 +1,80 @@
+name: Draw Keymaps
+
+on:
+  push:
+    paths:
+      - layouts/*
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # So the reference to the parent commit is available when amending
+          # See:
+          # - https://github.com/stefanzweifel/git-auto-commit-action#using---amend-and---no-edit-as-commit-options
+          # - https://github.com/stefanzweifel/git-auto-commit-action/issues/159#issuecomment-845347950
+          # - https://github.com/actions/checkout
+          fetch-depth: 2
+
+      - name: Install keymap-drawer (pypi)
+        run: pipx install keymap-drawer
+
+      - name: Draw keymaps
+        id: draw
+        run: |
+          artifacts=()
+          error_occurred=0
+
+          mkdir -p "layouts/generated"
+
+          for keymap_file in layouts/*.yaml; do
+              keyboard=$(basename -s .yaml "$keymap_file")
+              echo "INFO: drawing for $keyboard"
+
+              tmp_svg=$(mktemp)
+
+              if keymap  draw "layouts/$keyboard.yaml"  >"$tmp_svg"; then
+                  mv "$tmp_svg" "layouts/generated/$keyboard.svg"
+                  artifacts+=("layouts/generated/$keyboard.svg")
+              else
+                  echo "ERROR: drawing failed for $keyboard!"
+                  error_occurred=1
+              fi
+          done
+
+          joined_artifacts=$(printf '"%s", ' "${artifacts[@]}")
+          printf 'artifacts=[%s]\n' "${joined_artifacts%, }" >> "$GITHUB_OUTPUT"
+
+          if [ $error_occurred -eq 1 ]; then
+              exit 1
+          fi
+
+      - name: Get last commit message
+        id: last_commit_message
+        run: |
+          echo "msg=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+
+      - name: Commit updated images
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: "layouts/generated/*.svg"
+          # So the previous commit is amended instead of creating a new one when desired
+          # See:
+          # - https://github.com/stefanzweifel/git-auto-commit-action#using---amend-and---no-edit-as-commit-options
+          # - https://github.com/stefanzweifel/git-auto-commit-action/issues/159#issuecomment-845347950
+          # - https://github.com/actions/checkout
+          commit_message: "${{steps.last_commit_message.outputs.msg}}"
+          commit_options: "--amend --no-edit"
+          push_options: "--force-with-lease"
+          skip_fetch: true
+
+      - name: Check job success
+        run: |
+          if [ "${{ steps.draw.outcome }}" == "failure" ]; then
+            echo "The draw step failed for some keymaps, please check the logs of that step above!"
+            exit 1
+          fi
