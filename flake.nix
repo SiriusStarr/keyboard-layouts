@@ -81,28 +81,17 @@
 
             qmkSetup = ''
               export QMK_HOME=/tmp/qmk_firmware
-              qmk setup -y
+              qmk setup svalboard/vial-qmk -b vial -y
               rm -rf /tmp/qmk_firmware/.build
               rm -rf /tmp/qmk_firmware/keyboards/keyboardio
-              ln -fs ${self}/QMK/keyboards/* /tmp/qmk_firmware/keyboards
+              rm -rf /tmp/qmk_firmware/keyboards/svalboard/keymaps/SiriusStarr
+              rm -rf /tmp/qmk_firmware/users/SiriusStarr
+              ln -fs ${self}/QMK/keyboards/keyboardio /tmp/qmk_firmware/keyboards/keyboardio
               ln -fs ${self}/QMK/users/* /tmp/qmk_firmware/users
-            '';
-
-            vialSetup = ''
-              alias vial-qmk='env QMK_HOME=/tmp/vial_firmware qmk'
-              vial-qmk setup svalboard/vial-qmk -b vial -y
-              rm -rf /tmp/vial_firmware/.build
-              rm -rf /tmp/vial_firmware/keyboards/svalboard/keymaps/SiriusStarr
-              ln -fs ${self}/Vial/keyboards/svalboard/keymaps/SiriusStarr /tmp/vial_firmware/keyboards/svalboard/keymaps/SiriusStarr
-              rm -rf /tmp/vial_firmware/users/SiriusStarr
-              mkdir /tmp/vial_firmware/users/SiriusStarr
-              ln -fs ${self}/QMK/users/SiriusStarr/defs /tmp/vial_firmware/users/SiriusStarr/
-              ln -fs ${self}/QMK/users/SiriusStarr/extensions /tmp/vial_firmware/users/SiriusStarr/
-              ln -fs ${self}/QMK/users/SiriusStarr/* /tmp/vial_firmware/users/SiriusStarr/
-              ln -fs ${self}/Vial/users/SiriusStarr/rules.mk /tmp/vial_firmware/users/SiriusStarr/
+              ln -fs ${self}/QMK/keyboards/svalboard/keymaps/SiriusStarr /tmp/qmk_firmware/keyboards/svalboard/keymaps/SiriusStarr
             '';
           in
-            kaleidoscopeSetup + vialSetup + qmkSetup;
+            kaleidoscopeSetup + qmkSetup;
         };
       }
     );

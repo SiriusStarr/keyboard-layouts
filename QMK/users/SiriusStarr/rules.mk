@@ -15,13 +15,15 @@ CAPS_WORD_ENABLE = yes
 
 EXTRAKEY_ENABLE = yes    # Audio control and System control
 COMBO_ENABLE = yes       # chording
-LTO_ENABLE = yes
-EXTRAFLAGS += -flto
+
+
 
 # For the combo macros in keymap_combos.h
 VPATH += keyboards/gboards/g
 VPATH += $(USER_PATH)/defs
 VPATH += $(USER_PATH)/extensions
+# For keymap_support.c
+VPATH += keyboards/svalboard/keymaps
 
 SRC += SiriusStarr.c
 SRC += achordion_settings.c

@@ -2,20 +2,20 @@
 
 ## Usage
 
-### Svalboard (Vial)
+### Svalboard (QMK)
 
 ```bash
 nix develop
 # Plug in left side
-vial-qmk flash -kb svalboard/trackpoint/left -km SiriusStarr
+qmk flash -kb svalboard/trackpoint/left -km SiriusStarr
 # Plug in right side
-vial-qmk flash -kb svalboard/trackball/pmw3389/right -km SiriusStarr
+qmk flash -kb svalboard/trackball/pmw3389/right -km SiriusStarr
 ```
 
 For keylogging, set `CONSOLE_ENABLE = yes` in `rules.mk` and uncomment
-`#define CONSOLE_KEY_LOGGER_ENABLE` in `config.h`.  On the host computer, run
-`./listen_keylogger.sh` to log output to `keylog.csv`.  This data can be
-analyzed [here](https://precondition.github.io/qmk-heatmap).
+`#define CONSOLE_KEY_LOGGER_ENABLE` in `config.h`. On the host computer, run
+`./listen_keylogger.sh` to log output to `keylog.csv`. This data can be analyzed
+[here](https://precondition.github.io/qmk-heatmap).
 
 ### Atreus (QMK)
 
@@ -25,9 +25,9 @@ qmk flash -kb keyboardio/atreus -km SiriusStarr
 ```
 
 For keylogging, set `CONSOLE_ENABLE = yes` in `rules.mk` and uncomment
-`#define CONSOLE_KEY_LOGGER_ENABLE` in `config.h`.  On the host computer, run
-`./listen_keylogger.sh` to log output to `keylog.csv`.  This data can be
-analyzed [here](https://precondition.github.io/qmk-heatmap).
+`#define CONSOLE_KEY_LOGGER_ENABLE` in `config.h`. On the host computer, run
+`./listen_keylogger.sh` to log output to `keylog.csv`. This data can be analyzed
+[here](https://precondition.github.io/qmk-heatmap).
 
 ### Kaleidoscope
 
@@ -42,22 +42,14 @@ eeprom-restore.sh
 
 ## Layout
 
-### Updating
-
-```bash
-keymap draw QMK/Layout.yaml > QMK/Layout.svg
-keymap draw Vial/Layout.yaml > Vial/Layout.svg
-keymap draw Kaleidoscope/Layout.yaml > Kaleidoscope/Layout.svg
-```
-
 ### SVG (Atreus)
 
-![QMK Layout](./QMK/Layout.svg)
+![Atreus Layout](./layouts/generated/atreus.svg)
 
 ### SVG (Svaboard)
 
-![Vial Layout](./Vial/Layout.svg)
+![Svalboard Layout](./layouts/generated/svalboard.svg)
 
-### SVG (Kaleidoscope)
+### SVG (Model 100)
 
-![Kaleidoscope Layout](./Kaleidoscope/Layout.svg)
+![Model 100 Layout](./layouts/generated/model100.svg)
