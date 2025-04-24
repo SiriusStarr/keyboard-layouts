@@ -49,7 +49,7 @@ const key_override_t left_right_curly_brace_override =
 const key_override_t tilde_circumflex_override =
   ko_make_basic(MOD_MASK_SHIFT, KC_TILDE, KC_CIRCUMFLEX);  // `~`/`^`
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
   // Base Layer
   &quote_exclaim_override,
   &double_quote_question_override,
@@ -63,6 +63,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
   &backspace_delete_override,
   // Number And Symbol Layer
   &tilde_circumflex_override,
-  NULL};
+};
 
 #endif

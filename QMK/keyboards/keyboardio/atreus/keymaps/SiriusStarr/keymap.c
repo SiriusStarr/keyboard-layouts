@@ -2,6 +2,7 @@
 #include "SiriusStarr.h"
 #include "layout.h"
 #include "keymap_combo.h"
+#include "custom_shifts.c" // This has to be here due to https://github.com/qmk/qmk_firmware/blob/master/docs/ChangeLog/20240825.md#key-override-keymapc-signature-change-24120
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

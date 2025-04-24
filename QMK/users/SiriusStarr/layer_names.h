@@ -1,3 +1,9 @@
+#pragma once
+
+
+#ifndef LAYER_NAMES_H
+#define LAYER_NAMES_H
+
 enum layer_names {
   PRIMARY,
   NUMBER_AND_SYMBOL,
@@ -6,3 +12,6 @@ enum layer_names {
   MOUSE,
   BUTTON,
 };
+
+
+#endif

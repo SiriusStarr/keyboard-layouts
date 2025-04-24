@@ -3,7 +3,6 @@
 
 #include "custom_shift_keys.h"
 
-#include "custom_shifts.c"
 
 #ifdef CUSTOM_SHIFT_KEYS_ENABLE
 
