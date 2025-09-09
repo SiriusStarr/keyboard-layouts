@@ -140,4 +140,10 @@ combos:
   - { p: [1, 3], k: { t: "QU", h: "Q" }, l: ["Base"], align: top, offset: 0.3 }
   - { p: [6, 7], k: { t: "(", s: ")" }, l: ["Base"] }
   - { p: [7, 8], k: { t: "{", s: "}" }, l: ["Base"] }
-  - { p: [6, 8], k: { t: "[", s: "]" }, l: ["Base"], align: top, offset: 0.3 }
+  - {
+      p: [6, 7, 8],
+      k: { t: "[", s: "]" },
+      l: ["Base"],
+      align: top,
+      offset: 0.3,
+    }
