@@ -2,10 +2,10 @@
 
 // Base Layer
 // Top Row
-#define L_4_T_BASE KC_W
-#define L_3_T_BASE KC_X
-#define L_2_T_BASE KC_M
-#define L_1_T_BASE KC_G
+#define L_4_T_BASE KC_V
+#define L_3_T_BASE KC_W
+#define L_2_T_BASE KC_G
+#define L_1_T_BASE KC_M
 #define L_I_T_BASE KC_J
 #define R_I_T_BASE KC_ASTERISK
 #define R_1_T_BASE KC_DOT
@@ -13,22 +13,22 @@
 #define R_3_T_BASE KC_DOUBLE_QUOTE
 #define R_4_T_BASE KC_QUOTE
 // Home Row
-#define L_4_H_BASE LGUI_T(KC_C)
-#define L_3_H_BASE LALT_T(KC_S)
-#define L_2_H_BASE LCTL_T(KC_N)
-#define L_1_H_BASE LSFT_T(KC_T)
+#define L_4_H_BASE LGUI_T(KC_S)
+#define L_3_H_BASE LALT_T(KC_N)
+#define L_2_H_BASE LCTL_T(KC_T)
+#define L_1_H_BASE LSFT_T(KC_H)
 #define L_I_H_BASE KC_K
 #define R_I_H_BASE KC_COMMA
 #define R_1_H_BASE RSFT_T(KC_A)
 #define R_2_H_BASE RCTL_T(KC_E)
 #define R_3_H_BASE RALT_T(KC_I)
-#define R_4_H_BASE RGUI_T(KC_H)
+#define R_4_H_BASE RGUI_T(KC_C)
 // Bottom Row
-#define L_4_B_BASE LT(BUTTON, KC_P)
-#define L_3_B_BASE KC_F
-#define L_2_B_BASE KC_L
-#define L_1_B_BASE KC_D
-#define L_I_B_BASE KC_V
+#define L_4_B_BASE LT(BUTTON, KC_F)
+#define L_3_B_BASE KC_P
+#define L_2_B_BASE KC_D
+#define L_1_B_BASE KC_L
+#define L_I_B_BASE KC_X
 #define R_I_B_BASE KC_MINUS
 #define R_1_B_BASE KC_U
 #define R_2_B_BASE KC_O

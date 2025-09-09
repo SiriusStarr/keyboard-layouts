@@ -3,10 +3,10 @@ layout:
 layers:
   Base:
     - [
+        V,
         W,
-        X,
-        M,
         G,
+        M,
         J,
         { t: "*", s: "#" },
         { t: ., s: ":" },
@@ -15,23 +15,23 @@ layers:
         { t: "'", s: "!" },
       ]
     - [
-        { t: C, h: Meta },
-        { t: S, h: Alt },
-        { t: N, h: Ctrl },
-        { t: T, h: Shift },
+        { t: S, h: Meta },
+        { t: N, h: Alt },
+        { t: T, h: Ctrl },
+        { t: H, h: Shift },
         K,
         { t: ",", s: ";" },
         { t: A, h: Shift },
         { t: E, h: Ctrl },
         { t: I, h: Alt },
-        { t: H, h: Meta },
+        { t: C, h: Meta },
       ]
     - [
-        { t: P, h: Button },
-        F,
-        L,
+        { t: F, h: Button },
+        P,
         D,
-        V,
+        L,
+        X,
         { t: "-", s: _ },
         U,
         O,
@@ -137,13 +137,7 @@ layers:
 
 combos:
   - { p: [0, 1], k: Z, l: ["Base"] }
-  - { p: [1, 2], k: WH, l: ["Base"] }
   - { p: [1, 3], k: { t: "QU", h: "Q" }, l: ["Base"], align: top, offset: 0.3 }
-  - { p: [2, 3], k: GH, l: ["Base"] }
-  - { p: [11, 12], k: SH, l: ["Base"] }
-  - { p: [12, 13], k: TH, l: ["Base"] }
-  - { p: [10, 13], k: CH, l: ["Base"], align: bottom, offset: -0.1 }
-  - { p: [21, 23], k: PH, l: ["Base"], align: bottom, offset: 0.1 }
-  - { p: [16, 17], k: { t: "(", s: ")" }, l: ["Base"] }
-  - { p: [17, 18], k: { t: "{", s: "}" }, l: ["Base"] }
-  - { p: [16, 18], k: { t: "[", s: "]" }, l: ["Base"], align: top }
+  - { p: [6, 7], k: { t: "(", s: ")" }, l: ["Base"] }
+  - { p: [7, 8], k: { t: "{", s: "}" }, l: ["Base"] }
+  - { p: [6, 8], k: { t: "[", s: "]" }, l: ["Base"], align: top, offset: 0.3 }

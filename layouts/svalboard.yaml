@@ -3,29 +3,29 @@ layout:
 layers:
   Base:
     - [
+        V,
         W,
-        X,
-        M,
         G,
+        M,
         { t: ., s: ":" },
         { t: /, s: \ },
         { t: '"', s: "?" },
         { t: "'", s: "!" },
       ]
     - [
-        { t: C, h: Meta },
-        { t: S, h: Alt },
-        { t: N, h: Ctrl },
-        { t: T, h: Shift },
+        { t: S, h: Meta },
+        { t: N, h: Alt },
+        { t: T, h: Ctrl },
+        { t: H, h: Shift },
 
         { t: A, h: Shift },
         { t: E, h: Ctrl },
         { t: I, h: Alt },
-        { t: H, h: Meta },
+        { t: C, h: Meta },
       ]
     - [
         Z,
-        V,
+        X,
         J,
         K,
         { t: ",", s: ";" },
@@ -33,7 +33,7 @@ layers:
         { t: "-", s: _ },
         { t: "QU", h: "Q" },
       ]
-    - [{ t: P, h: Button }, F, L, D, U, O, Y, { t: B, h: Button }]
+    - [{ t: F, h: Button }, P, D, L, U, O, Y, { t: B, h: Button }]
     - [
         { t: R, h: N&S },
         { t: ⌫, s: ⌦ },
@@ -144,12 +144,6 @@ layers:
     - [Scrll Down, Scrll Up, "", "", Scrll Up, Scrll Down]
 
 combos:
-  - { p: [1, 2], k: WH, l: ["Base"] }
-  - { p: [2, 3], k: GH, l: ["Base"] }
-  - { p: [9, 10], k: SH, l: ["Base"], draw_separate: true }
-  - { p: [10, 11], k: TH, l: ["Base"], draw_separate: true }
-  - { p: [8, 11], k: CH, l: ["Base"], draw_separate: true }
-  - { p: [25, 27], k: PH, l: ["Base"], align: bottom }
-  - { p: [12, 13], k: { t: "(", s: ")" }, l: ["Base"], draw_separate: true }
-  - { p: [13, 14], k: { t: "{", s: "}" }, l: ["Base"], draw_separate: true }
-  - { p: [12, 14], k: { t: "[", s: "]" }, l: ["Base"], draw_separate: true }
+  - { p: [4, 5], k: { t: "(", s: ")" }, l: ["Base"] }
+  - { p: [5, 6], k: { t: "{", s: "}" }, l: ["Base"] }
+  - { p: [4, 6], k: { t: "[", s: "]" }, l: ["Base"], align: top, offset: 1 }
