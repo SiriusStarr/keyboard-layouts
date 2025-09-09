@@ -146,4 +146,10 @@ layers:
 combos:
   - { p: [4, 5], k: { t: "(", s: ")" }, l: ["Base"] }
   - { p: [5, 6], k: { t: "{", s: "}" }, l: ["Base"] }
-  - { p: [4, 5, 6], k: { t: "[", s: "]" }, l: ["Base"], align: top, offset: 1 }
+  - {
+      p: [4, 5, 6],
+      k: { t: "[", s: "]" },
+      l: ["Base"],
+      align: top,
+      offset: 0.3,
+    }
