@@ -21,11 +21,11 @@
     "kaleidoscope": {
       "flake": false,
       "locked": {
-        "lastModified": 1736902353,
-        "narHash": "sha256-kl4bvxfYso6fYxtd91gfek8XbGUhYlJozWnuq17+CxE=",
+        "lastModified": 1757385549,
+        "narHash": "sha256-IO1qGDM0mcrzT2jjgxWd7hsqd9lzhrqxv8s/txDRqpo=",
         "owner": "keyboardio",
         "repo": "Kaleidoscope",
-        "rev": "1d8a21a9031ef013e6023f087eb0555e72e7d233",
+        "rev": "bfda8e5ce2e2d2b654106eb295cc99bc54a15c56",
         "type": "github"
       },
       "original": {
@@ -36,15 +36,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1738801271,
-        "narHash": "sha256-d/4tG8DUwSUL1EVfnlevlWA3zjtlzQOx+8xSUhhpby8=",
+        "lastModified": 1757347588,
+        "narHash": "sha256-tLdkkC6XnsY9EOZW9TlpesTclELy8W7lL2ClL+nma8o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f6c5b2b731ab9fae53cc985efd63eb18e7c170a3",
+        "rev": "b599843bad24621dcaa5ab60dac98f9b0eb1cabe",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
