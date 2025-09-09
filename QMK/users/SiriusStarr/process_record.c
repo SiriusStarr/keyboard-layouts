@@ -73,6 +73,8 @@ void keyboard_post_init_user(void) {
   global_saved_values.mh_timer_index  = 1;  // Set mousekeys timer to 500 ms.
   global_saved_values.left_scroll     = 1;  // Set left pointer to scroll
   global_saved_values.right_dpi_index = 5;  // Set right pointer DPI to 2400
+  global_saved_values.left_dpi_index = 5;   // Set left pointer DPI to 2400
+  global_saved_values.auto_mouse = true;    // Enable automouse layer
 #endif
 }
 
