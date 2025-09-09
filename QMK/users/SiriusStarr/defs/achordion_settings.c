@@ -17,7 +17,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   case COMBO_QU:  // For hold making q not qu
     return true;
 
-  case LT(BUTTON, KC_P):  // Allow BUTTON layer shortcuts
+  case LT(BUTTON, KC_F):  // Allow BUTTON layer shortcuts
   case LT(BUTTON, KC_B):
     return true;
   }
