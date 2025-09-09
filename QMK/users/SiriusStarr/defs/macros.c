@@ -81,6 +81,25 @@ bool process_macro_event(uint16_t keycode, keyrecord_t *record) {
   case COMBO_BRACK:
     shift_override_combo(record, KC_LEFT_BRACKET, KC_RIGHT_BRACKET, KC_RSFT, KC_RALT);
     return false;
+  case COMBO_A:
+    if (record->event.pressed) {
+      if (layer_state_cmp(layer_state, PRIMARY)) {
+        if (is_caps_word_on()) {
+          add_weak_mods(MOD_BIT(KC_LSFT));
+        }
+        tap_code16(KC_SPACE);
+        tap_code16(KC_A);
+        tap_code16(KC_SPACE);
+      }
+    }
+    return false;
+  case COMBO_I:
+    if (record->event.pressed) {
+      if (layer_state_cmp(layer_state, PRIMARY)) {
+        SEND_STRING(" I ");
+      }
+    }
+    return false;
   }
 
   return true;  // Continue with default handling.

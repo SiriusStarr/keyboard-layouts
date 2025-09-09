@@ -17,4 +17,6 @@ enum custom_keycodes {
   COMBO_PAREN,
   COMBO_BRACE,
   COMBO_BRACK,
+  COMBO_A,
+  COMBO_I,
 };
