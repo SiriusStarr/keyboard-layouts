@@ -121,9 +121,9 @@
 #define R_3_B_NAV CUT
 #define R_4_B_NAV UNDO
 // Thumbs
-#define L_T_1_NAV KC_R
-#define L_T_2_NAV KC_BACKSPACE
-#define L_T_3_NAV KC_ESCAPE
+#define L_T_1_NAV KC_MS_BTN1
+#define L_T_2_NAV KC_MS_BTN2
+#define L_T_3_NAV KC_MS_BTN3
 #define R_T_1_NAV _______
 #define R_T_2_NAV XXXXXXX
 #define R_T_3_NAV XXXXXXX

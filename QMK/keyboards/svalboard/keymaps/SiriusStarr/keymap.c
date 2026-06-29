@@ -58,20 +58,20 @@ const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_C
     ),
 
     [FUNCTION_AND_MEDIA] = LAYOUT(
-            /* Center      North       East         South          West         Double-south */
-        /*R1*/ R_1_H_FAM,  R_1_T_FAM,  XXXXXXX,     R_1_B_FAM,     R_I_H_FAM,   XXXXXXX,
-        /*R2*/ R_2_H_FAM,  R_2_T_FAM,  XXXXXXX,     R_2_B_FAM,     R_I_T_FAM,   XXXXXXX,
-        /*R3*/ R_3_H_FAM,  R_3_T_FAM,  XXXXXXX,     R_3_B_FAM,     R_I_B_FAM,   XXXXXXX,
-        /*R4*/ R_4_H_FAM,  R_4_T_FAM,  XXXXXXX,     R_4_B_FAM,     XXXXXXX,     XXXXXXX,
+            /* Center      North       East                    South          West         Double-south */
+        /*R1*/ R_1_H_FAM,  R_1_T_FAM,  XXXXXXX,                R_1_B_FAM,     R_I_H_FAM,   XXXXXXX,
+        /*R2*/ R_2_H_FAM,  R_2_T_FAM,  XXXXXXX,                R_2_B_FAM,     R_I_T_FAM,   XXXXXXX,
+        /*R3*/ R_3_H_FAM,  R_3_T_FAM,  XXXXXXX,                R_3_B_FAM,     R_I_B_FAM,   XXXXXXX,
+        /*R4*/ R_4_H_FAM,  R_4_T_FAM,  XXXXXXX,                R_4_B_FAM,     XXXXXXX,     XXXXXXX,
 
-        /*L1*/ L_1_H_FAM,  L_1_T_FAM,  L_I_H_FAM,   L_1_B_FAM,     XXXXXXX,     XXXXXXX,
-        /*L2*/ L_2_H_FAM,  L_2_T_FAM,  L_I_T_FAM,   L_2_B_FAM,     XXXXXXX,     XXXXXXX,
-        /*L3*/ L_3_H_FAM,  L_3_T_FAM,  L_I_B_FAM,   L_3_B_FAM,     XXXXXXX,     XXXXXXX,
-        /*L4*/ L_4_H_FAM,  L_4_T_FAM,  XXXXXXX,     L_4_B_FAM,     XXXXXXX,     XXXXXXX,
+        /*L1*/ L_1_H_FAM,  L_1_T_FAM,  L_I_H_FAM,              L_1_B_FAM,     XXXXXXX,     XXXXXXX,
+        /*L2*/ L_2_H_FAM,  L_2_T_FAM,  L_I_T_FAM,              L_2_B_FAM,     XXXXXXX,     XXXXXXX,
+        /*L3*/ L_3_H_FAM,  L_3_T_FAM,  L_I_B_FAM,              L_3_B_FAM,     XXXXXXX,     XXXXXXX,
+        /*L4*/ L_4_H_FAM,  L_4_T_FAM,  SV_RECALIBRATE_POINTER, L_4_B_FAM,     XXXXXXX,     XXXXXXX,
 
-            /* Down        Inner (pad) Upper (Mode) O.Upper (nail) OL (knuckle) Pushthrough */
-        /*RT*/ R_T_2_FAM,  R_T_1_FAM,  XXXXXXX,     R_T_3_FAM,     XXXXXXX,     XXXXXXX,
-        /*LT*/ L_T_2_FAM,  L_T_1_FAM,  XXXXXXX,     L_T_3_FAM,     XXXXXXX,     XXXXXXX
+            /* Down        Inner (pad) Upper (Mode)            O.Upper (nail) OL (knuckle) Pushthrough */
+        /*RT*/ R_T_2_FAM,  R_T_1_FAM,  XXXXXXX,                R_T_3_FAM,     XXXXXXX,     XXXXXXX,
+        /*LT*/ L_T_2_FAM,  L_T_1_FAM,  XXXXXXX,                L_T_3_FAM,     XXXXXXX,     XXXXXXX
     ),
 
     [MOUSE] = LAYOUT(

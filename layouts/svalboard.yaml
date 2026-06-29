@@ -80,7 +80,7 @@ layers:
     - [←, ↑, ↓, →, Shift, Ctrl, Alt, Meta]
     - ["", "", "", "", Redo, Redo, Redo, ""]
     - [Home, Pg Up, Pg Dn, End, Paste, Copy, Cut, Undo]
-    - [R, { t: ⌫, s: ⌦ }, Esc, "", "", { type: held }]
+    - [Left Clck, Right Clck, Mid Clck, "", "", { type: held }]
   Function & Media:
     - ["", 🔆, 🔅, "", F7, F8, F9, F12]
     - [
@@ -127,21 +127,6 @@ layers:
         { t: Undo, type: held },
       ]
     - [Left Clck, Right Clck, Mid Clck, Mid Clck, Right Clck, Left Clck]
-  Mouse Button Override:
-    - ["", "", "", "", "", "", "", ""]
-    - [Meta, Alt, Ctrl, Shift, Shift, Ctrl, Alt, Meta]
-    - ["", "", "", Cali Tp, Cali Tp, "", "", ""]
-    - [
-        "",
-        Right Click,
-        Mid Click,
-        Left Click,
-        Left Click,
-        Mid Click,
-        Right Click,
-        "",
-      ]
-    - [Scrll Down, Scrll Up, "", "", Scrll Up, Scrll Down]
 
 combos:
   - { p: [4, 5], k: { t: "(", s: ")" }, l: ["Base"] }
